@@ -1,0 +1,32 @@
+.header{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    
+    .logo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .navList{
+        display: flex;
+        flex-direction: row;
+        li{
+            padding: 5px;
+        }
+    }
+    ul{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+
+}
