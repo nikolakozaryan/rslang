@@ -1,6 +1,7 @@
 import React from 'react';
+import 'normalize.css';
+import './common/style'
 import Main from './pages/Main/Main';
-import "./common/style/"
 
 const App = (): JSX.Element =>
     <>
