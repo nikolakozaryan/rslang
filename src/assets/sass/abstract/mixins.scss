@@ -1,0 +1,8 @@
+@mixin font($family: 'Gilroy', $style: normal, $weight: 400, $size, $height, $spacing: normal) {
+    font-family: $family;
+    font-style: $style;
+    font-weight: $weight;
+    font-size: $size;
+    line-height: $height;
+    letter-spacing: $spacing;
+}
