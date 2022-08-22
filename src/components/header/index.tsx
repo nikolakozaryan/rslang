@@ -6,11 +6,11 @@ const Header = () => {
         <header className = {classes.header} >
             <div className = {classes.container}>
                 <div className={classes.logo}>
-                    <img src="../assets/icons/logo.png" alt="asd" />
+                    <img src="../../assets/icons/logo.png" alt="logo" />
                     <h5>RSLang</h5>
                 </div>
                 <Navbar/>
-                <a href="##">Войти</a>
+                <a className= {classes.buttonAuthor} href="##">ВОЙТИ</a>
             </div>
         </header>
     )

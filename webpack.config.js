@@ -47,6 +47,18 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: filename('css'),
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'src', 'assets', 'icons'),
+                    to: path.resolve(__dirname, 'dist', 'assets', 'icons'),
+                },
+                {
+                    from: path.resolve(__dirname, 'src', 'assets', 'images'),
+                    to: path.resolve(__dirname, 'dist', 'assets', 'images'),
+                },
+            ],
+        }),
     ],
     devServer: {
         static: {
