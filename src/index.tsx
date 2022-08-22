@@ -1,12 +1,15 @@
 import 'normalize.css';
 import './style.scss';
-import React from 'react';
+import App from './components/router/app';
 import  ReactDOM  from 'react-dom';
+import { createRoot } from "react-dom/client";
 import Header from './components/header';
 
-ReactDOM.render(
-    <Header/>,
-    document.getElementById('root')
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement as Element);
+
+root.render(
+    <App/>
 )
 
 
