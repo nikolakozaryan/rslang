@@ -1,10 +1,9 @@
 import React from 'react';
+import Welcome from './components/Welcome/Welcome';
 
 const Main = () => {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <Welcome />
   );
 };
 
