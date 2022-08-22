@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    color: $font-color;
+}
+
+#root {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+body {
+    background: $background-color;
+}
