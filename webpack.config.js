@@ -37,7 +37,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
-        extensions: ['.js', '.jsx', 'ts', '.tsx', '.scss'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -86,6 +86,10 @@ module.exports = {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader', 'ts-loader'],
+            },
+            {
+                test: /\.ttf$/,
+                type: 'asset/inline'
             },
         ],
     },
