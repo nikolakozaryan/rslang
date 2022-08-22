@@ -37,7 +37,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.ttf'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -46,6 +46,18 @@ module.exports = {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: filename('css'),
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'src', 'assets', 'icons'),
+                    to: path.resolve(__dirname, 'dist', 'assets', 'icons'),
+                },
+                {
+                    from: path.resolve(__dirname, 'src', 'assets', 'images'),
+                    to: path.resolve(__dirname, 'dist', 'assets', 'images'),
+                },
+            ],
         }),
     ],
     devServer: {
@@ -77,7 +89,7 @@ module.exports = {
             },
             {
                 test: /\.ttf$/,
-                type: 'asset/inline',
+                type: 'asset/inline'
             },
         ],
     },
