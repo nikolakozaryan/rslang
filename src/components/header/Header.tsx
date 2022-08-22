@@ -1,8 +1,8 @@
+import React from 'react';
 import classes from "./style.module.scss"
 import Navbar from "../ui/nav/Navbar";
 
-const Header: React.FC = () => {
-    return(
+const Header: React.FC = () => (
         <header className = {classes.header} >
             <div className = {classes.container}>
                 <div className={classes.logo}>
@@ -14,6 +14,5 @@ const Header: React.FC = () => {
             </div>
         </header>
     )
-}
 
 export default Header;

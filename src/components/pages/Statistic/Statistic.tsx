@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Statistic = () => {
-    return (
+const Statistic = () => (
         <div>
             statistic
         </div>
     );
-};
 
 export default Statistic;

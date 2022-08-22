@@ -1,8 +1,9 @@
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Header from "../header";
-import Games from "../pages/games";
-import Book from "../pages/book";
-import Statistic from "../pages/statistic";
+import Header from "../Header/Header";
+import Games from "../pages/Games/Games";
+import Book from "../pages/Book/Book";
+import Statistic from "../pages/Statistic/Statistic";
 
 function App(){
     return(
