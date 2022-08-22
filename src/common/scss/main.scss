@@ -1,6 +1,4 @@
-@import "./base/typography";
 @import "./abstracts/variables";
-
-body {
-  font-style: "Gilroy", sans-serif;
-}
+@import "./base/typography";
+@import "./base/base";
+@import "./abstracts/mixins";
