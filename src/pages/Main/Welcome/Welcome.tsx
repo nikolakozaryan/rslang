@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Welcome.module.scss'
-import Button from '../../../../ui/button/Button';
+import styles from './Welcome.module.scss';
+import Button from '../../../components/button/Button';
 
 const Welcome = (): JSX.Element =>
   <div className={styles.container}>

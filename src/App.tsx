@@ -1,7 +1,11 @@
 import React from 'react';
-import Main from './components/pages/Main/Main';
-import "./common/scss/main.scss"
+import 'normalize.css';
+import './common/style'
+import Main from './pages/Main/Main';
 
-const App = (): JSX.Element => <Main />
+const App = (): JSX.Element =>
+    <>
+        <Main />
+    </>
 
 export default App;
