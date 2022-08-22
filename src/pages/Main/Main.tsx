@@ -1,5 +1,5 @@
 import React from 'react';
-import Welcome from './components/Welcome/Welcome';
+import Welcome from './Welcome/Welcome';
 
 const Main = (): JSX.Element =>
     <>

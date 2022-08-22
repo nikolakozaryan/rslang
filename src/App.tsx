@@ -1,6 +1,6 @@
 import React from 'react';
 import Main from './pages/Main/Main';
-import "./common/scss/main.scss"
+import "./common/style/"
 
 const App = (): JSX.Element =>
     <>
