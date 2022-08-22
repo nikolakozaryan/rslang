@@ -1,7 +1,7 @@
 import classes from "./style.module.scss"
 import Navbar from "../ui/nav/Navbar";
 
-const Header = () => {
+const Header: React.FC = () => {
     return(
         <header className = {classes.header} >
             <div className = {classes.container}>
