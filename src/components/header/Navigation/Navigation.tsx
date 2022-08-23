@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
     return <nav>
         <ul className={classes.navList}>
             {navItems.map((item) => 
-                <li className={classes.navItems}> <Link className={classes.navItems} to={`${item[1]}`}>{item[0]} {item[0] === 'Игры' && <img src="../../assets/icons/arrowDown.png" alt="" />}</Link></li>
+                <li className={classes.navItems}> <Link className={classes.navItems} to={`${item[1]}`}>{item[0]} {item[0] === 'Игры' && <img src="../../assets/icons/arrowDown.svg" alt="" />}</Link></li>
              )}
         </ul>
     </nav>;

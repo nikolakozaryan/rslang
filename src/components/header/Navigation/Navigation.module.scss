@@ -6,8 +6,23 @@
         padding: 0 25px;
         font:$paragraph-font;
     }
-    .navItems{
+    a{
         display: flex;
         align-items: center;
+        justify-content: center;
+        height: 150%;
+        width: 150%;
+        transition: font-size 0.1s; 
+        &:hover{
+            border-radius: 25px ;
+            background-color: lighten($color: #699DEE, $amount: 30%);
+        }
+        &:active{
+            border: 1px solid #699DEE;
+            font-size: 19px;
+        }
+        img{
+            padding: 5px 0 0 5px;
+        }
     }
 } 
