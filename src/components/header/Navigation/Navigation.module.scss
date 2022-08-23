@@ -1,11 +1,13 @@
+@import '../../../common/style/abstracts/_variables.scss';
 .navList{
     display: flex;
     flex-direction: row;
     li{
         padding: 0 25px;
+        font:$paragraph-font;
     }
     .navItems{
         display: flex;
         align-items: center;
     }
-}
+} 

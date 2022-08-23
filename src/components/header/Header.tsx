@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from "./style.module.scss"
-import Navbar from "../ui/nav/Navbar";
+import classes from "./Header.module.scss"
+import Navbar from './Navigation/Navigation';
 
 const Header: React.FC = () => (
         <header className = {classes.header} >
