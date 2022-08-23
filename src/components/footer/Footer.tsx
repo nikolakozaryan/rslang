@@ -1,9 +1,25 @@
 import React, { PropsWithChildren } from 'react';
 import classes from './Footer.module.scss';
+import Link from './Link/Link';
 
 type FooterProps = PropsWithChildren<{
     className: string;
 }>;
+
+const DEVELOPERS = [
+    {
+        name: 'Nikolay Kozyrev',
+        gitHub: 'https://github.com/nikolakozaryan',
+    },
+    {
+        name: 'Yakov Grigorev',
+        gitHub: 'https://github.com/YaGrig',
+    },
+    {
+        name: 'Kirill Naydovich',
+        gitHub: 'https://github.com/OnlyR10',
+    },
+];
 
 const Footer: React.FC<FooterProps> = ({ className }) => (
     <div className={`${classes.footer} ${className}`}>
@@ -11,15 +27,9 @@ const Footer: React.FC<FooterProps> = ({ className }) => (
             <a href="https://rs.school/" target="_blank" className={classes.logoRss}></a>
             <div className={classes.githubContainer}>
                 <a href="https://github.com/" target="_blank" className={classes.iconGithub}></a>
-                <a href="https://github.com/nikolakozaryan" target="_blank" className={classes.linkToDeveloper}>
-                    Nikolay Kozyrev
-                </a>
-                <a href="https://github.com/YaGrig" target="_blank" className={classes.linkToDeveloper}>
-                    Yakov Grigorev
-                </a>
-                <a href="https://github.com/OnlyR10" target="_blank" className={classes.linkToDeveloper}>
-                    Kirill Naydovich
-                </a>
+                {DEVELOPERS.map((developer) => (
+                    <Link developer={developer} key={developer.gitHub}></Link>
+                ))}
             </div>
             <a href="https://rs.school/js/" target="_blank" className={classes.linkToRss}>
                 Course «JavaScript/Front-end»
