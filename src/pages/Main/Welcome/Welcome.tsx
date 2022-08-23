@@ -1,5 +1,5 @@
 import styles from './Welcome.module.scss';
-import Button from '../../../components/button/Button';
+import Button from '../../../components/Button/Button';
 
 const Welcome = (): JSX.Element => (
     <div className={styles.container}>

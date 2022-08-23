@@ -1,8 +1,12 @@
 import React, { PropsWithChildren } from 'react';
 import classes from './Footer.module.scss';
 
-const Footer: React.FC<PropsWithChildren> = () => (
-    <div className={classes.footer}>
+type FooterProps = PropsWithChildren<{
+    className: string;
+}>;
+
+const Footer: React.FC<FooterProps> = ({ className }) => (
+    <div className={`${classes.footer} ${className}`}>
         <div className={classes.linksContainer}>
             <a href="https://rs.school/" target="_blank" className={classes.logoRss}></a>
             <div className={classes.githubContainer}>
