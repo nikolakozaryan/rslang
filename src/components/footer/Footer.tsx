@@ -10,10 +10,10 @@ const Footer: React.FC<PropsWithChildren> = () => (
                 <a href="https://github.com/nikolakozaryan" target="_blank" className={classes.linkToDeveloper}>
                     Nikolay Kozyrev
                 </a>
-                <a href="https://github.com/OnlyR10" target="_blank" className={classes.linkToDeveloper}>
+                <a href="https://github.com/YaGrig" target="_blank" className={classes.linkToDeveloper}>
                     Yakov Grigorev
                 </a>
-                <a href="https://github.com/YaGrig" target="_blank" className={classes.linkToDeveloper}>
+                <a href="https://github.com/OnlyR10" target="_blank" className={classes.linkToDeveloper}>
                     Kirill Naydovich
                 </a>
             </div>
