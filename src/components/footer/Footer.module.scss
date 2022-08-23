@@ -1,10 +1,10 @@
-@import '../../assets/sass/abstract/mixins.scss';
+@import '../../sass/abstract/mixins';
 
 .footer {
     @include font($size: 2rem, $height: 2.4rem);
     display: flex;
     flex-direction: column;
-    background-image: url(../../assets/icons/footer.svg);
+    background-image: url(./footer.svg);
     padding: 10rem 2rem 0;
 
     .linksContainer {

@@ -1,0 +1,40 @@
+@import '../../../sass/abstract/variables';
+
+.header {
+    font: $h1-font;
+    margin: 0;
+}
+
+.text {
+    font: $paragraph-font;
+    margin: 0;
+    margin: 20px 0 56px;
+}
+
+.logo {
+    color: $font-emph-color;
+}
+
+.content {
+    max-width: 520px;
+    margin-top: 83px;
+    margin-bottom: 207px;
+}
+
+.container {
+    padding: 83px 45px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../../../assets/images/Main/Welcome/main-background.png') no-repeat;
+    background-position: bottom -40px right 40px;
+}
+
+.image {
+    width: 500px;
+    height: 368px;
+    margin-top: 86px;
+    margin-bottom: 107px;
+    width: 721px;
+    background: url('../../../assets/images/Main/Welcome/main.png');
+}

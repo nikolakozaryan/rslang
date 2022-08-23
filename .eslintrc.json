@@ -24,6 +24,6 @@
         "class-methods-use-this": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "linebreak-style": ["error", "windows"],
-        "import/extensions": ["error", { "tsx": "never" }]
+        "import/extensions": ["error", { "tsx": "never", "ts": "never" }]
     }
 }
