@@ -5,7 +5,7 @@ import Main from './pages/Main/Main';
 
 const App = (): JSX.Element =>
     <>
-        <Main />
+    <Main />
     </>
 
 export default App;
