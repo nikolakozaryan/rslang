@@ -4,7 +4,7 @@ import ISection from './SectionInterface';
 
 const Section = (props: ISection) => 
     <div className={classes.section}>
-        <span className={classes.header}>{props.header}</span>
+        <h2 className={classes.header}>{props.header}</h2>
         <div className={classes.content}>{props.children}</div>;
     </div>
 

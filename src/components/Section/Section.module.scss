@@ -3,17 +3,16 @@
 
 .section{
     display: flex;
-    justify-content: center;
     flex-direction: column;
     font: $paragraph-font;
     margin-bottom: 13rem;
+    
 }
 .content {
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
     align-items: center;
-    padding: auto;
+    padding-left: 10rem;
+    gap: 30px;  
 }
 .header{
     text-align: center;
