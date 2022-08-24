@@ -32,7 +32,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => (
                 ))}
             </div>
             <a href="https://rs.school/js/" target="_blank" className={classes.linkToRss}>
-                Course «JavaScript/Front-end»
+                Курс «JavaScript/Front-end»
             </a>
         </div>
         <p className={classes.developmentDate}>© 2022 RSLang</p>
