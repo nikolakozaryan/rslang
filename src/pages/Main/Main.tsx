@@ -11,7 +11,6 @@ const Main = (): JSX.Element => (
             <Advantages />
             <TeamSection/>
         </main>
-        <Footer className={classes.footer} />
     </>
 );
 

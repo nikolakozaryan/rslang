@@ -1,20 +1,20 @@
 @import '../../common/style/abstract/_variables.scss';
-.header{
+.header {
     display: flex;
-    justify-content: center;    
+    justify-content: center;
 }
-.container{
+.container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 144rem;
-    
-    ul{
+
+    ul {
         list-style: none;
     }
-    a{
+    a {
         text-decoration: none;
         position: relative;
         width: 6rem;
@@ -24,23 +24,23 @@
         color: #082143;
     }
 
-    .buttonAuthor{
+    .buttonAuthor {
         display: flex;
+        box-sizing: content-box;
         justify-content: center;
-        border: 2px solid $button-color; 
+        border: 2px solid $button-color;
         padding: 15px 40px;
         border-radius: 25px;
         text-align: center;
         font: $button-font;
         transition: 0.3s;
-        &:hover{
+        &:hover {
             font-size: 19.2px;
             border-radius: 30px;
             background-color: lighten($color: $button-color, $amount: 40%);
         }
-        &:active{
+        &:active {
             font-size: 22.2px;
         }
     }
-
 }
