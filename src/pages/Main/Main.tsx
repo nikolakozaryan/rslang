@@ -1,10 +1,14 @@
-import React from 'react';
 import Welcome from './Welcome/Welcome';
+import Footer from '../../components/Footer/Footer';
+import classes from './Main.module.scss';
 
-const Main = (): JSX.Element =>
+const Main = (): JSX.Element => (
     <>
-        <Welcome />
+        <main>
+            <Welcome />
+        </main>
+        <Footer className={classes.footer} />
     </>
-
+);
 
 export default Main;
