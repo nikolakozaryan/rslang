@@ -1,0 +1,23 @@
+@import '../../common/style/abstract/_variables.scss';
+
+
+.section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font: $paragraph-font;
+    margin-bottom: 13rem;
+}
+.content {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    padding: auto;
+}
+.header{
+    text-align: center;
+    color: #082143;
+    font-size: 5.3rem;
+    margin-bottom: 5.5rem;
+}
