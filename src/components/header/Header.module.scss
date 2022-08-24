@@ -9,37 +9,18 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 144rem;
     
-    .logo{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 180px;
-        img{
-            width: 60px;
-            height: 60px;
-        }
-        h5{
-            width: 112px;
-            height: 39px;
-            font-size: 32px;
-            line-height: 39px;
-            color: #082143;
-            font: 600 32px/1.15 "Gilroy", sans-serif; 
-        }
-    }
     ul{
         list-style: none;
     }
     a{
         text-decoration: none;
         position: relative;
-        width: 60px;
-        height: 22px;
-        font-size: 18px;
-        line-height: 22px;
+        width: 6rem;
+        height: 2.2rem;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
         color: #082143;
     }
 

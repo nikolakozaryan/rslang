@@ -1,14 +1,12 @@
 import React from 'react';
-import classes from "./Header.module.scss"
+import classes from "./Header.module.scss";
+import Logo from './Logo/Logo';
 import Navbar from './Navigation/Navigation';
 
 const Header: React.FC = () => (
         <header className = {classes.header} >
             <div className = {classes.container}>
-                <div className={classes.logo}>
-                    <img src="../../assets/icons/logo.svg" alt="logo" />
-                    <h5>RSLang</h5>
-                </div>
+                <Logo />
                 <Navbar/>
                 <a className= {classes.buttonAuthor} href="##">ВОЙТИ</a>
             </div>

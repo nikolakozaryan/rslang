@@ -3,9 +3,9 @@ import 'normalize.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import Header from './components/Header/Header';
-import Book from './components/pages/Book/Book';
-import Games from './components/pages/Games/Games';
-import Statistic from './components/pages/Statistic/Statistic';
+import Book from './components/Pages/Book/Book';
+import Games from './components/Pages/Games/Games';
+import Statistic from './components/Pages/Statistic/Statistic';
 
 
 
