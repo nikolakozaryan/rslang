@@ -1,0 +1,28 @@
+@import '../../../common/style/abstract/_variables.scss';
+.navList{
+    display: flex;
+    flex-direction: row;
+    li{
+        padding: 0 2.5rem;
+        font:$paragraph-font;
+    }
+    a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 150%;
+        width: 150%;
+        transition: font-size 0.1s; 
+        &:hover{
+            border-radius: 2.5rem ;
+            background-color: lighten($color: $button-color, $amount: 40%);
+        }
+        &:active{
+            border: 1px solid $button-color;
+            font-size: 1.9rem;
+        }
+        img{
+            padding: 0.5rem 0 0 0.5rem;
+        }
+    }
+} 
