@@ -28,7 +28,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => (
             <div className={classes.githubContainer}>
                 <a href="https://github.com/" target="_blank" className={classes.iconGithub}></a>
                 {DEVELOPERS.map((developer) => (
-                    <Link developer={developer} key={developer.gitHub}></Link>
+                    <Link {...developer} key={developer.gitHub} />
                 ))}
             </div>
             <a href="https://rs.school/js/" target="_blank" className={classes.linkToRss}>
