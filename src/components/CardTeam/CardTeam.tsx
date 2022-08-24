@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Card.module.scss';
+import classes from './CardTeam.module.scss';
 import CardTeamInterface from './CardTeamInterface';
 
 const CardTeam: React.FC<CardTeamInterface> = (props: CardTeamInterface) => (
