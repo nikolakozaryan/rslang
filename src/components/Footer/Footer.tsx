@@ -1,25 +1,11 @@
 import React, { PropsWithChildren } from 'react';
 import classes from './Footer.module.scss';
+import DEVELOPERS from '../../common/constants/developersConst';
 import Link from './Link/Link';
 
 type FooterProps = PropsWithChildren<{
     className: string;
 }>;
-
-const DEVELOPERS = [
-    {
-        name: 'Николай Козырев',
-        gitHub: 'https://github.com/nikolakozaryan',
-    },
-    {
-        name: 'Яков Григорьев',
-        gitHub: 'https://github.com/YaGrig',
-    },
-    {
-        name: 'Кирилл Найдович',
-        gitHub: 'https://github.com/OnlyR10',
-    },
-];
 
 const Footer: React.FC<FooterProps> = ({ className }) => (
     <div className={`${classes.footer} ${className}`}>
