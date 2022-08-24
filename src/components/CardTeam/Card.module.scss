@@ -12,10 +12,10 @@
     justify-content: space-between;
     
     .photo{
-        height: 112px;
-        width: 112px;
+        height: 11.2rem;
+        width: 11.2rem;
         background-color: #D9D9D9;
-        border-radius: 61px;
+        border-radius: 6.1rem;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -26,17 +26,17 @@
         justify-content: space-evenly;
         align-items:baseline;
         .name{
-            font-size: 22px;
+            font-size: 2.2rem;
         }
         .role{
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 147px;
-            height: 34px;
+            width: 14.7rem;
+            height: 3.4rem;
             background-color: $button-color;
-            font-size: 20px;
-            border-radius: 20px;
+            font-size: 2rem;
+            border-radius: 2rem;
         }
     }
     
