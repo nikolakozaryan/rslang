@@ -8,15 +8,15 @@ type FooterProps = PropsWithChildren<{
 
 const DEVELOPERS = [
     {
-        name: 'Nikolay Kozyrev',
+        name: 'Николай Козырев',
         gitHub: 'https://github.com/nikolakozaryan',
     },
     {
-        name: 'Yakov Grigorev',
+        name: 'Яков Григорьев',
         gitHub: 'https://github.com/YaGrig',
     },
     {
-        name: 'Kirill Naydovich',
+        name: 'Кирилл Найдович',
         gitHub: 'https://github.com/OnlyR10',
     },
 ];
