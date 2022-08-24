@@ -7,11 +7,6 @@ import classes from './Main.module.scss';
 const Main = (): JSX.Element => (
     <>
         <main>
-        <Section header= 'hed'>
-                <Card type = 'team'>sd</Card>
-                <Card type = 'team'>sd</Card>
-                <Card type = 'team'>sd</Card>
-            </Section>
             <Welcome />
         </main>
         <Footer className={classes.footer} />
