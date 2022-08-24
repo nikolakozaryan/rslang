@@ -9,8 +9,8 @@ const TeamSection: React.FC = () => {
     return (
         <Section header={header}>
             {DEVELOPERS.map((member) => (
-                <Card type="team">
-                    <CardTeam member={member} key={Date.now()} />
+                <Card key={Date.now()} type="team">
+                    <CardTeam member={member} />
                 </Card>
             ))}
         </Section>
