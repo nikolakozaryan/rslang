@@ -11,12 +11,13 @@ import Statistic from './components/pages/Statistic/Statistic';
 
 const App = (): JSX.Element =>
     <>
-    <BrowserRouter>
-        <Header/>
-        <Routes>
-        <Route path="/book" element={<Book />} />
-        <Route path="/statistic" element={<Statistic />} />
-        <Route path="/games" element={<Games />} />
+        <BrowserRouter>
+            <Header/>
+            <Routes>
+                <Route path="/book" element={<Book />} />
+                <Route path="/statistic" element={<Statistic />} />
+
+                <Route path="/games" element={<Games />} />
             </Routes>
         </BrowserRouter>
         <Main />

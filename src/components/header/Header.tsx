@@ -6,7 +6,7 @@ const Header: React.FC = () => (
         <header className = {classes.header} >
             <div className = {classes.container}>
                 <div className={classes.logo}>
-                    <img src="../../assets/icons/logo.png" alt="logo" />
+                    <img src="../../assets/icons/logo.svg" alt="logo" />
                     <h5>RSLang</h5>
                 </div>
                 <Navbar/>

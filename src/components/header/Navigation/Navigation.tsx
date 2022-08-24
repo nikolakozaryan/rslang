@@ -1,6 +1,6 @@
 import React from 'react';
-import NavLink from './Links/Link';
-import NAVIGATION_ITEMS from '../../../common/style/constants/navConst';
+import NavLink from './NavLink/NavLink';
+import NAVIGATION_ITEMS from '../../../common/constants/navConst';
 import classes from './Navigation.module.scss';
 
 const Navbar: React.FC = () => <nav>
