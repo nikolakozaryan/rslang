@@ -1,5 +1,6 @@
 import Welcome from './Welcome/Welcome';
 import Footer from '../../components/Footer/Footer';
+import classes from './Main.module.scss';
 
 const Main = (): JSX.Element => (
     <>
