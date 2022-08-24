@@ -9,7 +9,6 @@ const Main = (): JSX.Element => (
             <Welcome />
             <Advantages />
         </main>
-        <Footer className={classes.footer} />
     </>
 );
 
