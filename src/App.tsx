@@ -16,7 +16,6 @@ const App = (): JSX.Element =>
             <Routes>
                 <Route path="/book" element={<Book />} />
                 <Route path="/statistic" element={<Statistic />} />
-
                 <Route path="/games" element={<Games />} />
             </Routes>
         </BrowserRouter>
