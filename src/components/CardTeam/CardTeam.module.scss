@@ -1,0 +1,48 @@
+@import '../../common/style/abstracts/_variables';
+
+.cardTeam{
+    display: flex;
+    
+    height: 100%;
+    flex-direction: column;
+    justify-content:start;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    
+    .photo{
+        height: 11.2rem;
+        width: 11.2rem;
+        background-color: #D9D9D9;
+        border-radius: 6.1rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .description{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items:baseline;
+        .name{
+            font-size: 2.2rem;
+        }
+        .role{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 14.7rem;
+            height: 3.4rem;
+            background-color: $button-color;
+            font-size: 2rem;
+            border-radius: 2rem;
+        }
+    }
+    
+    
+}
+.contribution{
+    margin-top: 50px;
+    font-size: 20px;
+}
