@@ -1,20 +1,18 @@
 @import '../../common/style/abstract/_variables.scss';
 
-
-.section{
+.section {
     display: flex;
     flex-direction: column;
     font: $paragraph-font;
     margin-bottom: 13rem;
-    
 }
 .content {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;  
+    gap: 3rem;
 }
-.header{
+.header {
     text-align: center;
     color: #082143;
     font-size: 5.3rem;
