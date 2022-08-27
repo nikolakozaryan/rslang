@@ -3,6 +3,11 @@ import User from './User';
 import IUser from './UserInterface';
 
 const UserAPI: IUser = {
+    createUserObject: (name: string, email: string, password: string) => ({
+        name,
+        email,
+        password,
+    }),
     deleteUser: async (id: string, token: string) => {
         const rawResponse = await fetch(`${SERVER}/users/${id}`, {
             method: 'DELETE',
@@ -16,7 +21,7 @@ const UserAPI: IUser = {
 
         return content;
     },
-    updateUser: async (id: string, token: string, user: unknown) => {
+    updateUser: async (id: string, token: string, user: User) => {
         const rawResponse = await fetch(`${SERVER}/users/${id}`, {
             method: 'PUT',
             headers: {

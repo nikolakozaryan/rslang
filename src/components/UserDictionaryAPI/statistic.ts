@@ -1,5 +1,5 @@
 type Options = {
-    learnedWords: string;
+    learnedWords: number;
     optional: {
         testFieldString?: string;
         testFieldBoolean?: boolean;

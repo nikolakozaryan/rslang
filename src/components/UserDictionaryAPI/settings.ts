@@ -1,13 +1,13 @@
 type Options = {
-    learnedWords: string;
-    optional: {
+    wordsPerDay: number;
+    optional?: {
         testFieldString?: string;
         testFieldBoolean?: boolean;
     };
 };
-type Statistic = {
+type Settings = {
     userId: string;
     token: string;
     body: Options;
 };
-export default Statistic;
+export default Settings;

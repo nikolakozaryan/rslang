@@ -1,8 +1,9 @@
 import User from './User';
 
 export default interface IUser {
+    createUserObject: (name: string, email: string, password: string) => User;
     deleteUser: (id: string, token: string) => Promise<User>;
-    updateUser: (id: string, token: string, user: unknown) => Promise<User>;
+    updateUser: (id: string, token: string, user: User) => Promise<User>;
     createUser: (user: User) => Promise<User>;
     getUser: (id: string, token: string) => Promise<User>;
     getNewUserToken: (id: string, token: string) => Promise<User>;

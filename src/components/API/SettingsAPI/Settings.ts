@@ -1,5 +1,5 @@
 type Options = {
-    wordsPerDay: number;
+    wordsPerDay: string;
     optional?: {
         testFieldString?: string;
         testFieldBoolean?: boolean;

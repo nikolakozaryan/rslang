@@ -3,6 +3,23 @@ import Settings from './Settings';
 import ISettings from './SettingsInterface';
 
 const UserSettings: ISettings = {
+    createSettings: (
+        userId: string,
+        token: string,
+        wordsPerDay: string,
+        testFieldString?: string,
+        testFieldBoolean?: boolean
+    ) => ({
+        userId,
+        token,
+        body: {
+            wordsPerDay,
+            optional: {
+                testFieldString,
+                testFieldBoolean,
+            },
+        },
+    }),
     updateUserSettings: async (object: Settings) => {
         const rawResponse = await fetch(`${SERVER}/users/${object.userId}/settings`, {
             method: 'PUT',

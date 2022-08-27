@@ -3,6 +3,25 @@ import NewUserWord from './Word';
 import IUserDictionary from './UserDictionaryInterface';
 
 const UserDictionary: IUserDictionary = {
+    createNewWord: (
+        userId: string,
+        wordId: string,
+        difficulty: string,
+        testFieldString: string,
+        testFieldBoolean: boolean,
+        token: string
+    ) => ({
+        userId,
+        wordId,
+        token,
+        word: {
+            difficulty,
+            optional: {
+                testFieldString,
+                testFieldBoolean,
+            },
+        },
+    }),
     getUserWordsArray: async (id: string, token: string) => {
         const responce: Response = await fetch(`${SERVER}/users/${id}/words`, {
             method: 'GET',

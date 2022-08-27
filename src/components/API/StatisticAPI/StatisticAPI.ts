@@ -3,6 +3,23 @@ import Statistic from './Statistic';
 import IStatistic from './StatisticInterface';
 
 const UserStatistic: IStatistic = {
+    createStatistic: (
+        userId: string,
+        token: string,
+        learnedWords: string,
+        testFieldString?: string,
+        testFieldBoolean?: boolean
+    ) => ({
+        userId,
+        token,
+        body: {
+            learnedWords,
+            optional: {
+                testFieldString,
+                testFieldBoolean,
+            },
+        },
+    }),
     updateUserStatistic: async (object: Statistic) => {
         const rawResponse = await fetch(`${SERVER}/users/${object.userId}/statistics`, {
             method: 'PUT',
