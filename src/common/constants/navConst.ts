@@ -1,6 +1,6 @@
 const NAVIGATION_ITEMS: [string, string][] = [
     ['Главная', '/'],
-    ['Учебник', '/book'],
+    ['Учебник', '/vocabulary'],
     ['Игры', '/games'],
     ['Статистика', '/statistic'],
 ];
