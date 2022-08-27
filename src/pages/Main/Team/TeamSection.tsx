@@ -8,8 +8,8 @@ const TeamSection: React.FC = () => {
     const header = 'О команде ';
     return (
         <Section header={header}>
-            {DEVELOPERS.map((member) => (
-                <Card key={Date.now()} type="team">
+            {DEVELOPERS.map((member, index) => (
+                <Card key={index} type="team">
                     <CardTeam member={member} />
                 </Card>
             ))}

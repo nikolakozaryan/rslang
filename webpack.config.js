@@ -101,7 +101,7 @@ module.exports = {
             },
             {
                 test: /\.ttf$/,
-                type: 'asset/inline'
+                type: 'asset/inline',
             },
         ],
     },

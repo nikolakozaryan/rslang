@@ -8,7 +8,9 @@
         "dev": "cross-env NODE_ENV=development webpack --mode development",
         "build": "cross-env NODE_ENV=production webpack --mode production",
         "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
-        "lint": "eslint . --ext .tsx"
+        "lint": "eslint . --ext .tsx",
+        "format": "prettier . --write",
+        "prepare": "husky install"
     },
     "author": "Nikolay Kozyrev",
     "license": "ISC",
@@ -34,6 +36,8 @@
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-prettier": "^4.2.1",
         "html-webpack-plugin": "^5.5.0",
+        "husky": "^8.0.1",
+        "lint-staged": "^13.0.3",
         "mini-css-extract-plugin": "^2.6.1",
         "node-sass": "^7.0.1",
         "prettier": "2.7.1",
@@ -51,5 +55,9 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.3.0"
+    },
+    "lint-staged": {
+        "*.{tsx,ts}": "eslint --cache --fix",
+        "*.{tsx,ts,scss,json,js,md}": "prettier --cache --write"
     }
 }
