@@ -1,53 +1,53 @@
 @import '../../common/style/abstract/mixins';
 
 .footer {
-    @include font($size: 2rem, $height: 2.4rem);
+  @include font($size: 2rem, $height: 2.4rem);
+  display: flex;
+  flex-direction: column;
+  background-image: url(../../assets/icons/footer.svg);
+  padding: 10rem 2rem 0;
+
+  .linksContainer {
+    display: grid;
+    grid-template-columns: 1fr 50% 1fr;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logoRss {
+    width: 15rem;
+    min-height: 5rem;
+    background-image: url(https://rs.school/images/rs_school_js.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    text-indent: -900rem;
+    overflow: hidden;
+  }
+
+  .githubContainer {
     display: flex;
-    flex-direction: column;
-    background-image: url(../../assets/icons/footer.svg);
-    padding: 10rem 2rem 0;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0 2rem;
+  }
 
-    .linksContainer {
-        display: grid;
-        grid-template-columns: 1fr 50% 1fr;
-        justify-items: center;
-        align-items: center;
-        text-align: center;
-    }
+  .iconGithub {
+    width: 5.2rem;
+    height: 4.9rem;
+    background-image: url(../../assets/icons/github.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
 
-    .logoRss {
-        width: 15rem;
-        min-height: 5rem;
-        background-image: url(https://rs.school/images/rs_school_js.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        text-indent: -900rem;
-        overflow: hidden;
-    }
+  .linkToRss {
+    text-decoration: none;
+    color: black;
+  }
 
-    .githubContainer {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        gap: 0 2rem;
-    }
-
-    .iconGithub {
-        width: 5.2rem;
-        height: 4.9rem;
-        background-image: url(../../assets/icons/github.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
-
-    .linkToRss {
-        text-decoration: none;
-        color: black;
-    }
-
-    .developmentDate {
-        text-align: center;
-    }
+  .developmentDate {
+    text-align: center;
+  }
 }
