@@ -1,6 +1,18 @@
 import React, { PropsWithChildren } from 'react';
 import classes from './Button.module.scss';
 
-const Button: React.FC<PropsWithChildren> = ({ children }) => <button className={classes.button}>{children}</button>;
+type IntrinsicAttributes = {
+    disabled?: boolean;
+    style?: {
+        [index: string]: string;
+    };
+    onClick?: () => void;
+};
+
+const Button: React.FC<IntrinsicAttributes & PropsWithChildren> = (props) => (
+    <button {...props} className={classes.button}>
+        {props.children}
+    </button>
+);
 
 export default Button;

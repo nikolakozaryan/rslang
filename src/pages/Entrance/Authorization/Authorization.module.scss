@@ -1,0 +1,118 @@
+@import '../../../common/style/abstract/mixins';
+@import '../../../common/style/abstract/variables';
+
+.wrapper {
+    padding: 5rem 6.5rem;
+    background: #ffffff;
+    box-shadow: 0px 0.4rem 1rem rgba(228, 216, 203, 0.5);
+    border-radius: 2rem;
+}
+
+.header {
+    @include font($family: 'Gilroy-SemiBold', $size: 4.2rem, $height: 5.1rem);
+    margin: 0 0 2rem;
+}
+
+.info {
+    @include font($size: 2rem, $height: 2.4rem);
+    margin: 0 0 5rem;
+}
+
+.registration {
+    text-decoration: none;
+    color: #004fba;
+    transition: 0.5s;
+    border-bottom: 1px solid transparent;
+    &:hover {
+        border-bottom: 1px solid #004fba;
+    }
+}
+
+.email {
+    @include font($size: 1.6rem, $height: 1.9rem);
+    color: rgba(8, 33, 67, 0.5);
+    margin: 0 0 2rem;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-bottom: 0.1rem solid #909090;
+    background: transparent;
+    font-size: 2rem;
+    transition: 0.5s;
+    &:hover {
+        border-bottom-color: $font-color;
+    }
+    &:focus {
+        outline: none;
+        border-bottom-color: $font-color;
+    }
+}
+
+.orContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.or {
+    @include font($size: 1.6rem, $height: 1.9rem);
+    color: rgba(8, 33, 67, 0.5);
+    display: inline;
+    margin: 0 2.1rem;
+}
+
+.line {
+    width: 100%;
+    height: 0.1rem;
+    background-color: #cdcdcd;
+    display: inline-block;
+}
+
+.link {
+    display: flex;
+    border: 0.1rem solid #cdcdcd;
+    border-radius: 5rem;
+    transition: 0.5s;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3.5rem;
+    &:hover {
+        border-color: $font-color;
+    }
+}
+
+.google {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url(../../../assets/images/Entrance/google.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.apple {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url(../../../assets/images/Entrance/apple.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.continue {
+    @include font($family: 'Gilroy-Medium', $size: 1.8rem, $height: 2.2rem);
+}
+
+.error {
+    @include font($size: 1.6rem, $height: 1.9rem);
+    // margin: 0 0 2rem;
+    color: red;
+}
+
+.transparent {
+    @include font($size: 1.6rem, $height: 1.9rem);
+    color: transparent;
+}
