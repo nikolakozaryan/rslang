@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import 'normalize.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
-import Book from './components/Pages/Book/Book';
-import Games from './components/Pages/Games/Games';
+import Vocabulary from './pages/Vocabulary/Vocabulary';
+import Games from './pages/Games/Games';
 import RouteComponent from './components/RouteComponent/RouteComponent';
-import Statistic from './components/Pages/Statistic/Statistic';
+import Statistic from './pages/Statistic/Statistic';
 import './common/style/index.scss';
 import Entrance from './pages/Entrance/Entrance';
 import ApplicationAccessContext from './context/context';
@@ -19,10 +19,10 @@ const App = (): JSX.Element => {
                 <BrowserRouter>
                     <Routes>
                         <Route
-                            path="/book"
+                            path="/vocabulary"
                             element={
                                 <RouteComponent>
-                                    <Book />
+                                    <Vocabulary />
                                 </RouteComponent>
                             }
                         />
