@@ -1,5 +1,5 @@
 import URLQueries from './urlQueries';
-import NewWord from '../../UserDictionaryAPI/type';
+import NewUserWord from '../UserDictionaryAPI/Word';
 
 export default interface IAggregatedWords {
     createUrlQueries: (
@@ -11,5 +11,5 @@ export default interface IAggregatedWords {
         group?: string
     ) => URLQueries;
     getAllAggregatedUserWords: (URLQueries: URLQueries) => Promise<Response>;
-    getAggregateUserWord: (object: NewWord) => Promise<Response>;
+    getAggregateUserWord: (object: NewUserWord) => Promise<Response>;
 }

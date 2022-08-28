@@ -1,4 +1,4 @@
-import NewWord from '../../UserDictionaryAPI/type';
+import NewUserWord from '../UserDictionaryAPI/Word';
 import IAggregatedWords from './AggregatedWordsInterface';
 import URLQueries from './urlQueries';
 
@@ -35,7 +35,7 @@ const AggregatedWordsAPI: IAggregatedWords = {
 
         return content;
     },
-    getAggregateUserWord: async (object: NewWord) => {
+    getAggregateUserWord: async (object: NewUserWord) => {
         const rawResponse = await fetch(
             `https://rslang-example.herokuapp.com/users/${object.userId}/aggregatedWords/${object.wordId}`,
             {
