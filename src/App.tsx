@@ -9,44 +9,44 @@ import Statistic from './pages/Statistic/Statistic';
 import './common/style/index.scss';
 
 const App = (): JSX.Element => (
-    <>
-        <BrowserRouter>
-            <Routes>
-                <Route
-                    path="/vocabulary"
-                    element={
-                        <RouteComponent>
-                            <Vocabulary />
-                        </RouteComponent>
-                    }
-                />
-                <Route
-                    path="/statistic"
-                    element={
-                        <RouteComponent>
-                            <Statistic />
-                        </RouteComponent>
-                    }
-                />
-                <Route
-                    path="/games"
-                    element={
-                        <RouteComponent>
-                            <Games />
-                        </RouteComponent>
-                    }
-                />
-                <Route
-                    path="/"
-                    element={
-                        <RouteComponent>
-                            <Main />
-                        </RouteComponent>
-                    }
-                />
-            </Routes>
-        </BrowserRouter>
-    </>
+  <>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/vocabulary"
+          element={
+            <RouteComponent>
+              <Vocabulary />
+            </RouteComponent>
+          }
+        />
+        <Route
+          path="/statistic"
+          element={
+            <RouteComponent>
+              <Statistic />
+            </RouteComponent>
+          }
+        />
+        <Route
+          path="/games"
+          element={
+            <RouteComponent>
+              <Games />
+            </RouteComponent>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <RouteComponent>
+              <Main />
+            </RouteComponent>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  </>
 );
 
 export default App;
