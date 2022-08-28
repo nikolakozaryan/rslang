@@ -30,9 +30,7 @@ const UserSettings: ISettings = {
             },
             body: JSON.stringify(object.body),
         });
-        console.log(object);
         const content = await rawResponse.json();
-        console.log(content, 'cont');
         return content;
     },
     getSettings: async (id: string, token: string) => {

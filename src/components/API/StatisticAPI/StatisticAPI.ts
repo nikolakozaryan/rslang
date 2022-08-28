@@ -30,9 +30,7 @@ const UserStatistic: IStatistic = {
             },
             body: JSON.stringify(object.body),
         });
-        console.log(object);
         const content = await rawResponse.json();
-        console.log(content, 'cont');
         return content;
     },
     getStatistic: async (id: string, token: string) => {

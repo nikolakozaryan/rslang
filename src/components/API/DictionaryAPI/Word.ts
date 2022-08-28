@@ -1,4 +1,5 @@
 type Word = {
+    id: string;
     group: number;
     page: number;
     word: string;
@@ -9,7 +10,6 @@ type Word = {
     textMeaning: string;
     textExample: string;
     transcription: string;
-    __v: number;
     textExampleTranslate: string;
     textMeaningTranslate: string;
     wordTranslate: string;
