@@ -1,5 +1,10 @@
 import React from 'react';
+import Games from './Games/Games';
 
-const Vocabulary = () => <></>;
+const Vocabulary = () => (
+  <>
+    <Games />
+  </>
+);
 
 export default Vocabulary;
