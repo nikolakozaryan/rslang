@@ -1,28 +1,32 @@
 @import '../../common/style/abstract/variables';
 
 .card {
-    padding: 20px;
-    box-sizing: border-box;
-    background: #ffffff;
-    box-shadow: 0px 4px 10px rgba(149, 166, 216, 0.25);
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.5s ease-in;
-    &:hover {
-        transform: translate(0, -1.5px);
-        box-shadow: 5px 5px 10px 0 rgba(#000, 0.3);
-    }
+  padding: 2rem;
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0 .4rem 1rem #e4d8cb80;
+  border-radius: 2rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+
+  &:hover {
+    transform: translate(0, -.2rem);
+    box-shadow: 0px .7rem 1rem #e4d8cb80;
+  }
 }
+
 .cardTeam {
-    width: 35rem;
-    height: 48.2rem;
+  width: 35rem;
+  height: 48.2rem;
 }
+
 .cardOpportunity {
-    width: 35rem;
-    height: 40.9rem;
+  width: 35rem;
+  height: 40.9rem;
 }
+
 .cardGames {
-    width: 54rem;
-    height: 48.2rem;
+  width: 54rem;
+  height: 48.2rem;
 }
