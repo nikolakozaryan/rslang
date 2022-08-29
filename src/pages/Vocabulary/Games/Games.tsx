@@ -7,7 +7,7 @@ import classes from './Games.module.scss';
 const Games = () => (
   <Section header="Игры">
     {GAME_CARDS_DATA.map((data) => (
-      <Card type="game">
+      <Card key={data.title} type="game">
         <div className={classes.img}>
           <img src={data.imgURL} alt="game-image" />
         </div>
