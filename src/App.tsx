@@ -7,6 +7,12 @@ import Games from './pages/Games/Games';
 import RouteComponent from './components/RouteComponent/RouteComponent';
 import Statistic from './pages/Statistic/Statistic';
 import './common/style/index.scss';
+import GameHeader from './pages/SprintGame/GameHeader/GameHeader';
+import SprintDescription from './pages/SprintGame/SprintDescription/SprintDescription';
+import SprintDifficulty from './pages/SprintGame/SprintDifficulty/SprintDifficulty';
+import Button from './components/Button/Button';
+import StartingPageSprint from './pages/SprintGame/StartingPageSprint/StartingPageSprint';
+import SprintGame from './pages/SprintGame/SprintGame/SprintGame';
 
 const App = (): JSX.Element => (
     <>
@@ -28,20 +34,15 @@ const App = (): JSX.Element => (
                         </RouteComponent>
                     }
                 />
-                <Route
-                    path="/games"
-                    element={
-                        <RouteComponent>
-                            <Games />
-                        </RouteComponent>
-                    }
-                />
+                <Route path="/games" element={<StartingPageSprint />} />
                 <Route
                     path="/"
                     element={
-                        <RouteComponent>
-                            <Main />
-                        </RouteComponent>
+                        <SprintGame />
+                        // // <RouteComponent>
+                        //     {/* <Main /> */}
+
+                        // // </RouteComponent>
                     }
                 />
             </Routes>

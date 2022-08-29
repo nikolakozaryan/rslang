@@ -1,0 +1,14 @@
+@import '../../../../common/style/abstract/_variables.scss';
+.container {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff4ed;
+    text-decoration: none;
+    .text {
+        font: $h3-font;
+    }
+}

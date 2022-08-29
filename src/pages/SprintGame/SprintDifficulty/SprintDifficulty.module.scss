@@ -1,0 +1,19 @@
+@import '../../../common/style/abstract/_variables.scss';
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 7rem;
+}
+.header {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    text-align: center;
+    font: $paragraph-font;
+    color: #082143;
+}
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
