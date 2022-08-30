@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export default interface ISection {
-    header: string;
-    children: ReactNode;
-    advantages?: boolean;
+  header: string;
+  children: ReactNode;
+  advantages?: boolean;
 }

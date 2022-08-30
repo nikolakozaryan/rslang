@@ -13,66 +13,66 @@ import Registration from './pages/Entrance/Registration/Registration';
 import Authorization from './pages/Entrance/Authorization/Authorization';
 
 const App = (): JSX.Element => {
-    const [applicationAccess, setApplicationAccess] = useState<'registration' | 'authorization' | ''>('');
+  const [applicationAccess, setApplicationAccess] = useState<'registration' | 'authorization' | ''>('');
 
-    return (
-        <>
-            <ApplicationAccessContext.Provider value={{ applicationAccess, setApplicationAccess }}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route
-                            path="/vocabulary"
-                            element={
-                                <RouteComponent>
-                                    <Vocabulary />
-                                </RouteComponent>
-                            }
-                        />
-                        <Route
-                            path="/statistic"
-                            element={
-                                <RouteComponent>
-                                    <Statistic />
-                                </RouteComponent>
-                            }
-                        />
-                        <Route
-                            path="/games"
-                            element={
-                                <RouteComponent>
-                                    <Games />
-                                </RouteComponent>
-                            }
-                        />
-                        <Route
-                            path="/"
-                            element={
-                                <RouteComponent>
-                                    <Main />
-                                </RouteComponent>
-                            }
-                        />
-                        <Route
-                            path="/registration"
-                            element={
-                                <Entrance>
-                                    <Registration />
-                                </Entrance>
-                            }
-                        />
-                        <Route
-                            path="/authorization"
-                            element={
-                                <Entrance>
-                                    <Authorization />
-                                </Entrance>
-                            }
-                        />
-                    </Routes>
-                </BrowserRouter>
-            </ApplicationAccessContext.Provider>
-        </>
-    );
+  return (
+    <>
+      <ApplicationAccessContext.Provider value={{ applicationAccess, setApplicationAccess }}>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/vocabulary"
+              element={
+                <RouteComponent>
+                  <Vocabulary />
+                </RouteComponent>
+              }
+            />
+            <Route
+              path="/statistic"
+              element={
+                <RouteComponent>
+                  <Statistic />
+                </RouteComponent>
+              }
+            />
+            <Route
+              path="/games"
+              element={
+                <RouteComponent>
+                  <Games />
+                </RouteComponent>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <RouteComponent>
+                  <Main />
+                </RouteComponent>
+              }
+            />
+            <Route
+              path="/registration"
+              element={
+                <Entrance>
+                  <Registration />
+                </Entrance>
+              }
+            />
+            <Route
+              path="/authorization"
+              element={
+                <Entrance>
+                  <Authorization />
+                </Entrance>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </ApplicationAccessContext.Provider>
+    </>
+  );
 };
 
 export default App;

@@ -1,44 +1,48 @@
 @import '../../common/style/abstract/_variables.scss';
+
 .header {
-    justify-content: center;
+  justify-content: center;
 }
+
 .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 144rem;
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    position: relative;
+    width: 6rem;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: #082143;
+  }
+
+  .buttonAuthor {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 144rem;
+    box-sizing: content-box;
+    justify-content: center;
+    border: 2px solid $button-color;
+    padding: 15px 40px;
+    border-radius: 5rem;
+    text-align: center;
+    font: $button-font;
+    transform: scale(1);
+    transition: 0.3s;
 
-    ul {
-        list-style: none;
-    }
-    a {
-        text-decoration: none;
-        position: relative;
-        width: 6rem;
-        font-size: 1.8rem;
-        line-height: 2.2rem;
-        color: #082143;
+    &:hover {
+      background-color: $button-color;
     }
 
-    .buttonAuthor {
-        display: flex;
-        box-sizing: content-box;
-        justify-content: center;
-        border: 2px solid $button-color;
-        padding: 15px 40px;
-        border-radius: 25px;
-        text-align: center;
-        font: $button-font;
-        transition: 0.3s;
-        &:hover {
-            font-size: 19.2px;
-            border-radius: 30px;
-            background-color: lighten($color: $button-color, $amount: 40%);
-        }
-        &:active {
-            font-size: 22.2px;
-        }
+    &:active {
+      transform: scale(0.95);
     }
+  }
 }
