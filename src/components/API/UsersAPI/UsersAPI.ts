@@ -1,13 +1,7 @@
 import SERVER from '../../../common/constants/serverConst';
-import User from './User';
-import IUser from './UserInterface';
+import IUser, { User } from './UserInterface';
 
 const UserAPI: IUser = {
-    createUserObject: (name: string, email: string, password: string) => ({
-        name,
-        email,
-        password,
-    }),
     deleteUser: async (id: string, token: string) => {
         const rawResponse = await fetch(`${SERVER}/users/${id}`, {
             method: 'DELETE',
