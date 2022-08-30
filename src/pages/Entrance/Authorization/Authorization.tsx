@@ -1,11 +1,10 @@
-import React, { ChangeEventHandler, FocusEventHandler, useContext, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { ChangeEventHandler, FocusEventHandler, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../../components/Button/Button';
-import ApplicationAccessContext from '../../../context/context';
+import FormInput from '../FormInput/FormInput';
 import classes from './Authorization.module.scss';
 
 const Authorization = () => {
-    const { setApplicationAccess } = useContext(ApplicationAccessContext);
     const [email, setEmail] = useState<string>('');
     const [emailDirty, setEmailDirty] = useState<boolean>(false);
     const [emailError, setEmailError] = useState<string>('Email не может быть пустым');
@@ -31,7 +30,9 @@ const Authorization = () => {
         const regExpEmail =
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        if (!regExpEmail.test(String(event.target.value).toLowerCase())) {
+        if (!event.target.value) {
+            setEmailError('Email не может быть пустым');
+        } else if (!regExpEmail.test(String(event.target.value).toLowerCase())) {
             setEmailError('Некорректный Email');
         } else {
             setEmailError('');
@@ -44,46 +45,26 @@ const Authorization = () => {
                 <h3 className={classes.header}>Войти</h3>
                 <p className={classes.info}>
                     Новый пользователь?&nbsp;
-                    <span onClick={() => setApplicationAccess('registration')} className={classes.registration}>
+                    <Link to="/registration" className={classes.registration}>
                         Зарегистрироваться
-                    </span>
+                    </Link>
                 </p>
 
-                <label htmlFor="inputAuthorizationEmail">
-                    <p className={classes.email}>Адрес электронной почты</p>
-                    <input
-                        value={email}
-                        onChange={emailHandler}
-                        onBlur={blurHandler}
-                        id="inputAuthorizationEmail"
-                        name="email"
-                        type="text"
-                        className={classes.input}
-                        placeholder="Введите Email"
-                    />
-                    {emailDirty && emailError ? (
-                        <p className={classes.error}>{emailError}</p>
-                    ) : (
-                        <p className={classes.transparent}>Email</p>
-                    )}
-                </label>
-                <Button disabled={!formValid} style={{ width: '100%', margin: '2rem 0 4.5rem' }}>
+                <FormInput
+                    label="Адрес электронной почты"
+                    value={email}
+                    onChange={emailHandler}
+                    onBlur={blurHandler}
+                    name="email"
+                    type="email"
+                    placeholder="Введите Email"
+                    dirty={emailDirty}
+                    error={emailError}
+                />
+
+                <Button type="submit" disabled={!formValid} className={classes.buttonAuthorization}>
                     Войти
                 </Button>
-
-                <div className={classes.orContainer}>
-                    <div className={classes.line} />
-                    <p className={classes.or}>Или</p>
-                    <div className={classes.line} />
-                </div>
-                <NavLink to="/" className={classes.link}>
-                    <div className={classes.google}></div>
-                    <p className={classes.continue}>Продолжить с Google</p>
-                </NavLink>
-                <NavLink to="/" className={classes.link}>
-                    <div className={classes.apple}></div>
-                    <p className={classes.continue}>Продолжить с Apple</p>
-                </NavLink>
             </div>
         </form>
     );

@@ -1,18 +1,14 @@
-import React, { useContext } from 'react';
-import Authorization from './Authorization/Authorization';
-import Registration from './Registration/Registration';
+import React, { PropsWithChildren } from 'react';
 import classes from './Entrance.module.scss';
-import ApplicationAccessContext from '../../context/context';
+import RouteComponent from '../../components/RouteComponent/RouteComponent';
 
-const Entrance = () => {
-    const { applicationAccess } = useContext(ApplicationAccessContext);
-
-    return (
+const Entrance: React.FC<PropsWithChildren> = ({ children }) => (
+    <RouteComponent navigationHide={true}>
         <div className={classes.container}>
             <div className={classes.illustration}></div>
-            {applicationAccess === 'registration' ? <Registration /> : <Authorization />}
+            {children}
         </div>
-    );
-};
+    </RouteComponent>
+);
 
 export default Entrance;

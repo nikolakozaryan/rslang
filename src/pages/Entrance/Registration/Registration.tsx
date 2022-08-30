@@ -1,11 +1,86 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { ChangeEventHandler, FocusEventHandler, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../../components/Button/Button';
-import ApplicationAccessContext from '../../../context/context';
+import FormInput from '../FormInput/FormInput';
 import classes from './Registration.module.scss';
 
 const Registration = () => {
-    const { setApplicationAccess } = useContext(ApplicationAccessContext);
+    const [email, setEmail] = useState<string>('');
+    const [emailDirty, setEmailDirty] = useState<boolean>(false);
+    const [emailError, setEmailError] = useState<string>('Email не может быть пустым');
+
+    const [name, setName] = useState<string>('');
+    const [nameDirty, setNameDirty] = useState<boolean>(false);
+    const [nameError, setNameError] = useState<string>('Имя не может быть пустым');
+
+    const [password, setPassword] = useState<string>('');
+    const [passwordDirty, setPasswordDirty] = useState<boolean>(false);
+    const [passwordError, setPasswordError] = useState<string>('Пароль не может быть пустым');
+
+    const [formValid, setFormValid] = useState(false);
+
+    useEffect(() => {
+        if (!emailError && !nameError && !passwordError) {
+            setFormValid(true);
+        } else {
+            setFormValid(false);
+        }
+    }, [emailError, nameError, passwordError]);
+
+    const blurHandler: FocusEventHandler<HTMLInputElement> = (event) => {
+        switch (event.target.name) {
+            case 'email':
+                setEmailDirty(true);
+                break;
+            case 'name':
+                setNameDirty(true);
+                break;
+            case 'password':
+                setPasswordDirty(true);
+                break;
+            default:
+        }
+    };
+
+    const changeHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
+        const regExpEmail =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        switch (event.target.name) {
+            case 'email':
+                setEmail(event.target.value);
+
+                if (!event.target.value) {
+                    setEmailError('Email не может быть пустым');
+                } else if (!regExpEmail.test(String(event.target.value).toLowerCase())) {
+                    setEmailError('Некорректный Email');
+                } else {
+                    setEmailError('');
+                }
+                break;
+            case 'name':
+                setName(event.target.value);
+
+                if (!event.target.value) {
+                    setNameError('Имя не может быть пустым');
+                } else {
+                    setNameError('');
+                }
+                break;
+            case 'password':
+                setPassword(event.target.value);
+
+                if (!event.target.value) {
+                    setPasswordError('Пароль не может быть пустым');
+                } else if (event.target.value.length < 8) {
+                    setPasswordError('Пароль должен содержать не менее 8 символов');
+                } else {
+                    setPasswordError('');
+                }
+                break;
+            default:
+        }
+    };
 
     return (
         <form action="">
@@ -13,84 +88,50 @@ const Registration = () => {
                 <h3 className={classes.header}>Регистрация</h3>
                 <p className={classes.info}>
                     Уже есть учетная запись?&nbsp;
-                    <span onClick={() => setApplicationAccess('authorization')} className={classes.registration}>
+                    <Link to="/authorization" className={classes.authorization}>
                         Войти
-                    </span>
+                    </Link>
                 </p>
 
-                <label htmlFor="inputRegistrationEmail">
-                    <p className={classes.explanation}>Адрес электронной почты</p>
-                    <input id="inputRegistrationEmail" type="text" className={classes.input} />
-                </label>
+                <FormInput
+                    label="Адрес электронной почты"
+                    value={email}
+                    onChange={changeHandler}
+                    onBlur={blurHandler}
+                    name="email"
+                    type="email"
+                    placeholder="Введите Email"
+                    dirty={emailDirty}
+                    error={emailError}
+                />
 
-                <div className={classes.container}>
-                    <label htmlFor="inputRegistrationName" className={classes.label}>
-                        <p className={classes.explanation}>Имя</p>
-                        <input size={15} id="inputRegistrationName" type="text" className={classes.input} />
-                    </label>
-                    <label htmlFor="inputRegistrationSurname" className={classes.label}>
-                        <p className={classes.explanation}>Фамилия</p>
-                        <input size={15} id="inputRegistrationSurname" type="text" className={classes.input} />
-                    </label>
-                </div>
+                <FormInput
+                    label="Имя"
+                    value={name}
+                    onChange={changeHandler}
+                    onBlur={blurHandler}
+                    name="name"
+                    type="text"
+                    placeholder="Введите имя"
+                    dirty={nameDirty}
+                    error={nameError}
+                />
 
-                <label htmlFor="inputRegistrationPassword" className={classes.label}>
-                    <p className={classes.explanation}>Пароль</p>
-                    <input id="inputRegistrationPassword" type="password" className={classes.input} />
-                </label>
+                <FormInput
+                    label="Пароль"
+                    value={password}
+                    onChange={changeHandler}
+                    onBlur={blurHandler}
+                    name="password"
+                    type="password"
+                    placeholder="Введите пароль"
+                    dirty={passwordDirty}
+                    error={passwordError}
+                />
 
-                <p className={classes.explanation}>Дата рождения</p>
-
-                <div className={classes.container}>
-                    <label htmlFor="inputRegistrationNumber" className={classes.label}>
-                        <p className={classes.date}>Число</p>
-                        <input
-                            size={8}
-                            maxLength={2}
-                            id="inputRegistrationNumber"
-                            type="text"
-                            className={classes.input}
-                        />
-                    </label>
-                    <label htmlFor="inputRegistrationMonth" className={classes.label}>
-                        <p className={classes.date}>Месяц</p>
-                        <input
-                            size={8}
-                            maxLength={8}
-                            id="inputRegistrationMonth"
-                            type="text"
-                            className={classes.input}
-                        />
-                    </label>
-                    <label htmlFor="inputRegistrationYear" className={classes.label}>
-                        <p className={classes.date}>Год</p>
-                        <input
-                            size={8}
-                            maxLength={4}
-                            id="inputRegistrationYear"
-                            type="text"
-                            className={classes.input}
-                        />
-                    </label>
-                </div>
-
-                <Button style={{ width: '100%', margin: '0 0 4rem' }}>Зарегистрироваться</Button>
-
-                <div className={classes.orContainer}>
-                    <div className={classes.line} />
-                    <p className={classes.or}>Или</p>
-                    <div className={classes.line} />
-                </div>
-
-                <p className={classes.linkInfo}>Зарегистрируйтесь с помощью социальных систем</p>
-                <div className={classes.linkContainer}>
-                    <NavLink to="/" className={classes.link}>
-                        <div className={classes.google}></div>
-                    </NavLink>
-                    <NavLink to="/" className={classes.link}>
-                        <div className={classes.apple}></div>
-                    </NavLink>
-                </div>
+                <Button type="submit" disabled={!formValid} className={classes.buttonRegistration}>
+                    Зарегистрироваться
+                </Button>
             </div>
         </form>
     );

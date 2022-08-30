@@ -9,9 +9,11 @@ import Statistic from './pages/Statistic/Statistic';
 import './common/style/index.scss';
 import Entrance from './pages/Entrance/Entrance';
 import ApplicationAccessContext from './context/context';
+import Registration from './pages/Entrance/Registration/Registration';
+import Authorization from './pages/Entrance/Authorization/Authorization';
 
 const App = (): JSX.Element => {
-    const [applicationAccess, setApplicationAccess] = useState<'registration' | 'authorization'>('registration');
+    const [applicationAccess, setApplicationAccess] = useState<'registration' | 'authorization' | ''>('');
 
     return (
         <>
@@ -51,11 +53,19 @@ const App = (): JSX.Element => {
                             }
                         />
                         <Route
-                            path="/entrance"
+                            path="/registration"
                             element={
-                                <RouteComponent>
-                                    <Entrance />
-                                </RouteComponent>
+                                <Entrance>
+                                    <Registration />
+                                </Entrance>
+                            }
+                        />
+                        <Route
+                            path="/authorization"
+                            element={
+                                <Entrance>
+                                    <Authorization />
+                                </Entrance>
                             }
                         />
                     </Routes>
