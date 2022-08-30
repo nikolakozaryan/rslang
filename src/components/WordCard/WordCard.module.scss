@@ -26,7 +26,7 @@
 }
 
 .translate {
-  @include font($size: 2rem, $height: 2.4rem);
+  @include font($size: 1.8rem, $height: 2.4rem);
   font-weight: 400;
   color: $font-color;
   opacity: 0.5;

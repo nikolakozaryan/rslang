@@ -4,7 +4,7 @@ import DifficultyCard from '../../../components/DifficultyCard/DifficultyCard';
 import classes from './Difficulty.module.scss';
 import { Init } from './Interfaces';
 
-const Difficulty = ({ curLevel, setCurLevel, setAccentColor }: Init) => {
+const Difficulty = ({ curLevel, setCurLevel, setAccentColor, setPage }: Init) => {
   const initStyle = () => {
     const cards = document.querySelectorAll('.card');
     const { style } = cards[curLevel] as HTMLElement;
@@ -28,6 +28,7 @@ const Difficulty = ({ curLevel, setCurLevel, setAccentColor }: Init) => {
             curLevel={curLevel}
             setLevel={setCurLevel}
             setAccentColor={setAccentColor}
+            setPage={setPage}
           >
             <h4 className={classes.header}>{item.level}</h4>
             <p className={classes.detailed}>
