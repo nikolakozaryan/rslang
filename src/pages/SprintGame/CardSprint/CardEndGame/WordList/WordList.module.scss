@@ -1,0 +1,12 @@
+ul {
+    padding: 0;
+}
+li {
+    font: $paragraph-font;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    img {
+        margin-right: 0.9rem;
+    }
+}
