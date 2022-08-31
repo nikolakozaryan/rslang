@@ -28,7 +28,7 @@ const Vocabulary = () => {
       <h2 className={classes.header}>Учебник</h2>
       <Difficulty curLevel={curLevel} setAccentColor={setAccentColor} setCurLevel={setCurLevel} setPage={setPage} />
       <WordCarousel color={accentColor} curLevel={curLevel} words={words} setWord={setCurWordID} />
-      <Pagination currentPage={page} onPageChange={setPage} />
+      <Pagination color={accentColor} currentPage={page} onPageChange={setPage} />
       <Games />
     </>
   );

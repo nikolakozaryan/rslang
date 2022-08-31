@@ -3,7 +3,7 @@ import { DOTS, usePagination } from '../../../hooks/usePagination';
 import IPagination from './Interface';
 import classes from './Pagination.module..scss';
 
-const Pagination = ({ onPageChange, currentPage }: IPagination) => {
+const Pagination = ({ onPageChange, currentPage, color }: IPagination) => {
   const paginationRange = usePagination(currentPage);
 
   if (paginationRange.length < 2) {
@@ -16,6 +16,10 @@ const Pagination = ({ onPageChange, currentPage }: IPagination) => {
 
   const onPrevious = () => {
     onPageChange(currentPage - 1);
+  };
+
+  const onPageClick = (curPage: number) => {
+    onPageChange((curPage as number) - 1);
   };
 
   const lastPage = paginationRange.at(-1) as number;
@@ -32,8 +36,10 @@ const Pagination = ({ onPageChange, currentPage }: IPagination) => {
 
         return (
           <li
-            className={`${classes.pagination__item} ${pageNumber === currentPage + 1 ? classes.selected : ''}`}
-            onClick={() => onPageChange((pageNumber as number) - 1)}
+            className={`${classes.pagination__item} ${pageNumber === currentPage + 1 ? classes.selected : ''}  ${
+              classes[`A${color.slice(1)}`]
+            }`}
+            onClick={() => onPageClick(pageNumber as number)}
           >
             {pageNumber}
           </li>
