@@ -1,0 +1,81 @@
+@import '../../common/style/abstract/mixins';
+
+.card {
+  position: relative;
+  margin: 5rem auto;
+  padding: 3rem;
+  width: 92rem;
+  min-height: 65rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 0.4rem 1rem #e4d8cb80;
+
+  .playable {
+    cursor: help;
+  }
+
+  .word {
+    &__word {
+      text-transform: capitalize;
+      @include font($size: 3.4rem, $height: 4.2rem);
+      font-weight: 600;
+    }
+
+    &__container {
+      margin: 4rem 0 0.7rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    &__translate {
+      @include font($size: 2.4rem, $height: 2.9rem);
+    }
+
+    &__transcription {
+      @include font($size: 2rem, $height: 2.4rem);
+      margin: 1.2rem 0 4.8rem;
+    }
+  }
+
+  .img {
+    width: 45rem;
+    height: 26rem;
+    border-radius: 1rem;
+  }
+
+  .play {
+    width: 3rem;
+    height: 3rem;
+    background: black;
+    cursor: pointer;
+  }
+
+  .phrases {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  .audio {
+    display: none;
+  }
+
+  .meaning,
+  .example {
+    @include font($size: 1.8rem, $height: 2.2rem);
+    width: 38rem;
+  }
+
+  .header {
+    @include font($size: 2.2rem, $height: 2.7rem);
+    margin: 0;
+    margin-bottom: 1.7rem;
+  }
+}
