@@ -2,7 +2,7 @@ import React from 'react';
 import { ICard } from './Interfaces';
 import classes from './DifficultyCard.module.scss';
 
-const DifficultyCard = ({ color, id, children, setLevel, setAccentColor }: ICard) => {
+const DifficultyCard = ({ color, id, children, setLevel, setAccentColor, setPage }: ICard) => {
   const deleteCardsStyle = () => {
     const cards = document.querySelectorAll('.card');
     cards.forEach((card) => card.removeAttribute('style'));
@@ -19,6 +19,7 @@ const DifficultyCard = ({ color, id, children, setLevel, setAccentColor }: ICard
     deleteCardsStyle();
     setAccentColor(color);
     setLevel(level);
+    setPage(0);
     addCardStyle(event);
   };
 

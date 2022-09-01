@@ -4,15 +4,15 @@
   padding: 2rem;
   box-sizing: border-box;
   background: #ffffff;
-  box-shadow: 0 .4rem 1rem #e4d8cb80;
+  box-shadow: 0 0.4rem 1rem #e4d8cb80;
   border-radius: 2rem;
   overflow: hidden;
   cursor: pointer;
   transition: 0.3s ease-in;
 
   &:hover {
-    transform: translate(0, -.2rem);
-    box-shadow: 0px .7rem 1rem #e4d8cb80;
+    transform: translate(0, -0.2rem);
+    box-shadow: 0px 0.7rem 1rem #e4d8cb80;
   }
 }
 
