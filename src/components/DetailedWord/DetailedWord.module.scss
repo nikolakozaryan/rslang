@@ -3,7 +3,7 @@
 .card {
   position: relative;
   margin: 5rem auto;
-  padding: 3rem;
+  padding: 5rem;
   width: 92rem;
   min-height: 65rem;
   display: flex;
@@ -16,6 +16,7 @@
 
   .playable {
     cursor: help;
+    margin-bottom: 1rem;
   }
 
   .word {
@@ -26,6 +27,7 @@
     }
 
     &__container {
+      position: relative;
       margin: 4rem 0 0.7rem;
       display: flex;
       justify-content: center;
@@ -50,17 +52,19 @@
   }
 
   .play {
+    position: absolute;
+    right: -4rem;
     width: 3rem;
     height: 3rem;
-    background: black;
+    background: url('../../assets/icons/sound.svg');
     cursor: pointer;
   }
 
   .phrases {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 5rem;
   }
 
   .audio {
@@ -70,12 +74,35 @@
   .meaning,
   .example {
     @include font($size: 1.8rem, $height: 2.2rem);
-    width: 38rem;
   }
 
   .header {
     @include font($size: 2.2rem, $height: 2.7rem);
     margin: 0;
     margin-bottom: 1.7rem;
+  }
+
+  .icon {
+    position: absolute;
+    top: 3rem;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.translate {
+      left: 3rem;
+      background: url('../../assets/icons/translate.svg');
+    }
+
+    &.add {
+      right: 3rem;
+      background: url('../../assets/icons/plus.svg');
+    }
   }
 }
