@@ -18,8 +18,8 @@ const Pagination = ({ onPageChange, currentPage, color }: IPagination) => {
     onPageChange(currentPage - 1);
   };
 
-  const onPageClick = () => {
-    onPageChange(currentPage);
+  const onPageClick = (page: number) => {
+    onPageChange(page - 1);
   };
 
   const lastPage = paginationRange.at(-1) as number;
@@ -43,7 +43,7 @@ const Pagination = ({ onPageChange, currentPage, color }: IPagination) => {
             className={`${classes.pagination__item} ${pageNumber === currentPage + 1 ? classes.selected : ''}  ${
               classes[`A${color.slice(1)}`]
             }`}
-            onClick={onPageClick}
+            onClick={() => onPageClick(pageNumber as number)}
           >
             {pageNumber}
           </li>
