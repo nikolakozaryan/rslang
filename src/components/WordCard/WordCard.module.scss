@@ -9,9 +9,9 @@
   justify-content: center;
   text-align: center;
   border-radius: 1rem;
-  background: #E8E8E8;
+  background: #e8e8e8;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .word,
@@ -26,7 +26,7 @@
 }
 
 .translate {
-  @include font($size: 2rem, $height: 2.4rem);
+  @include font($size: 1.8rem, $height: 2.4rem);
   font-weight: 400;
   color: $font-color;
   opacity: 0.5;
