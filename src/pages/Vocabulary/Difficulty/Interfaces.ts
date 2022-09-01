@@ -1,6 +1,6 @@
 export interface Init {
-  curLevel: number;
+  difficultyLevel: number;
   setAccentColor: React.Dispatch<React.SetStateAction<string>>;
-  setCurLevel: React.Dispatch<React.SetStateAction<number>>;
+  setDifficultyLevel: React.Dispatch<React.SetStateAction<number>>;
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }

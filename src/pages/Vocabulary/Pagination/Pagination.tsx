@@ -3,30 +3,30 @@ import { DOTS, usePagination } from '../../../hooks/usePagination';
 import IPagination from './Interface';
 import classes from './Pagination.module..scss';
 
-const Pagination = ({ onPageChange, currentPage, color }: IPagination) => {
-  const paginationRange = usePagination(currentPage);
+const Pagination = ({ setPage, page, accentColor }: IPagination) => {
+  const paginationRange = usePagination(page);
 
   if (paginationRange.length < 2) {
     return null;
   }
 
   const onNext = () => {
-    onPageChange(currentPage + 1);
+    setPage(page + 1);
   };
 
   const onPrevious = () => {
-    onPageChange(currentPage - 1);
+    setPage(page - 1);
   };
 
   const onPageClick = (curPage: number) => {
-    onPageChange((curPage as number) - 1);
+    setPage((curPage as number) - 1);
   };
 
   const lastPage = paginationRange.at(-1) as number;
 
   return (
     <ul className={classes.pagination__container}>
-      <li className={`${classes.pagination__item} ${currentPage === 0 ? classes.disabled : ''}`} onClick={onPrevious}>
+      <li className={`${classes.pagination__item} ${page === 0 ? classes.disabled : ''}`} onClick={onPrevious}>
         <div className={`${classes.arrow} ${classes.left}`} />
       </li>
       {paginationRange.map((pageNumber) => {
@@ -36,8 +36,8 @@ const Pagination = ({ onPageChange, currentPage, color }: IPagination) => {
 
         return (
           <li
-            className={`${classes.pagination__item} ${pageNumber === currentPage + 1 ? classes.selected : ''}  ${
-              classes[`A${color.slice(1)}`]
+            className={`${classes.pagination__item} ${pageNumber === page + 1 ? classes.selected : ''}  ${
+              classes[`A${accentColor.slice(1)}`]
             }`}
             onClick={() => onPageClick(pageNumber as number)}
           >
@@ -46,10 +46,7 @@ const Pagination = ({ onPageChange, currentPage, color }: IPagination) => {
         );
       })}
 
-      <li
-        className={`${classes.pagination__item} ${currentPage === lastPage - 1 ? classes.disabled : ''}`}
-        onClick={onNext}
-      >
+      <li className={`${classes.pagination__item} ${page === lastPage - 1 ? classes.disabled : ''}`} onClick={onNext}>
         <div className={`${classes.arrow} ${classes.right}`} />
       </li>
     </ul>
