@@ -1,9 +1,24 @@
-export type User = {
+export type UpdateUserPayload = {
+  email?: string;
+  password?: string;
+  name?: string;
+};
+
+export type UpdateUserResponse = {
+  id: string;
   name: string;
   email: string;
-  password: string;
-  userID?: string;
-  token?: string;
+};
+
+export type GetUserResponse = {
+  id: string;
+  name: string;
+  email: string;
+};
+
+export type NewUserTokenResponse = {
+  token: string;
+  refreshToken: string;
 };
 
 export type CreateUserPayload = {
@@ -13,12 +28,6 @@ export type CreateUserPayload = {
 };
 
 export type CreateUserResponse = {
-  id: string;
-  name: string;
-  email: string;
-};
-
-export type GetUserResponse = {
   id: string;
   name: string;
   email: string;
@@ -36,17 +45,12 @@ export type SignInUserResponse = {
   userId: string;
   name: string;
 };
-
-export type NewUserTokenResponse = {
-  token: string;
-  refreshToken: string;
-};
-
 export default interface IUser {
-  deleteUser: (id: string, token: string) => Promise<User>;
-  updateUser: (id: string, token: string, user: User) => Promise<User>;
   createUser: (user: CreateUserPayload) => Promise<CreateUserResponse>;
-  getUser: (id: string, token: string) => Promise<GetUserResponse>;
+  signInUser: (user: SignInUserPayload) => Promise<SignInUserResponse>;
+
+  deleteUser: (id: string, token: string) => Promise<void>;
+  updateUser: (id: string, token: string, user: UpdateUserPayload) => Promise<UpdateUserResponse>;
   getNewUserToken: (id: string, token: string) => Promise<NewUserTokenResponse>;
-  signInUser: (user: User) => Promise<SignInUserResponse>;
+  getUser: (id: string, token: string) => Promise<GetUserResponse>;
 }

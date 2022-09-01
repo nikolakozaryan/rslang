@@ -15,9 +15,11 @@ import Authorization from './pages/Entrance/Authorization/Authorization';
 const App = (): JSX.Element => {
   const [applicationAccess, setApplicationAccess] = useState<'registration' | 'authorization' | ''>('');
 
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+
   return (
     <>
-      <ApplicationAccessContext.Provider value={{ applicationAccess, setApplicationAccess }}>
+      <ApplicationAccessContext.Provider value={{ isSignedIn, setIsSignedIn, applicationAccess, setApplicationAccess }}>
         <BrowserRouter>
           <Routes>
             <Route

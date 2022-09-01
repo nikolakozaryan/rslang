@@ -36,6 +36,7 @@
     font: $button-font;
     transform: scale(1);
     transition: 0.3s;
+    background-color: #fff;
 
     &:hover {
       background-color: $button-color;
