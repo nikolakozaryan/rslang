@@ -19,6 +19,6 @@ const Card: React.FC<ICard> = (props) => {
       break;
     }
   }
-  return <div className={className}>{props.children}</div>;
+  return <div className={`${className} ${props.className}`}>{props.children}</div>;
 };
 export default Card;
