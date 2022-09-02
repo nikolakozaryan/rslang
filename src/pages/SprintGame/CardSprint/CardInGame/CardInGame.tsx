@@ -7,6 +7,7 @@ import ScoreGame from '../../ScoreGame/ScoreGame';
 import CounterGame from '../../CounterGame/CounterGame';
 import classes from './CardInGame.module.scss';
 import ICardInGame from './CardInGameInterface';
+import AudioButton from '../../AudioButton/AudioButton';
 
 const CardInGame = (props: ICardInGame) => (
     <div>
@@ -14,9 +15,10 @@ const CardInGame = (props: ICardInGame) => (
             <CardScorePoints done={props.done[0][0]} correct={props.correct[0][1]} />
             <CardScorePoints done={props.done[1][0]} correct={props.correct[1][1]} />
             <CardScorePoints done={props.done[2][0]} correct={props.correct[2][1]} />
-            <div className={classes.volume}>
+            <AudioButton audio={props.wordGuess.audio} />
+            {/* <div className={classes.volume}>
                 <img src="../../../assets/icons/volume.svg" alt="" />
-            </div>
+            </div> */}
         </div>
         <CardWordGuessPart OurGuess={props.ourGuess} GuessWord={props.wordGuess} />
         <div className={classes.controls}>

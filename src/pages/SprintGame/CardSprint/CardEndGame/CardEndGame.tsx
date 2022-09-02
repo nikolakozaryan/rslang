@@ -17,7 +17,9 @@ const CardEndGame = (props: ICardInGame) => {
 
     return (
         <div
-            className={[classes.containerEndCard, animation ? classes.animationRight : classes.animationLeft].join(' ')}
+            className={[classes.containerEndCard, !animation ? classes.animationRight : classes.animationLeft].join(
+                ' '
+            )}
         >
             <CardSides>
                 <div className={classes.result}>Ваш результат {props.score} очков</div>

@@ -19,12 +19,14 @@ const SprintGame = () => {
         setGameStage(!gameStage);
     };
 
+    const [xScore, setXScore] = useState(1);
+
     const [ArrayGame, setArrayGame] = useState(array.slice());
 
     const [mistakes, setMistakes]: [Wordgame[], Dispatch<SetStateAction<Wordgame[]>>] = useState<Wordgame[]>([]);
     const [learned, setLearned]: [Wordgame[], Dispatch<SetStateAction<Wordgame[]>>] = useState<Wordgame[]>([]);
 
-    const [timeleft, setTimeLeft] = useState(2 * 30);
+    const [timeleft, setTimeLeft] = useState(2 * 222);
 
     const [isCounting, setIsCounting] = useState(timeleft);
 
@@ -49,31 +51,48 @@ const SprintGame = () => {
         [false, false],
         [false, false],
     ]);
+
     const [pointNumber, setPointNumber] = useState(0);
+    const [pointInARow, setPointInARow] = useState(0);
     const [answer, setAnswer] = useState(false);
     const [ourAnswer, setourAnswer] = useState(false);
-    const [ourGuess, setOurGuess] = useState(ArrayGame[Math.ceil(Math.random() * ArrayGame.length - 1)].word);
-    const [wordGuess, setWordGuess] = useState(ArrayGame[Math.ceil(Math.random() * ArrayGame.length - 1)].word);
+    const [ourGuess, setOurGuess] = useState(ArrayGame[Math.ceil(Math.random() * ArrayGame.length - 1)]);
+    const [wordGuess, setWordGuess] = useState(ArrayGame[Math.ceil(Math.random() * ArrayGame.length - 1)]);
 
     const getourGuess = () => {
-        const correct = Math.ceil(Math.random() * 2);
+        let correct;
+        if (ArrayGame.length > 2) {
+            correct = Math.ceil(Math.random() * 2);
+        } else {
+            correct = 1;
+        }
         if (correct === 1) {
             setAnswer(true);
+
             const number = Math.ceil(Math.random() * ArrayGame.length - 1);
             if (number === -1) {
                 setGameStage(false);
             } else {
-                setOurGuess(ArrayGame[number].word);
-                setWordGuess(ArrayGame[number].word);
+                setOurGuess(ArrayGame[number]);
+                setWordGuess(ArrayGame[number]);
             }
         } else {
-            const number = Math.ceil(Math.random() * ArrayGame.length - 1);
-            if (number === -1) {
+            const numberUp = Math.ceil(Math.random() * ArrayGame.length - 1);
+            if (numberUp === -1) {
                 setGameStage(false);
             } else {
                 setAnswer(false);
-                setOurGuess(ArrayGame[Math.ceil(Math.random() * ArrayGame.length - 1)].word);
-                setWordGuess(ArrayGame[Math.ceil(Math.random() * ArrayGame.length - 1)].word);
+                setOurGuess(ArrayGame[numberUp]);
+                let numberDown = Math.ceil(Math.random() * ArrayGame.length - 1);
+                if (numberDown !== numberUp) {
+                    setWordGuess(ArrayGame[numberDown]);
+                } else {
+                    do {
+                        numberDown = Math.ceil(Math.random() * ArrayGame.length - 1);
+                    } while (numberDown === numberUp);
+                    setWordGuess(ArrayGame[numberDown]);
+                    console.log('emposter', ourGuess, wordGuess, numberDown, numberUp);
+                }
             }
         }
     };
@@ -97,13 +116,22 @@ const SprintGame = () => {
         } else {
             newState = emptyState;
         }
-        setScore(score + 10);
-        const newArray = ArrayGame.slice();
-        const correctWord = array.filter((item) => item.word === wordGuess)[0];
-        if (!mistakes.includes(correctWord) && ourGuess === wordGuess) {
+        setPointInARow(pointInARow + 1);
+        console.log(pointInARow);
+        setScore(score + 10 * xScore);
+        const correctWord = array.filter((item) => item === wordGuess)[0];
+        if (!mistakes.includes(correctWord) && ourGuess === wordGuess && !learned.includes(correctWord)) {
             setLearned([...learned, correctWord]);
+            const newArray = ArrayGame.slice();
             newArray.splice(newArray.indexOf(correctWord), 1);
-            if (newArray.length === 1) {
+            if (newArray.length === 0) {
+                setGameStage(false);
+            }
+            setArrayGame(newArray);
+        } else if (mistakes.includes(correctWord) && ourGuess === wordGuess && !learned.includes(correctWord)) {
+            const newArray = ArrayGame.slice();
+            newArray.splice(newArray.indexOf(correctWord), 1);
+            if (newArray.length === 0) {
                 setGameStage(false);
             }
             setArrayGame(newArray);
@@ -120,33 +148,34 @@ const SprintGame = () => {
         } else {
             newState = emptyState;
         }
+        setPointInARow(0);
+        console.log(pointInARow);
         const pointStateNew: boolean[] = refreshPoint(false);
         newState[pointNumber] = pointStateNew;
         setState(newState);
     };
 
     const refresh = (buttonAnswer: boolean) => {
-        console.log(ArrayGame.length);
         getourGuess();
+        console.log(ourGuess, wordGuess);
         if (pointNumber < 2) {
             const newCount = pointNumber + 1;
-
             setPointNumber(newCount);
             if (answer === buttonAnswer) {
                 correctAnswer();
             } else {
                 wrongAnswer();
                 const newArray = ArrayGame.slice();
-                const wrongWordIndex = newArray.map((item) => item.word).indexOf(wordGuess as string);
-                if (!mistakes.includes(array[wrongWordIndex])) {
-                    setMistakes([...mistakes, array[wrongWordIndex]]);
+                const wrongWordIndex = ArrayGame.indexOf(wordGuess);
+                if (!mistakes.includes(wordGuess)) {
+                    setMistakes([...mistakes, wordGuess]);
                 }
             }
         } else {
             setPointNumber(0);
             if (answer === buttonAnswer) {
                 correctAnswer();
-                setScore(score + 10);
+                setScore(score + 10 * xScore);
             } else {
                 wrongAnswer();
             }
@@ -164,6 +193,21 @@ const SprintGame = () => {
         }
     };
 
+    useEffect(() => {
+        if (learned.length + mistakes.length === array.length) {
+            console.log('end');
+        }
+    }, [ArrayGame]);
+
+    useEffect(() => {
+        if (pointInARow === 3) {
+            setXScore(2);
+        } else if (pointInARow === 0) {
+            setXScore(1);
+        } else if (pointInARow >= 6) {
+            setXScore(3);
+        }
+    }, [pointInARow]);
     return (
         <div className={classes.background}>
             <GameHeader />
@@ -178,8 +222,8 @@ const SprintGame = () => {
                 correct={state}
                 refresh={refresh}
                 refreshAnswer={refreshOurAnswer}
-                ourGuess={ourGuess as string}
-                wordGuess={wordGuess as string}
+                ourGuess={ourGuess}
+                wordGuess={wordGuess}
             />
         </div>
     );

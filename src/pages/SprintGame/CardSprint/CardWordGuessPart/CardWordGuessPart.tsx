@@ -4,8 +4,8 @@ import classes from './CardWordGuessPart.module.scss';
 
 const CardWordGuessPart: React.FC<IGuess> = (props: IGuess) => (
     <div className={classes.container}>
-        <span className={classes.GuessWord}> {props.GuessWord}</span>
-        <span className={classes.OurGuess}> {props.OurGuess}</span>
+        <span className={classes.GuessWord}> {props.GuessWord.word}</span>
+        <span className={classes.OurGuess}> {props.OurGuess.word}</span>
     </div>
 );
 

@@ -6,8 +6,8 @@ export default interface ICardSprint {
     correct: boolean[][];
     refresh: (buttonAnswer: boolean) => void;
     refreshAnswer: (correct: boolean) => void;
-    ourGuess: string;
-    wordGuess: string;
+    ourGuess: Wordgame;
+    wordGuess: Wordgame;
     score: number;
     game: boolean;
     mistakes: Wordgame[];

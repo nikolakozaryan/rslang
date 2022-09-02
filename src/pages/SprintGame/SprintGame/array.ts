@@ -6,6 +6,7 @@ const array = [
         word: 'alcohol',
         image: 'files/01_0002.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     { id: '5e9f5ee35eb9e72bc21af4a2', group: 0, page: 0, word: 'boat', image: 'files/01_0005.jpg', wordTranslate: '0' },
     {
@@ -15,6 +16,7 @@ const array = [
         word: 'agree',
         image: 'files/01_0001.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4a3',
@@ -23,6 +25,7 @@ const array = [
         word: 'arrive',
         image: 'files/01_0003.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4a4',
@@ -31,6 +34,7 @@ const array = [
         word: 'August',
         image: 'files/01_0004.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4a5',
@@ -39,6 +43,7 @@ const array = [
         word: 'breakfast',
         image: 'files/01_0006.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4a6',
@@ -47,6 +52,7 @@ const array = [
         word: 'camera',
         image: 'files/01_0007.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4a7',
@@ -55,6 +61,7 @@ const array = [
         word: 'capital',
         image: 'files/01_0008.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4a8',
@@ -63,8 +70,17 @@ const array = [
         word: 'catch',
         image: 'files/01_0009.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
-    { id: '5e9f5ee35eb9e72bc21af4a9', group: 0, page: 0, word: 'duck', image: 'files/01_0010.jpg', wordTranslate: '0' },
+    {
+        id: '5e9f5ee35eb9e72bc21af4a9',
+        group: 0,
+        page: 0,
+        word: 'duck',
+        image: 'files/01_0010.jpg',
+        wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
+    },
     {
         id: '5e9f5ee35eb9e72bc21af4aa',
         group: 0,
@@ -72,6 +88,7 @@ const array = [
         word: 'enjoy',
         image: 'files/01_0011.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4ab',
@@ -80,6 +97,7 @@ const array = [
         word: 'invite',
         image: 'files/01_0012.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4ac',
@@ -88,6 +106,7 @@ const array = [
         word: 'month',
         image: 'files/01_0014.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4ad',
@@ -96,8 +115,17 @@ const array = [
         word: 'travel',
         image: 'files/01_0015.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
-    { id: '5e9f5ee35eb9e72bc21af4ae', group: 0, page: 0, word: 'love', image: 'files/01_0013.jpg', wordTranslate: '0' },
+    {
+        id: '5e9f5ee35eb9e72bc21af4ae',
+        group: 0,
+        page: 0,
+        word: 'love',
+        image: 'files/01_0013.jpg',
+        wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
+    },
     {
         id: '5e9f5ee35eb9e72bc21af4af',
         group: 0,
@@ -105,6 +133,7 @@ const array = [
         word: 'typical',
         image: 'files/01_0016.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4b0',
@@ -113,6 +142,7 @@ const array = [
         word: 'visit',
         image: 'files/01_0017.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
     {
         id: '5e9f5ee35eb9e72bc21af4b1',
@@ -121,8 +151,25 @@ const array = [
         word: 'weather',
         image: 'files/01_0018.jpg',
         wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
     },
-    { id: '5e9f5ee35eb9e72bc21af4b2', group: 0, page: 0, word: 'wine', image: 'files/01_0020.jpg', wordTranslate: '0' },
-    { id: '5e9f5ee35eb9e72bc21af4b3', group: 0, page: 0, word: 'week', image: 'files/01_0019.jpg', wordTranslate: '0' },
+    {
+        id: '5e9f5ee35eb9e72bc21af4b2',
+        group: 0,
+        page: 0,
+        word: 'wine',
+        image: 'files/01_0020.jpg',
+        wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
+    },
+    {
+        id: '5e9f5ee35eb9e72bc21af4b3',
+        group: 0,
+        page: 0,
+        word: 'week',
+        image: 'files/01_0019.jpg',
+        wordTranslate: '0',
+        audio: 'files/01_0002_meaning.mp3',
+    },
 ];
 export default array;
