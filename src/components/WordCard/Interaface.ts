@@ -1,7 +1,8 @@
 export default interface ICard {
-  id: string;
+  index: number;
+  wordId: string;
   word: string;
-  color: string;
+  accentColor: string;
   wordTranslate: string;
   setWord: React.Dispatch<React.SetStateAction<string>>;
 }

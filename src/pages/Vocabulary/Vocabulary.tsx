@@ -9,17 +9,17 @@ import Word from '../../components/API/DictionaryAPI/Word';
 import DetailedWord from '../../components/DetailedWord/DetailedWord';
 
 const Vocabulary = () => {
+  const [difficultyLevel, setDifficultyLevel] = useState(0);
   const [accentColor, setAccentColor] = useState('');
   const [words, setWords] = useState<Word[]>([]);
-  const [curWordID, setCurWordID] = useState('5e9f5ee35eb9e72bc21af4a0');
+  const [wordId, setWordId] = useState('');
   const [curWord, setCurWord] = useState<Word>({} as Word);
-  const [curLevel, setCurLevel] = useState(0);
   const [page, setPage] = useState(0);
 
   async function downloadWords(pg: number, lvl: number) {
     const resp = await DictionaryAPI.getWordsArray(pg, lvl);
     setWords(resp);
-    setCurWordID(resp[0].id);
+    setWordId(resp[0].id);
   }
 
   async function downloadWord(wordID: string) {
@@ -28,20 +28,31 @@ const Vocabulary = () => {
   }
 
   useEffect(() => {
-    downloadWords(page, curLevel);
-  }, [page, curLevel]);
+    downloadWords(page, difficultyLevel);
+  }, [page, difficultyLevel]);
 
   useEffect(() => {
-    downloadWord(curWordID);
-  }, [curWordID]);
+    downloadWord(wordId);
+  }, [wordId]);
 
   return (
     <>
       <h2 className={classes.header}>Учебник</h2>
-      <Difficulty curLevel={curLevel} setAccentColor={setAccentColor} setCurLevel={setCurLevel} setPage={setPage} />
-      <WordCarousel color={accentColor} curLevel={curLevel} words={words} setWord={setCurWordID} />
+      <Difficulty
+        difficultyLevel={difficultyLevel}
+        setDifficultyLevel={setDifficultyLevel}
+        setPage={setPage}
+        setAccentColor={setAccentColor}
+      />
+      <WordCarousel
+        accentColor={accentColor}
+        difficultyLevel={difficultyLevel}
+        page={page}
+        words={words}
+        setWord={setWordId}
+      />
       <DetailedWord word={JSON.stringify(curWord)} />
-      <Pagination color={accentColor} currentPage={page} onPageChange={setPage} />
+      <Pagination accentColor={accentColor} page={page} setPage={setPage} />
       <Games />
     </>
   );

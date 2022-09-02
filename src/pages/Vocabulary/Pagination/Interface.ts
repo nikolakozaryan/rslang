@@ -1,5 +1,5 @@
 export default interface IPagination {
-  color: string;
-  currentPage: number;
-  onPageChange: React.Dispatch<React.SetStateAction<number>>;
+  accentColor: string;
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
 }
