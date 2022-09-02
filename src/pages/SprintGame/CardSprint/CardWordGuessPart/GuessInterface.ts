@@ -1,12 +1,6 @@
-type Word = {
-    id: string;
-    group: number;
-    page: number;
-    word: string;
-    image: string;
-    wordTranslate: string;
-};
+import Word from '../../../../components/API/DictionaryAPI/Word';
+
 export default interface IGuess {
-    GuessWord: Word;
-    OurGuess: Word;
+  GuessWord: Word;
+  OurGuess: Word;
 }

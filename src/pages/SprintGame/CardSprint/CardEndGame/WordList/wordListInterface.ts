@@ -1,14 +1,8 @@
-type Word = {
-    id: string;
-    group: number;
-    page: number;
-    word: string;
-    image: string;
-    wordTranslate: string;
-};
+import Word from '../../../../../components/API/DictionaryAPI/Word';
+
 export default interface IWordList {
-    mistakes: Word[];
-    learned: Word[];
-    side: string;
-    header: string;
+  mistakes: Word[];
+  learned: Word[];
+  side: string;
+  header: string;
 }
