@@ -31,7 +31,11 @@ const Pagination = ({ setPage, page, accentColor }: IPagination) => {
       </li>
       {paginationRange.map((pageNumber) => {
         if (pageNumber === DOTS) {
-          return <li className={`${classes.pagination__item} ${classes.dots}`}>&#8230;</li>;
+          return (
+            <li key={pageNumber} className={`${classes.pagination__item} ${classes.dots}`}>
+              &#8230;
+            </li>
+          );
         }
 
         return (
