@@ -18,8 +18,8 @@ const Pagination = ({ onPageChange, currentPage, color }: IPagination) => {
     onPageChange(currentPage - 1);
   };
 
-  const onPageClick = (curPage: number) => {
-    onPageChange((curPage as number) - 1);
+  const onPageClick = (page: number) => {
+    onPageChange(page - 1);
   };
 
   const lastPage = paginationRange.at(-1) as number;
@@ -31,7 +31,11 @@ const Pagination = ({ onPageChange, currentPage, color }: IPagination) => {
       </li>
       {paginationRange.map((pageNumber) => {
         if (pageNumber === DOTS) {
-          return <li className={`${classes.pagination__item} ${classes.dots}`}>&#8230;</li>;
+          return (
+            <li key={pageNumber} className={`${classes.pagination__item} ${classes.dots}`}>
+              &#8230;
+            </li>
+          );
         }
 
         return (
