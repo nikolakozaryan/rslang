@@ -18,6 +18,13 @@ const Authorization = () => {
 
   const [formValid, setFormValid] = useState(false);
 
+  const [registrationError, setRegistrationError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  const { setIsSignedIn } = useApplicationAccessContext();
+
   useEffect(() => {
     if (!emailError && !passwordError) {
       setFormValid(true);
@@ -70,20 +77,17 @@ const Authorization = () => {
     }
   };
 
-  const navigate = useNavigate();
-  const { setIsSignedIn } = useApplicationAccessContext();
-  const [registrationError, setRegistrationError] = useState<string>('');
-
-  const authorizationUser = async (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
-
+  const authorizationUser = async () => {
     try {
-      const { userId: id, token, name } = await UserAPI.signInUser({ email, password });
+      setLoading(true);
+      const { userId: id, token } = await UserAPI.signInUser({ email, password });
 
-      localStorage.setItem('user', JSON.stringify({ email, id, name, token }));
+      localStorage.setItem('user', JSON.stringify({ id, token }));
 
       navigate('/');
       setIsSignedIn(true);
+
+      setLoading(false);
     } catch (error: unknown) {
       if (error instanceof Error) {
         setRegistrationError(error.message);
@@ -95,7 +99,13 @@ const Authorization = () => {
   };
 
   return (
-    <form action="">
+    <form
+      action=""
+      onSubmit={(event) => {
+        event.preventDefault();
+        authorizationUser();
+      }}
+    >
       <div className={classes.wrapper}>
         <h3 className={classes.header}>Войти</h3>
         <p className={classes.info}>
@@ -129,7 +139,7 @@ const Authorization = () => {
           error={passwordError}
         />
 
-        <Button type="submit" disabled={!formValid} className={classes.buttonAuthorization} onClick={authorizationUser}>
+        <Button type="submit" disabled={!formValid} className={classes.buttonAuthorization} loading={loading}>
           Войти
         </Button>
 

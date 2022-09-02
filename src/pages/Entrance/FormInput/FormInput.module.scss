@@ -27,6 +27,10 @@
     outline: none;
     border-bottom-color: $font-color;
   }
+  &::placeholder {
+    @include font($size: 1.6rem, $height: 1.9rem);
+    color: rgba(8, 33, 67, 0.5);
+  }
 }
 
 .buttonEye,

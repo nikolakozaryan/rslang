@@ -26,6 +26,9 @@ const Registration = () => {
 
   const { setIsSignedIn } = useApplicationAccessContext();
 
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
     if (!emailError && !nameError && !passwordError) {
       setFormValid(true);
@@ -89,20 +92,18 @@ const Registration = () => {
     }
   };
 
-  const navigate = useNavigate();
-
-  const registerUser = async (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
-
+  const registerUser = async () => {
     try {
-      const contentCreateUser = await UserAPI.createUser({ name, email, password });
+      setLoading(true);
+      const { id } = await UserAPI.createUser({ name, email, password });
       const { token } = await UserAPI.signInUser({ email, password });
 
-      localStorage.setItem('user', JSON.stringify({ ...contentCreateUser, token }));
+      localStorage.setItem('user', JSON.stringify({ id, token }));
 
       navigate('/');
 
       setIsSignedIn(true);
+      setLoading(false);
     } catch (error: unknown) {
       if (error instanceof Error) {
         setRegistrationError(error.message);
@@ -114,7 +115,13 @@ const Registration = () => {
   };
 
   return (
-    <form action="">
+    <form
+      action=""
+      onSubmit={(event) => {
+        event.preventDefault();
+        registerUser();
+      }}
+    >
       <div className={classes.wrapper}>
         <h3 className={classes.header}>Регистрация</h3>
         <p className={classes.info}>
@@ -160,7 +167,7 @@ const Registration = () => {
           error={passwordError}
         />
 
-        <Button type="submit" disabled={!formValid} className={classes.buttonRegistration} onClick={registerUser}>
+        <Button type="submit" disabled={!formValid} className={classes.buttonRegistration} loading={loading}>
           Зарегистрироваться
         </Button>
 

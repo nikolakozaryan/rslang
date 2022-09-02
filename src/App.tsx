@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'normalize.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
@@ -11,15 +11,21 @@ import Entrance from './pages/Entrance/Entrance';
 import ApplicationAccessContext from './context/context';
 import Registration from './pages/Entrance/Registration/Registration';
 import Authorization from './pages/Entrance/Authorization/Authorization';
+import getUserData from './common/getUserData';
 
 const App = (): JSX.Element => {
-  const [applicationAccess, setApplicationAccess] = useState<'registration' | 'authorization' | ''>('');
-
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    const result = getUserData();
+    if (result) {
+      setIsSignedIn(true);
+    }
+  }, []);
 
   return (
     <>
-      <ApplicationAccessContext.Provider value={{ isSignedIn, setIsSignedIn, applicationAccess, setApplicationAccess }}>
+      <ApplicationAccessContext.Provider value={{ isSignedIn, setIsSignedIn }}>
         <BrowserRouter>
           <Routes>
             <Route
