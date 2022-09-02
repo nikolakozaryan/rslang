@@ -1,22 +1,22 @@
 * {
-    box-sizing: border-box;
-    color: $font-color;
+  box-sizing: border-box;
+  color: $font-color;
 }
 
 html {
-    height: 100%;
-    font-size: 10px;
+  height: 100%;
+  font-size: 10px;
 }
 
 body {
-    background: $background-color;
-    height: 100%;
+  background: $background-color;
+  height: 100%;
 }
 
 :global(#root) {
-    max-width: 1440px;
-    margin: 0 auto;
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr auto;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }

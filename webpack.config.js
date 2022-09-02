@@ -11,99 +11,99 @@ const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 
 const optimization = () => {
-    const config = {
-        splitChunks: {
-            chunks: 'all',
-        },
-    };
+  const config = {
+    splitChunks: {
+      chunks: 'all',
+    },
+  };
 
-    if (isProd) {
-        config.minimizer = [new CssMinimizerPlugin(), new TerserWebpackPlugin()];
-    }
-    return config;
+  if (isProd) {
+    config.minimizer = [new CssMinimizerPlugin(), new TerserWebpackPlugin()];
+  }
+  return config;
 };
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`);
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
-    mode: 'development',
-    devtool: 'inline-source-map',
-    entry: {
-        main: './index.tsx',
-    },
-    output: {
-        filename: filename('js'),
-        path: path.resolve(__dirname, 'dist'),
-    },
-    resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './index.html',
-        }),
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: filename('css'),
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, 'src', 'assets', 'icons'),
-                    to: path.resolve(__dirname, 'dist', 'assets', 'icons'),
-                },
-                {
-                    from: path.resolve(__dirname, 'src', 'assets', 'images'),
-                    to: path.resolve(__dirname, 'dist', 'assets', 'images'),
-                },
-            ],
-        }),
-    ],
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'dist'),
+  context: path.resolve(__dirname, 'src'),
+  mode: 'development',
+  devtool: 'inline-source-map',
+  entry: {
+    main: './index.tsx',
+  },
+  output: {
+    filename: filename('js'),
+    path: path.resolve(__dirname, 'dist'),
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: filename('css'),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src', 'assets', 'icons'),
+          to: path.resolve(__dirname, 'dist', 'assets', 'icons'),
         },
-        compress: true,
-        port: 9000,
+        {
+          from: path.resolve(__dirname, 'src', 'assets', 'images'),
+          to: path.resolve(__dirname, 'dist', 'assets', 'images'),
+        },
+      ],
+    }),
+  ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
     },
-    module: {
-        rules: [
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
+    compress: true,
+    port: 9000,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
 
-                        options: {
-                            modules: {
-                                localIdentName: '[local]-[hash:base64:5]',
-                            },
-                        },
-                    },
-                    'sass-loader',
-                ],
+            options: {
+              modules: {
+                localIdentName: '[local]-[hash:base64:5]',
+              },
             },
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
-            },
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: ['babel-loader'],
-            },
-            {
-                test: /\.(ts|tsx)$/,
-                exclude: /node_modules/,
-                use: ['babel-loader', 'ts-loader'],
-            },
-            {
-                test: /\.ttf$/,
-                type: 'asset/inline',
-            },
+          },
+          'sass-loader',
         ],
-    },
-    optimization: optimization(),
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'ts-loader'],
+      },
+      {
+        test: /\.ttf$/,
+        type: 'asset/inline',
+      },
+    ],
+  },
+  optimization: optimization(),
 };

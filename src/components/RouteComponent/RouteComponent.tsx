@@ -4,11 +4,11 @@ import Header from '../Header/Header';
 import classes from '../Footer/Footer.module.scss';
 
 const RouteComponent: React.FC<PropsWithChildren> = (props) => (
-    <>
-        <Header />
-        {props.children}
-        <Footer className={classes.footer} />
-    </>
+  <>
+    <Header />
+    {props.children}
+    <Footer className={classes.footer} />
+  </>
 );
 
 export default RouteComponent;

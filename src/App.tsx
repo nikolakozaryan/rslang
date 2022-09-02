@@ -10,30 +10,44 @@ import SprintGame from './pages/SprintGame/SprintGame/SprintGame';
 import Main from './pages/Main/Main';
 
 const App = (): JSX.Element => (
-    <>
-        <BrowserRouter>
-            <Routes>
-                <Route
-                    path="/vocabulary"
-                    element={
-                        <RouteComponent>
-                            <Vocabulary />
-                        </RouteComponent>
-                    }
-                />
-                <Route path="/statistic" element={<SprintGame />} />
-                <Route path="/games" element={<StartingPageSprint />} />
-                <Route
-                    path="/"
-                    element={
-                        <RouteComponent>
-                            <Main />
-                        </RouteComponent>
-                    }
-                />
-            </Routes>
-        </BrowserRouter>
-    </>
+  <>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/vocabulary"
+          element={
+            <RouteComponent>
+              <Vocabulary />
+            </RouteComponent>
+          }
+        />
+        <Route
+          path="/statistic"
+          element={
+            <RouteComponent>
+              <Statistic />
+            </RouteComponent>
+          }
+        />
+        <Route
+          path="/games"
+          element={
+            <RouteComponent>
+              <Games />
+            </RouteComponent>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <RouteComponent>
+              <Main />
+            </RouteComponent>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  </>
 );
 
 export default App;
