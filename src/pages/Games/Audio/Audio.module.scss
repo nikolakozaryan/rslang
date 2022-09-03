@@ -3,4 +3,9 @@
   height: 100vh;
   position: relative;
   background: url(../../../assets/images/AudioGame/Background.png) no-repeat center / cover;
+  padding: 3.8rem 16.5rem;
+
+  &__content {
+    position: relative;
+  }
 }
