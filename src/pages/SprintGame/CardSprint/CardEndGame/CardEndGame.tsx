@@ -9,10 +9,11 @@ import WordList from './WordList/WordList';
 import LinkTodictionary from './LinkToDictionary/LinkTodictionary';
 import AudioButton from '../../AudioButton/AudioButton';
 import ArrowEndCard from './ArrowEndCard/ArrowEndCard';
+import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 
 const CardEndGame = (props: ICardInGame) => {
   const [animation, setAnimation] = useState(true);
-
+  console.log(props.learned.length, props.learned.length + props.mistakes.length, (props.learned.length / 20) * 100);
   const slide = () => {
     setAnimation(!animation);
   };
@@ -26,7 +27,7 @@ const CardEndGame = (props: ICardInGame) => {
           {(props.learned.length === 1 && 'о') || (props.learned.length <= 4 && props.learned.length > 0 && 'а')}
         </div>
         <div className={classes.Mascot}>
-          <img src="../../../../assets/icons/mascot/eating.svg" alt="Mascot" />
+          <ProgressBar progress={(props.learned.length / 20) * 100} sprint={true} />
         </div>
         <ArrowEndCard slide={slide} left={false} />
         <Button>

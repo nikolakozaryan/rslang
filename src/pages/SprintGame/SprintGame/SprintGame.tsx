@@ -28,7 +28,7 @@ const SprintGame = (props: { array: Word[] }) => {
   const [mistakes, setMistakes]: [Word[], Dispatch<SetStateAction<Word[]>>] = useState<Word[]>([]);
   const [learned, setLearned]: [Word[], Dispatch<SetStateAction<Word[]>>] = useState<Word[]>([]);
 
-  const [timeleft, setTimeLeft] = useState(2 * 30);
+  const [timeleft, setTimeLeft] = useState(2 * 60);
 
   const [isCounting, setIsCounting] = useState(timeleft);
 
