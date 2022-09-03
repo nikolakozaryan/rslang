@@ -14,27 +14,21 @@ const WordList: React.FC<IWordList> = (props: IWordList) => {
       <ul>
         {props.side === 'mistakes'
           ? mistakesFiltered.length !== 0 &&
-            mistakesFiltered.map((item) => {
-              console.log('mistr', item, props.mistakes, item.word);
-              return (
-                <li className={classes.word}>
-                  <AudioButton audio={item.audio} word={item.word} />
+            mistakesFiltered.map((item) => (
+              <li className={classes.word}>
+                <AudioButton audio={item.audio} word={item.word} />
 
-                  {` ${item.word} - ${item.wordTranslate} `}
-                </li>
-              );
-            })
+                {` ${item.word} - ${item.wordTranslate} `}
+              </li>
+            ))
           : learnedFiltered.length !== 0 &&
-            learnedFiltered.map((item) => {
-              console.log('learn', item, props.learned, item.word);
-              return (
-                <li className={classes.word}>
-                  <AudioButton audio={item.audio} word={item.word} />
+            learnedFiltered.map((item) => (
+              <li className={classes.word}>
+                <AudioButton audio={item.audio} word={item.word} />
 
-                  {` ${item.word} - ${item.wordTranslate} `}
-                </li>
-              );
-            })}
+                {` ${item.word} - ${item.wordTranslate} `}
+              </li>
+            ))}
       </ul>
     </div>
   );

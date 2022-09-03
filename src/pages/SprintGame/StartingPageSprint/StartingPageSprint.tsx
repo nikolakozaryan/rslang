@@ -19,15 +19,12 @@ const StartingPageSprint = (props: { changeGameMode: (array: Word[]) => void }) 
 
   const changeDifficulty = (difficultyLevel: number) => {
     setDifficulty(difficultyLevel);
-    console.log(difficulty);
   };
 
   useEffect(() => {
     setPage(Math.floor(Math.random() * 20));
-    console.log(page, difficulty + 1);
     downloadWords(page, difficulty + 1);
     props.changeGameMode(words);
-    console.log(words);
   }, [difficulty]);
 
   return (

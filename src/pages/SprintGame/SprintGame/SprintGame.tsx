@@ -7,7 +7,7 @@ import Word from '../../../components/API/DictionaryAPI/Word';
 import DictionaryAPI from '../../../components/API/DictionaryAPI/DictionaryAPI';
 import CounterGame from '../CounterGame/CounterGame';
 
-const SprintGame = (props: { array: Word[] }) => {
+const SprintGame = (props: { array: Word[]; setPoints: Dispatch<SetStateAction<number>> }) => {
   const emptyState = [
     [false, false],
     [false, false],
@@ -32,20 +32,6 @@ const SprintGame = (props: { array: Word[] }) => {
 
   const [isCounting, setIsCounting] = useState(timeleft);
 
-  useEffect(() => {
-    const myInterval = setInterval(() => {
-      setIsCounting(isCounting - 1);
-      setTimeLeft((prevTime) => (prevTime >= 0 ? prevTime - 1 : 0));
-
-      if (timeleft === 0) {
-        setGameStage(false);
-      }
-    }, 1000);
-    return () => {
-      clearInterval(myInterval);
-    };
-  }, [timeleft]);
-
   const [score, setScore] = useState(0);
 
   const [state, setState] = useState([
@@ -56,6 +42,7 @@ const SprintGame = (props: { array: Word[] }) => {
 
   const [pointNumber, setPointNumber] = useState(0);
   const [pointInARow, setPointInARow] = useState(0);
+  const [pointInARowStat, setPointInARowStat] = useState(0);
   const [answer, setAnswer] = useState(false);
   const [ourAnswer, setourAnswer] = useState(false);
   const [ourGuess, setOurGuess] = useState(ArrayGame[Math.ceil(Math.random() * ArrayGame.length - 1)]);
@@ -68,13 +55,13 @@ const SprintGame = (props: { array: Word[] }) => {
     } else {
       correct = 1;
     }
-    console.log(correct);
     if (correct === 1) {
       setAnswer(true);
 
       const number = Math.ceil(Math.random() * ArrayGame.length - 1);
       if (number === -1) {
         setGameStage(false);
+        props.setPoints(pointInARowStat);
       } else {
         setOurGuess(ArrayGame[number]);
         setWordGuess(ArrayGame[number]);
@@ -83,6 +70,7 @@ const SprintGame = (props: { array: Word[] }) => {
       const numberUp = Math.ceil(Math.random() * ArrayGame.length - 1);
       if (numberUp === -1) {
         setGameStage(false);
+        props.setPoints(pointInARowStat);
       } else {
         setAnswer(false);
         setOurGuess(ArrayGame[numberUp]);
@@ -94,7 +82,6 @@ const SprintGame = (props: { array: Word[] }) => {
             numberDown = Math.ceil(Math.random() * ArrayGame.length - 1);
           } while (numberDown === numberUp);
           setWordGuess(ArrayGame[numberDown]);
-          console.log('emposter', ourGuess, wordGuess, numberDown, numberUp);
         }
       }
     }
@@ -120,7 +107,9 @@ const SprintGame = (props: { array: Word[] }) => {
       newState = emptyState;
     }
     setPointInARow(pointInARow + 1);
-    console.log(pointInARow);
+    if (pointInARow > pointInARowStat) {
+      setPointInARowStat(pointInARow);
+    }
     setScore(score + 10 * xScore);
     const correctWord = props.array.filter((item) => item === wordGuess)[0];
     if (!mistakes.includes(correctWord) && ourGuess === wordGuess && !learned.includes(correctWord)) {
@@ -129,6 +118,7 @@ const SprintGame = (props: { array: Word[] }) => {
       newArray.splice(newArray.indexOf(correctWord), 1);
       if (newArray.length === 0) {
         setGameStage(false);
+        props.setPoints(pointInARowStat);
       }
       setArrayGame(newArray);
     } else if (mistakes.includes(correctWord) && ourGuess === wordGuess && !learned.includes(correctWord)) {
@@ -136,6 +126,7 @@ const SprintGame = (props: { array: Word[] }) => {
       newArray.splice(newArray.indexOf(correctWord), 1);
       if (newArray.length === 0) {
         setGameStage(false);
+        props.setPoints(pointInARowStat);
       }
       setArrayGame(newArray);
     }
@@ -185,6 +176,20 @@ const SprintGame = (props: { array: Word[] }) => {
       }
     }
   }, [nextQ]);
+  useEffect(() => {
+    const myInterval = setInterval(() => {
+      setIsCounting(isCounting - 1);
+      setTimeLeft((prevTime) => (prevTime >= 0 ? prevTime - 1 : 0));
+
+      if (timeleft === 0) {
+        props.setPoints(pointInARowStat);
+        setGameStage(false);
+      }
+    }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  }, [timeleft]);
 
   const refresh = (buttonAnswer: boolean) => {
     // setourAnswer(buttonAnswer);
@@ -224,11 +229,11 @@ const SprintGame = (props: { array: Word[] }) => {
     }
   };
 
-  useEffect(() => {
-    if (learned.length + mistakes.length === props.array.length) {
-      console.log('end');
-    }
-  }, [ArrayGame]);
+  // useEffect(() => {
+  //   if (learned.length + mistakes.length === props.array.length) {
+  //     console.log('end');
+  //   }
+  // }, [ArrayGame]);
 
   useEffect(() => {
     if (pointInARow === 3) {

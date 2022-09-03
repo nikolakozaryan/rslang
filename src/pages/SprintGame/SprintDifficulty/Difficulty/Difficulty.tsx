@@ -8,7 +8,6 @@ const Difficulty: React.FC<IDifficulty> = (props: IDifficulty) => {
     buttons.forEach((item) => (item.classList.contains(classes.active) ? item.classList.remove(classes.active) : 0));
 
     const target = event.target as HTMLAnchorElement;
-    console.log(this, event.target);
     if (event.target !== event.currentTarget) {
       const span = event.target as HTMLSpanElement;
       span.parentElement?.classList.add(classes.active);

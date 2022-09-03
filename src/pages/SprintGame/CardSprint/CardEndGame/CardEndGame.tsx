@@ -13,7 +13,6 @@ import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 
 const CardEndGame = (props: ICardInGame) => {
   const [animation, setAnimation] = useState(true);
-  console.log(props.learned.length, props.learned.length + props.mistakes.length, (props.learned.length / 20) * 100);
   const slide = () => {
     setAnimation(!animation);
   };
