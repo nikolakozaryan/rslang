@@ -4,7 +4,6 @@ import LinkProps from './NavLinkInterface';
 
 const NavLink: React.FC<LinkProps> = (prop: LinkProps) => (
   <li className={prop.class}>
-    {' '}
     <Link className={prop.class} to={`${prop.path}`}>
       {prop.page}
       {prop.page === 'Игры' && <img src="../../assets/icons/arrowDown.svg" alt="" />}

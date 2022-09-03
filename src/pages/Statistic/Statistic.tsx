@@ -1,5 +1,6 @@
 import React from 'react';
+import StatisticsForAllTime from '../../components/StatisticsForAllTime/StatisticsForAllTime';
 
-const Statistic = () => <div>statistic</div>;
+const Statistic = () => <StatisticsForAllTime />;
 
 export default Statistic;
