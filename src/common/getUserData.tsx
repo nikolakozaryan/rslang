@@ -14,7 +14,7 @@ const getUserData = () => {
     }
   }
 
-  if (response?.id && response?.token) {
+  if (response) {
     return response;
   }
 
