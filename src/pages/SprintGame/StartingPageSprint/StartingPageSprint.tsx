@@ -32,9 +32,11 @@ const StartingPageSprint = (props: { changeGameMode: (array: Word[]) => void }) 
 
   return (
     <div className={classes.background}>
-      <GameHeader></GameHeader>
-      <SprintDescription />
-      <SprintDifficulty change={changeDifficulty} />
+      <div className={classes.container}>
+        <GameHeader></GameHeader>
+        <SprintDescription />
+        <SprintDifficulty change={changeDifficulty} />
+      </div>
     </div>
   );
 };

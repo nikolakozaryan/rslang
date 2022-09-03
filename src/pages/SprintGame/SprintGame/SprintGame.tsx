@@ -16,6 +16,8 @@ const SprintGame = (props: { array: Word[] }) => {
 
   const [gameStage, setGameStage] = useState(true);
 
+  const [nextQ, setNextQ] = useState(0);
+
   const backToGame = () => {
     setGameStage(!gameStage);
   };
@@ -26,7 +28,7 @@ const SprintGame = (props: { array: Word[] }) => {
   const [mistakes, setMistakes]: [Word[], Dispatch<SetStateAction<Word[]>>] = useState<Word[]>([]);
   const [learned, setLearned]: [Word[], Dispatch<SetStateAction<Word[]>>] = useState<Word[]>([]);
 
-  const [timeleft, setTimeLeft] = useState(2 * 2);
+  const [timeleft, setTimeLeft] = useState(2 * 30);
 
   const [isCounting, setIsCounting] = useState(timeleft);
 
@@ -66,6 +68,7 @@ const SprintGame = (props: { array: Word[] }) => {
     } else {
       correct = 1;
     }
+    console.log(correct);
     if (correct === 1) {
       setAnswer(true);
 
@@ -149,37 +152,65 @@ const SprintGame = (props: { array: Word[] }) => {
       newState = emptyState;
     }
     setPointInARow(0);
-    console.log(pointInARow);
     const pointStateNew: boolean[] = refreshPoint(false);
     newState[pointNumber] = pointStateNew;
     setState(newState);
   };
 
-  const refresh = (buttonAnswer: boolean) => {
+  useEffect(() => {
+    console.log(ourAnswer, answer);
     getourGuess();
-    console.log(ourGuess, wordGuess);
-    if (pointNumber < 2) {
-      const newCount = pointNumber + 1;
-      setPointNumber(newCount);
-      if (answer === buttonAnswer) {
-        correctAnswer();
+    if (nextQ !== 0) {
+      if (pointNumber < 2) {
+        const newCount = pointNumber + 1;
+        setPointNumber(newCount);
+        if (answer === ourAnswer) {
+          correctAnswer();
+        } else {
+          wrongAnswer();
+          // const newArray = ArrayGame.slice();
+          // const wrongWordIndex = ArrayGame.indexOf(wordGuess);
+          if (!mistakes.includes(wordGuess)) {
+            setMistakes([...mistakes, wordGuess]);
+          }
+        }
       } else {
-        wrongAnswer();
-        const newArray = ArrayGame.slice();
-        const wrongWordIndex = ArrayGame.indexOf(wordGuess);
-        if (!mistakes.includes(wordGuess)) {
-          setMistakes([...mistakes, wordGuess]);
+        setPointNumber(0);
+        if (answer === ourAnswer) {
+          correctAnswer();
+          setScore(score + 10 * xScore);
+        } else {
+          wrongAnswer();
         }
       }
-    } else {
-      setPointNumber(0);
-      if (answer === buttonAnswer) {
-        correctAnswer();
-        setScore(score + 10 * xScore);
-      } else {
-        wrongAnswer();
-      }
     }
+  }, [nextQ]);
+
+  const refresh = (buttonAnswer: boolean) => {
+    // setourAnswer(buttonAnswer);
+    setNextQ(nextQ + 1);
+    // if (pointNumber < 2) {
+    //   const newCount = pointNumber + 1;
+    //   setPointNumber(newCount);
+    //   if (answer === buttonAnswer) {
+    //     correctAnswer();
+    //   } else {
+    //     wrongAnswer();
+    //     const newArray = ArrayGame.slice();
+    //     const wrongWordIndex = ArrayGame.indexOf(wordGuess);
+    //     if (!mistakes.includes(wordGuess)) {
+    //       setMistakes([...mistakes, wordGuess]);
+    //     }
+    //   }
+    // } else {
+    //   setPointNumber(0);
+    //   if (answer === buttonAnswer) {
+    //     correctAnswer();
+    //     setScore(score + 10 * xScore);
+    //   } else {
+    //     wrongAnswer();
+    //   }
+    // }
   };
 
   document.onkeydown = (event) => {
@@ -224,6 +255,7 @@ const SprintGame = (props: { array: Word[] }) => {
         refreshAnswer={refreshOurAnswer}
         ourGuess={ourGuess}
         wordGuess={wordGuess}
+        nextQ={nextQ}
       />
     </div>
   );

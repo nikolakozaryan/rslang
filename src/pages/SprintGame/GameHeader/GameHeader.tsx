@@ -4,8 +4,8 @@ import classes from './GameHeader.module.scss';
 import Logo from '../../../components/Header/Logo/Logo';
 
 const GameHeader = () => (
-  <div style={{ textDecoration: 'none' }} className={classes.header}>
-    <Link to="/">
+  <div className={classes.header}>
+    <Link style={{ textDecoration: 'none' }} to="/">
       <Logo />
     </Link>
     <div className={classes.cross}>

@@ -13,4 +13,5 @@ export default interface ICardSprint {
   mistakes: Word[];
   learned: Word[];
   backToGame: () => void;
+  nextQ: number;
 }

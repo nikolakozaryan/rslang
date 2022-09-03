@@ -8,4 +8,5 @@ export default interface ICardInGame {
   ourGuess: Word;
   wordGuess: Word;
   score: number;
+  nextQ: number;
 }
