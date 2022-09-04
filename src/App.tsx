@@ -29,9 +29,15 @@ const App = (): JSX.Element => {
     return obj;
   };
 
+
+  // learned words object - API  {id: word} x 
+  // stategame - false => learned.filter set???
   const [sprintPointsInARow, setSprintPointsInARow] = useState(0);
   const [audioPointsInARow, setAudioPointsInARow] = useState(0);
+  // const [sprintCorrectAnswers, setSprintCorrectAnswers] = useState(gamesscore/gamestimes);
   const [sprintCorrectAnswers, setSprintCorrectAnswers] = useState(0);
+// state games times+1
+// state gamesScore ++++++%
   const [audioCorrectAnswers, setAudioCorrectAnswers] = useState(0);
   const [learnedSprint, setLearnedSprint] = useState(0);
   const [learnedAudio, setLearnedAudio] = useState(0);
@@ -50,7 +56,7 @@ const App = (): JSX.Element => {
         0,
         { scar: { score: 222, date: new Date().setHours(0, 0, 0, 0).toString() } },
         { '1234436046098': { score: audioPointsInARow, date: new Date().setHours(0, 0, 0, 0).toString() } },
-        { [time]: { score: sprintCorrectAnswers, date: new Date().setHours(0, 0, 0, 0).toString() } },
+        { 'sdgasdgasg': { score: sprintCorrectAnswers, date: new Date().setHours(0, 0, 0, 0).toString() } },
         { [time]: { score: audioCorrectAnswers, date: new Date().setHours(0, 0, 0, 0).toString() } },
         { [time]: { score: learnedSprint, date: new Date().setHours(0, 0, 0, 0).toString() } },
         { [time]: { score: learnedAudio, date: new Date().setHours(0, 0, 0, 0).toString() } }

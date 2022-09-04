@@ -53,9 +53,9 @@ const UserStatistic: IStatistic = {
     const copy = Object.assign(object);
     Object.keys(objectExist.optional).forEach((item: string) => {
       const propExist = objectExist.optional[item];
-      const propNew = object.body.optional[item as keyof typeof object.body.optional];
-      const assign = Object.assign(propExist, propNew);
-      console.log(propExist, propNew, assign, '1');
+      const propNew = object.body.optional[item as keyof typeof object.body.optional] as object;
+      const assign = { ...propExist, ...propNew};
+      copy.body.optional[item] = assign;
       // console.log(propExist, propNew, 'here', copy[item], copy[item as keyof typeof object.body.optional]);
       // objectExist.optional[item] = Object.assign(propExist, propNew);
       // console.log(objectExist.optional[item], 'whaawetawetawet');
@@ -69,7 +69,7 @@ const UserStatistic: IStatistic = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${object.token}`,
       },
-      body: JSON.stringify(objectExist.body),
+      body: JSON.stringify(copy.body),
     });
     const content = await rawResponse.json();
     return content;
