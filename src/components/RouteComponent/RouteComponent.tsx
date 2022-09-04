@@ -3,9 +3,13 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import classes from '../Footer/Footer.module.scss';
 
-const RouteComponent: React.FC<PropsWithChildren> = (props) => (
+type RouteComponentProps = PropsWithChildren<{
+  navigationHide?: boolean;
+}>;
+
+const RouteComponent: React.FC<RouteComponentProps> = (props) => (
   <>
-    <Header />
+    <Header navigationHide={props.navigationHide} />
     {props.children}
     <Footer className={classes.footer} />
   </>
