@@ -1,24 +1,24 @@
 const DEVELOPERS = [
   {
     name: 'Николай Козырев',
-    photo: 'path',
+    photo: '../../assets/images/Photo/1.jpg',
     gitHub: 'https://github.com/nikolakozaryan',
-    role: 'developer',
-    contribution: 'В проекте делал...',
+    role: 'teamlead',
+    contribution: 'Раздел "Учебник", игра "Аудиовызов", координирование действий команды.',
   },
   {
     name: 'Яков Григорьев',
-    photo: 'path',
+    photo: '../../assets/images/Photo/2.jpg',
     gitHub: 'https://github.com/YaGrig',
     role: 'developer',
-    contribution: 'В проекте делал...',
+    contribution: 'Раздел "Статистика", игра "Спринт, взаимодействие с API"',
   },
   {
     name: 'Кирилл Найдович',
-    photo: 'path',
+    photo: '../../assets/images/Photo/3.jpg',
     gitHub: 'https://github.com/OnlyR10',
     role: 'developer',
-    contribution: 'В проекте делал...',
+    contribution: 'Регистрация / Авторизация, график в разделе "Статистика", разработка структуры проекта',
   },
 ];
 export default DEVELOPERS;

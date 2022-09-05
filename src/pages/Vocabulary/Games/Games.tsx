@@ -8,8 +8,8 @@ import classes from './Games.module.scss';
 const Games = () => (
   <Section header="Игры">
     {GAME_CARDS_DATA.map((data) => (
-      <Link className={classes.link} to={data.url}>
-        <Card key={data.title} type="game">
+      <Link key={data.title} className={classes.link} to={data.url}>
+        <Card type="game">
           <div className={classes.img}>
             <img src={data.imgURL} alt="game-image" />
           </div>

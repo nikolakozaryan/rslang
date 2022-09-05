@@ -17,7 +17,6 @@ const NavLink: React.FC<LinkProps> = (prop: LinkProps) => {
     <li className={classes.item}>
       <Link className={linkStyle} to={`${prop.path}`}>
         {prop.page}
-        {prop.page === 'Игры' && <img src="../../assets/icons/arrowDown.svg" alt="" className={classes.arrow} />}
       </Link>
     </li>
   );

@@ -14,11 +14,11 @@ const Variants = ({
   remainingWords,
   variants,
   currentWord,
-  correct,
+  corrects,
   error,
   points,
   streak,
-  setCorrect,
+  setCorrects,
   setError,
   setPoints,
   setStreak,
@@ -113,10 +113,9 @@ const Variants = ({
 
   const nextHandler = () => {
     document.querySelectorAll('.variant').forEach((item) => (item as HTMLDivElement).removeAttribute('style'));
-
     let curStreak = streak;
     if (result?.isCorrect) {
-      setCorrect([result?.word, ...correct]);
+      setCorrects([result?.word, ...corrects]);
       curStreak = streak + 1;
     } else {
       setError([(result as IResult).word, ...error]);
