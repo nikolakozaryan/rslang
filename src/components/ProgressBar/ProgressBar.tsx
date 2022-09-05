@@ -3,7 +3,7 @@ import IProgress from './Interface';
 import classes from './ProgressBar.module.scss';
 import Circle from './Circle/Circle';
 
-const ProgressBar = ({ progress, sprint }: IProgress) => {
+const ProgressBar = ({ progress, sprint, isStat }: IProgress) => {
   const setProgress = () => {
     const progressElement = document.querySelector('.progress') as SVGCircleElement;
     const radius = progressElement.r.baseVal.value;
@@ -28,7 +28,7 @@ const ProgressBar = ({ progress, sprint }: IProgress) => {
       <foreignObject width="206" height="206">
         <div className={classes.content}>
           <p className={classes.percentage}>{progress} %</p>
-          <p className={classes.text}>изученных слов</p>
+          {isStat ? '' : <p className={classes.text}>изученных слов</p>}
         </div>
       </foreignObject>
     </svg>

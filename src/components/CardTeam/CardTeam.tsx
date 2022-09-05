@@ -14,7 +14,13 @@ const CardTeam: React.FC<CardTeamInterface> = (props: CardTeamInterface) => (
           </div>
         </div>
       </div>
-      <div className={classes.contribution}>{props.member.contribution}</div>
+      <div className={classes.contribution}>
+        {props.member.contribution.map((item, index) => (
+          <div key={index} style={{ margin: '1rem 0' }}>
+            {item}
+          </div>
+        ))}
+      </div>
     </div>
   </>
 );
