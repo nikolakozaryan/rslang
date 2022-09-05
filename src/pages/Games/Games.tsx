@@ -1,5 +1,6 @@
 import React from 'react';
+import Games from '../Vocabulary/Games/Games';
 
-const Games = () => <div>games</div>;
+const GamesPage = () => <Games />;
 
-export default Games;
+export default GamesPage;

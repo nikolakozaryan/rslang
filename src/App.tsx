@@ -6,6 +6,7 @@ import Vocabulary from './pages/Vocabulary/Vocabulary';
 import Games from './pages/Games/Games';
 import RouteComponent from './components/RouteComponent/RouteComponent';
 import Statistic from './pages/Statistic/Statistic';
+import Audio from './pages/Games/Audio/Audio';
 import './common/style/index.scss';
 
 const App = (): JSX.Element => (
@@ -28,6 +29,7 @@ const App = (): JSX.Element => (
             </RouteComponent>
           }
         />
+        <Route path="/audio" element={<Audio />} />
         <Route
           path="/games"
           element={

@@ -1,0 +1,31 @@
+.container {
+  position: relative;
+  padding: 0 1rem;
+  padding-left: 6rem;
+  width: 45rem;
+  height: 34rem;
+  overflow-y: scroll;
+}
+
+.divider {
+  width: 25.5rem;
+  height: 0.1rem;
+  background: #525252;
+  margin-bottom: 2.5rem;
+}
+
+.arrow {
+  position: absolute;
+  top: 60%;
+  left: 0;
+  transform: translateY(-50);
+  height: 3rem;
+  width: 2rem;
+  cursor: pointer;
+  background: url('../../../../../../../../assets/icons/arrow-left.svg') no-repeat center / contain;
+  transition: 0.5s;
+
+  &:active {
+    transform: scale(0.85);
+  }
+}

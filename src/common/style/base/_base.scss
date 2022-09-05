@@ -1,6 +1,10 @@
+@import '../abstract/variables';
+
 * {
   box-sizing: border-box;
   color: $font-color;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -21,4 +25,11 @@ body {
   min-height: 100%;
   display: grid;
   grid-template-rows: 1fr auto;
+}
+
+:global(.variant) {
+  transition: background 0.5s;
+  &:hover {
+    background: $button-color;
+  }
 }
