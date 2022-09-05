@@ -1,31 +1,50 @@
-import React, { useState } from 'react';
-import Chart from '../../components/StatisticsForAllTime/Chart/Chart';
+import React, { useEffect, useState } from 'react';
+import Chart, { IChartProps } from '../../components/StatisticsForAllTime/Chart/Chart';
+import LearnedWordsAPI from '../API/LearnedWordsAPI/LearnedWordsAPI';
 import classes from './StatisticsForAllTime.module.scss';
+import ILearnedObject from '../API/LearnedWordsAPI/learnedWordObject';
 
 const StatisticsForAllTime = () => {
   const [newWordActive, setNewWordActive] = useState(true);
+  const [userStatisticsPerDay, setUserStatisticsPerDay] = useState<IChartProps['wordCount']>([]);
 
-  const wordCount = [
-    { x: '2022-09-04', y: 7 },
-    { x: '2022-09-05', y: 10 },
-    { x: '2022-09-06', y: 2 },
-    { x: '2022-09-07', y: 14 },
-    { x: '2022-09-08', y: 26 },
-    { x: '2022-09-09', y: 15 },
-    { x: '2022-09-10', y: 4 },
-    { x: '2022-09-11', y: 11 },
-  ];
+  async function getLearnedWords(property: 'learnedWordsNumberSprint' | 'learnedWordsNumberAudio') {
+    const storageData = localStorage.getItem('user');
 
-  const wordCount2 = [
-    { x: '2022-11-04', y: 7 },
-    { x: '2022-11-05', y: 10 },
-    { x: '2022-11-06', y: 2 },
-    { x: '2022-11-07', y: 14 },
-    { x: '2022-11-08', y: 26 },
-    { x: '2022-11-09', y: 15 },
-    { x: '2022-11-10', y: 4 },
-    { x: '2022-11-11', y: 11 },
-  ];
+    if (storageData) {
+      try {
+        const { id, token } = JSON.parse(storageData);
+        const response: ILearnedObject = await LearnedWordsAPI.getLearnedWords(id, token);
+
+        const attribute = response.optional[property];
+
+        if (attribute) {
+          const entries = Object.entries(attribute);
+
+          setUserStatisticsPerDay(
+            entries.map(([key, value]) => ({
+              x: Number(key),
+              y: Number(value),
+            }))
+          );
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    getLearnedWords('learnedWordsNumberSprint');
+  }, []);
+
+  useEffect(() => {
+    if (newWordActive) {
+      getLearnedWords('learnedWordsNumberSprint');
+    } else {
+      getLearnedWords('learnedWordsNumberAudio');
+    }
+  }, [newWordActive]);
 
   return (
     <>
@@ -48,7 +67,7 @@ const StatisticsForAllTime = () => {
           </button>
         </li>
       </ul>
-      {newWordActive ? <Chart wordCount={wordCount} /> : <Chart wordCount={wordCount2} />}
+      <Chart wordCount={userStatisticsPerDay} />
     </>
   );
 };

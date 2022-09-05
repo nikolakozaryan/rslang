@@ -5,8 +5,8 @@ import 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
 import { ru } from 'date-fns/locale';
 
-interface IChartProps {
-  wordCount: { x: string; y: number }[];
+export interface IChartProps {
+  wordCount: { x: number | Date; y: number }[];
 }
 
 const titleFont = {
