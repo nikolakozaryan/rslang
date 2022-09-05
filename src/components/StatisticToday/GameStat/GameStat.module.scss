@@ -9,8 +9,12 @@
   font-size: 2rem;
   .header {
     font: $h3-font;
+    margin-bottom: 2rem;
   }
   .text {
     max-width: 24rem;
+  }
+  .description {
+    line-height: 3rem;
   }
 }
