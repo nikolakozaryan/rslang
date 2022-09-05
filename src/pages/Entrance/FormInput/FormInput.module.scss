@@ -20,16 +20,15 @@
   background: transparent;
   font-size: 2rem;
   transition: 0.5s;
+  @include font($size: 2rem, $height: 1.9rem);
+  color: $font-color;
+  padding: 0.5rem 0;
   &:hover {
     border-bottom-color: $font-color;
   }
   &:focus {
     outline: none;
     border-bottom-color: $font-color;
-  }
-  &::placeholder {
-    @include font($size: 1.6rem, $height: 1.9rem);
-    color: rgba(8, 33, 67, 0.5);
   }
 }
 

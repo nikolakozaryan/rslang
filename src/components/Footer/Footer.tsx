@@ -9,19 +9,21 @@ type FooterProps = PropsWithChildren<{
 
 const Footer: React.FC<FooterProps> = ({ className }) => (
   <div className={`${classes.footer} ${className}`}>
-    <div className={classes.linksContainer}>
-      <a href="https://rs.school/" target="_blank" className={classes.logoRss}></a>
-      <div className={classes.githubContainer}>
-        <a href="https://github.com/" target="_blank" className={classes.iconGithub}></a>
-        {DEVELOPERS.map((developer) => (
-          <Link {...developer} key={developer.gitHub} />
-        ))}
+    <div className={classes.wrapper}>
+      <div className={classes.linksContainer}>
+        <a href="https://rs.school/" target="_blank" className={classes.logoRss}></a>
+        <div className={classes.githubContainer}>
+          <a href="https://github.com/" target="_blank" className={classes.iconGithub}></a>
+          {DEVELOPERS.map((developer) => (
+            <Link {...developer} key={developer.gitHub} />
+          ))}
+        </div>
+        <a href="https://rs.school/js/" target="_blank" className={classes.linkToRss}>
+          Курс «JavaScript/Front-end»
+        </a>
       </div>
-      <a href="https://rs.school/js/" target="_blank" className={classes.linkToRss}>
-        Курс «JavaScript/Front-end»
-      </a>
+      <p className={classes.developmentDate}>© 2022 RSLang</p>
     </div>
-    <p className={classes.developmentDate}>© 2022 RSLang</p>
   </div>
 );
 
