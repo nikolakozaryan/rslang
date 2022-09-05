@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './GameHeader.module.scss';
-import Logo from '../../../components/Header/Logo/Logo';
+import Logo from '../../../../components/Header/Logo/Logo';
 
 const GameHeader = () => (
   <div className={classes.header}>

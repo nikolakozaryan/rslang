@@ -1,7 +1,7 @@
 import React, { MouseEventHandler, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './CardEndGame.module.scss';
-import Button from '../../../../components/Button/Button';
+import Button from '../../../../../components/Button/Button';
 import ICardInGame from './CardEndGameInterface';
 import CardSides from './CardSides/CardSides';
 import WordsComponent from './WordsComponent/WordsComponent';
@@ -9,7 +9,7 @@ import WordList from './WordList/WordList';
 import LinkTodictionary from './LinkToDictionary/LinkTodictionary';
 import AudioButton from '../../AudioButton/AudioButton';
 import ArrowEndCard from './ArrowEndCard/ArrowEndCard';
-import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
+import ProgressBar from '../../../../../components/ProgressBar/ProgressBar';
 
 const CardEndGame = (props: ICardInGame) => {
   const [animation, setAnimation] = useState(true);

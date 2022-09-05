@@ -1,5 +1,5 @@
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react';
-import Word from '../../../components/API/DictionaryAPI/Word';
+import Word from '../../../../components/API/DictionaryAPI/Word';
 
 export default interface ICardSprint {
   done: boolean[][];

@@ -1,4 +1,4 @@
-import { IDifficulty } from '../../../../common/constants/difficultyLevels';
+import { IDifficulty } from '../../../../../common/constants/difficultyLevels';
 
 export default interface IDifficultyGame {
   difficulty: string;

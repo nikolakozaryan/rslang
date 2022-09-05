@@ -2,11 +2,11 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import classes from './SprintGame.module.scss';
 import CardSpirnt from '../CardSprint/CardSpirnt';
 import GameHeader from '../GameHeader/GameHeader';
-import Word from '../../../components/API/DictionaryAPI/Word';
+import Word from '../../../../components/API/DictionaryAPI/Word';
 import CounterGame from '../CounterGame/CounterGame';
-import LearnedWordsAPI from '../../../components/API/LearnedWordsAPI/LearnedWordsAPI';
-import Data from '../../../components/API/StatisticAPI/IData';
-import getUserData from '../../../common/getUserData';
+import LearnedWordsAPI from '../../../../components/API/LearnedWordsAPI/LearnedWordsAPI';
+import Data from '../../../../components/API/StatisticAPI/IData';
+import getUserData from '../../../../common/getUserData';
 
 const SprintGame = (props: {
   array: Word[];

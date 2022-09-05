@@ -1,4 +1,4 @@
-import Word from '../../../../../components/API/DictionaryAPI/Word';
+import Word from '../../../../../../components/API/DictionaryAPI/Word';
 
 export default interface IWordList {
   mistakes: Word[];

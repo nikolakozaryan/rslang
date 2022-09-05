@@ -3,8 +3,8 @@ import GameHeader from '../GameHeader/GameHeader';
 import SprintDescription from '../SprintDescription/SprintDescription';
 import SprintDifficulty from '../SprintDifficulty/SprintDifficulty';
 import classes from './StartingPageSprint.module.scss';
-import Word from '../../../components/API/DictionaryAPI/Word';
-import DictionaryAPI from '../../../components/API/DictionaryAPI/DictionaryAPI';
+import Word from '../../../../components/API/DictionaryAPI/Word';
+import DictionaryAPI from '../../../../components/API/DictionaryAPI/DictionaryAPI';
 
 const StartingPageSprint = (props: { changeGameMode: (array: Word[]) => void }) => {
   const [difficulty, setDifficulty] = useState(0);

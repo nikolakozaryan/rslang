@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import classes from './AudioButton.module.scss';
-import SERVER from '../../../common/constants/serverConst';
+import SERVER from '../../../../common/constants/serverConst';
 
 const AudioButton = (props: { audio: string; word: string; nextQ?: number }) => {
   const playAudio = (type: string) => {
