@@ -113,6 +113,7 @@ const UserStatistic: IStatistic = {
             const scoreNew = scoreObject;
 
             const scoreOld = propExist[Object.keys(propNew)[0]];
+            console.log(scoreNew, scoreOld, key, item, 'score');
             if (!scoreOld) {
               const sumScore = scoreNew;
               const newObjectScore = { [key]: sumScore };
@@ -120,7 +121,7 @@ const UserStatistic: IStatistic = {
               copy.body.optional[item] = assign;
             } else {
               const sumScore = scoreOld + scoreNew;
-              const amount = objectExist.optional.gamesAmoutSprint;
+              const amount = objectExist.optional.gamesAmoutAudio;
               const result = sumScore / amount;
               const newObjectScore: Data = { [key]: result };
               const assign = { ...propExist, ...newObjectScore };
