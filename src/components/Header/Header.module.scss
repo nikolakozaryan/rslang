@@ -1,7 +1,6 @@
 @import '../../common/style/abstract/_variables.scss';
 
 .header {
-  display: flex;
   justify-content: center;
 }
 
@@ -21,7 +20,6 @@
     text-decoration: none;
     position: relative;
     width: 6rem;
-    height: 2.2rem;
     font-size: 1.8rem;
     line-height: 2.2rem;
     color: #082143;
@@ -38,6 +36,7 @@
     font: $button-font;
     transform: scale(1);
     transition: 0.3s;
+    background-color: #fff;
 
     &:hover {
       background-color: $button-color;

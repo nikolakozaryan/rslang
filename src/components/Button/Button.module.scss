@@ -16,3 +16,30 @@
     border-color: $font-color;
   }
 }
+
+@keyframes threeQuartersLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.threeQuartersLoader {
+  animation: threeQuartersLoader 1250ms infinite linear;
+  border: 0.2em solid $font-color;
+  border-right-color: transparent;
+  border-radius: 0.5em;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 1em;
+  height: 1em;
+}
+
+.loaderContainer {
+  height: auto;
+}
