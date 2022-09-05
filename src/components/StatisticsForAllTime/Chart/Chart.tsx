@@ -59,7 +59,7 @@ const options: ChartOptions<'line'> = {
     },
     yAxis: {
       title: {
-        text: 'Количество слов',
+        text: 'Количество изученных слов',
         ...titleSettings,
       },
       ticks: {
