@@ -21,6 +21,7 @@ const StatisticToday = () => {
   if (userDate) {
     const objectWords = async () => {
       const result = await LearnedWordsAPI.getLearnedWords(userDate.id, userDate.token);
+      console.log(result, 'result');
       if (result.optional.learnedWordsNumberAudio && result.optional.learnedWordsNumberSprint) {
         setAmountSprint(
           Number(result.optional.learnedWordsNumberSprint[Object.keys(result.optional.learnedWordsNumberSprint)[0]])
@@ -48,15 +49,25 @@ const StatisticToday = () => {
           <StatWords amount={amountSprint + amountAudio} />
         </Card>
         <Card type={'statisticMedium'}>
-          <ProgressBar progress={((correctSprint + correctAudio) / 2) * 100} sprint={true} />
+          <ProgressBar progress={Number((((correctSprint + correctAudio) / 2) * 100).toFixed(2))} sprint={true} />
         </Card>
       </div>
       <div className={classes.right}>
         <Card type={'statisticLarge'}>
-          <GameStat learned={amountSprint} correct={correctSprint * 100} row={rowSprint} type="sprint" />
+          <GameStat
+            learned={amountSprint}
+            correct={Number((correctSprint * 100).toFixed(2))}
+            row={rowSprint}
+            type="sprint"
+          />
         </Card>
         <Card type={'statisticLarge'}>
-          <GameStat learned={amountAudio} correct={correctAudio * 100} row={rowAudio} type="audio" />
+          <GameStat
+            learned={amountAudio}
+            correct={Number((correctAudio * 100).toFixed(2))}
+            row={rowAudio}
+            type="audio"
+          />
         </Card>
       </div>
     </div>

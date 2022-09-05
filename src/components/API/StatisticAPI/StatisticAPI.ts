@@ -10,10 +10,6 @@ const UserStatistic: IStatistic = {
     learnedWords: number,
     sprintPointsInARow: Data,
     audioPointsInARow: Data,
-    // sprintCorrectAnswers: Data,
-    // audioCorrectAnswers: Data,
-    // learnedSprint: Data,
-    // learnedAudio: Data,
     gamesAmoutSprint: Data,
     gamesAmoutAudio: Data,
     gamesScoreSprint: Data,
@@ -29,10 +25,6 @@ const UserStatistic: IStatistic = {
       optional: {
         sprintPointsInARow,
         audioPointsInARow,
-        // sprintCorrectAnswers,
-        // audioCorrectAnswers,
-        // learnedSprint,
-        // learnedAudio,
         gamesAmoutSprint,
         gamesAmoutAudio,
         gamesScoreSprint,
@@ -94,13 +86,19 @@ const UserStatistic: IStatistic = {
               const newObjectScore = { [key]: sumScore };
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
+            } else if (scoreNew === scoreOld) {
+              const newObjectScore: Data = { [key]: scoreOld };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
             } else {
               const amount = objectExist.optional.gamesAmoutSprint;
               const amountN = amount[Object.keys(amount)[0]];
-              const oldScoreAll = scoreOld * (amountN + 1);
+              const oldScoreAll = scoreOld * (amountN - 1);
               const sumScore = oldScoreAll + scoreNew;
-              const result = Number((sumScore / (amountN + 1)).toFixed(2));
+              console.log(sumScore, scoreOld, scoreNew, 'gamesp');
+              const result = Number((sumScore / amountN).toFixed(2));
               const newObjectScore: Data = { [key]: result };
+              console.log(sumScore, scoreOld, scoreNew, 'gameau', amountN, result, newObjectScore, 'afetspr');
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
             }
@@ -115,14 +113,22 @@ const UserStatistic: IStatistic = {
             const scoreOld = propExist[Object.keys(propNew)[0]];
             if (!scoreOld) {
               const sumScore = scoreNew;
+
               const newObjectScore = { [key]: sumScore };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            } else if (scoreNew === scoreOld) {
+              const newObjectScore: Data = { [key]: scoreOld };
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
             } else {
               const sumScore = scoreOld + scoreNew;
+              console.log(sumScore, scoreOld, scoreNew, 'gameau');
               const amount = objectExist.optional.gamesAmoutAudio;
-              const result = sumScore / amount;
+              const amountN = amount[Object.keys(amount)[0]];
+              const result = sumScore / amountN;
               const newObjectScore: Data = { [key]: result };
+              console.log(sumScore, scoreOld, scoreNew, 'gameau', amountN, result, newObjectScore, 'afetau');
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
             }

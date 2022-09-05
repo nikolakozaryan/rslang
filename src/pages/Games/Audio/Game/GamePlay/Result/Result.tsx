@@ -16,7 +16,7 @@ const Result = ({ correct, error, points, streak, setAmount, setCorrect, setPoin
       const { token } = userData;
       setPoints(streak);
       setAmount(1);
-      setCorrect(correct.length / 20);
+      setCorrect(Number((correct.length / 20).toFixed(2)));
       const resp = async () => {
         let count = 0;
         const data = await LearnedWordsAPI.getLearnedWords(id, token);
