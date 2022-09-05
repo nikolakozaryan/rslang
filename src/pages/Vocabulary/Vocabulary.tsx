@@ -36,7 +36,7 @@ const Vocabulary = () => {
   }, [wordId]);
 
   return (
-    <>
+    <div className={classes.main}>
       <h2 className={classes.header}>Учебник</h2>
       <Difficulty
         difficultyLevel={difficultyLevel}
@@ -54,7 +54,7 @@ const Vocabulary = () => {
       <DetailedWord word={JSON.stringify(curWord)} />
       <Pagination accentColor={accentColor} page={page} setPage={setPage} />
       <Games />
-    </>
+    </div>
   );
 };
 

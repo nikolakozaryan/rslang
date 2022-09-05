@@ -1,5 +1,9 @@
 @import '../../common/style/abstract/variables';
 
+.main {
+  min-height: calc(100vh - 39.9rem);
+}
+
 .header {
   font: $h2-font;
   text-align: center;
