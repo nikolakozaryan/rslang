@@ -5,8 +5,8 @@ import Vocabulary from './pages/Vocabulary/Vocabulary';
 import RouteComponent from './components/RouteComponent/RouteComponent';
 import Statistic from './pages/Statistic/Statistic';
 import './common/style/index.scss';
-import StartingPageSprint from './pages/SprintGame/StartingPageSprint/StartingPageSprint';
-import SprintGame from './pages/SprintGame/SprintGame/SprintGame';
+import StartingPageSprint from './pages/Games/SprintGame/StartingPageSprint/StartingPageSprint';
+import SprintGame from './pages/Games/SprintGame/SprintGame/SprintGame';
 import Word from './components/API/DictionaryAPI/Word';
 import UserStatistic from './components/API/StatisticAPI/StatisticAPI';
 import Main from './pages/Main/Main';
@@ -15,6 +15,7 @@ import ApplicationAccessContext from './context/context';
 import Registration from './pages/Entrance/Registration/Registration';
 import Authorization from './pages/Entrance/Authorization/Authorization';
 import getUserData from './common/getUserData';
+import Games from './pages/Games/Games';
 
 const App = (): JSX.Element => {
   const [sprintArray, setSprintArray] = useState<Word[]>([]);
@@ -84,7 +85,8 @@ const App = (): JSX.Element => {
                 </RouteComponent>
               }
             />
-            <Route path="/games" element={<StartingPageSprint changeGameMode={changeGameMode} />} />
+            <Route path="/games" element={<Games/>} />
+            <Route path="/Sprint" element={<StartingPageSprint changeGameMode={changeGameMode} />} />
             <Route
               path="/sprintGame"
               element={
