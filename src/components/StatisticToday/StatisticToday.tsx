@@ -48,7 +48,7 @@ const StatisticToday = () => {
             <StatWords amount={amountSprint + amountAudio} />
           </Card>
           <Card type={'statisticMedium'}>
-            <ProgressBar progress={((correctSprint + correctAudio) / 2) * 100} sprint={true} />
+            <ProgressBar progress={Math.ceil(((correctSprint + correctAudio) / 2) * 100)} sprint={true} />
           </Card>
         </div>
         <div className={classes.right}>
