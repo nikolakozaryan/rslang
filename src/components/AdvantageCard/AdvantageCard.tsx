@@ -15,8 +15,8 @@ const AdvantageCard: React.FC<IAdvantageCard> = ({ imgURL, title, body, path }) 
   }
 
   return (
-    <Link className={classes.link} to={path}>
-      <Card type="team" className={linkStyle}>
+    <Link className={`${classes.link} ${linkStyle}`} to={path}>
+      <Card type="team">
         <img className={classes.image} src={imgURL} alt="advantage" />
         <h3 className={classes.title}>{title}</h3>
         <p className={classes.body}>{body}</p>
