@@ -1,5 +1,6 @@
 import Statistic from './Statistic';
 import Data from './IData';
+import StatisticServ from './StatisticFromServer';
 
 export default interface IStatistic {
   createStatistic: (
@@ -16,5 +17,5 @@ export default interface IStatistic {
     testFieldBoolean?: boolean
   ) => Statistic;
   updateUserStatistic: (object: Statistic) => Promise<Statistic>;
-  getStatistic: (id: string, token: string) => Promise<Statistic>;
+  getStatistic: (id: string, token: string) => Promise<StatisticServ>;
 }
