@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart, { IChartProps } from '../../components/StatisticsForAllTime/Chart/Chart';
 import LearnedWordsAPI from '../API/LearnedWordsAPI/LearnedWordsAPI';
 import classes from './StatisticsForAllTime.module.scss';
 import ILearnedObject from '../API/LearnedWordsAPI/learnedWordObject';
 
 const StatisticsForAllTime = () => {
+  //   const controller = new AbortController();
+
   const [newWordActive, setNewWordActive] = useState(true);
   const [userStatisticsPerDay, setUserStatisticsPerDay] = useState<IChartProps['wordCount']>([]);
+
+  const controllerRef = useRef<AbortController>();
 
   async function getLearnedWords(property: 'learnedWordsNumberSprint' | 'learnedWordsNumberAudio') {
     const storageData = localStorage.getItem('user');
@@ -14,7 +18,12 @@ const StatisticsForAllTime = () => {
     if (storageData) {
       try {
         const { id, token } = JSON.parse(storageData);
-        const response: ILearnedObject = await LearnedWordsAPI.getLearnedWords(id, token);
+        if (controllerRef.current) {
+          controllerRef.current.abort();
+        }
+        const controller = new AbortController();
+        controllerRef.current = controller;
+        const response: ILearnedObject = await LearnedWordsAPI.getLearnedWords(id, token, controller.signal);
 
         const attribute = response.optional[property];
 
@@ -49,7 +58,10 @@ const StatisticsForAllTime = () => {
         <li className={classes.item}>
           <button
             className={newWordActive ? classes.buttonActive : classes.button}
-            onClick={() => setNewWordActive(true)}
+            onClick={() => {
+              //   controller.abort();
+              setNewWordActive(true);
+            }}
           >
             Количество новых слов
           </button>
@@ -57,7 +69,10 @@ const StatisticsForAllTime = () => {
         <li className={classes.item}>
           <button
             className={newWordActive ? classes.button : classes.buttonActive}
-            onClick={() => setNewWordActive(false)}
+            onClick={() => {
+              //   controller.abort();
+              setNewWordActive(false);
+            }}
           >
             Количество изученных слов
           </button>
