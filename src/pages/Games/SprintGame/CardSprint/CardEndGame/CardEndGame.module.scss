@@ -40,23 +40,6 @@
   animation-fill-mode: forwards;
 }
 
-// .left,
-// .right {
-//     width: 50%;
-//     height: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//     align-items: center;
-// }
-// .words {
-//     width: 70%;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: baseline;
-//     overflow: auto;
-// }
-
 @keyframes slideIn {
   0% {
     margin-left: 100%;
@@ -104,28 +87,6 @@
 
 .mistakes,
 .learned {
-  // .mistakesHeader {
-  //     width: 110%;
-  //     font: $h3-font;
-  //     display: flex;
-  //     justify-content: space-between;
-  //     align-items: center;
-  // }
-  // .mistakesIndicatior,
-  // .learnedIndicator {
-  //     font-size: 1.6rem;
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     background-color: #ff6862;
-  //     width: 2.7rem;
-  //     height: 2.7rem;
-  //     border-radius: 1.35rem;
-  //     color: #ffffff;
-  // }
-  // .learnedIndicator {
-  //     background-color: #58c87e;
-  // }
   ul {
     padding: 0;
   }
@@ -134,8 +95,13 @@
     list-style-type: none;
     display: flex;
     align-items: center;
+    margin: 0 1.3rem 1.3rem 0;
     img {
       margin-right: 0.9rem;
     }
   }
+}
+
+.link {
+  text-decoration: none;
 }

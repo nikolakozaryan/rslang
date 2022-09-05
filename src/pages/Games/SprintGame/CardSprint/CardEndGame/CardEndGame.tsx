@@ -30,7 +30,9 @@ const CardEndGame = (props: ICardInGame) => {
         </div>
         <ArrowEndCard slide={slide} left={false} />
         <Button>
-          <Link to="/games">Продолжить тренировку</Link>
+          <Link className={classes.link} to="/games">
+            Продолжить тренировку
+          </Link>
         </Button>
         <LinkTodictionary />
       </CardSides>
@@ -43,7 +45,9 @@ const CardEndGame = (props: ICardInGame) => {
         <ArrowEndCard slide={slide} left={true} />
 
         <Button>
-          <Link to="/games">Продолжить тренировку</Link>
+          <Link className={classes.link} to="/games">
+            Продолжить тренировку
+          </Link>
         </Button>
         <LinkTodictionary />
       </CardSides>

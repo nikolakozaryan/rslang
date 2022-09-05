@@ -120,7 +120,7 @@ const UserStatistic: IStatistic = {
               copy.body.optional[item] = assign;
             } else {
               const sumScore = scoreOld + scoreNew;
-              const amount = objectExist.optional.gamesAmoutSprint;
+              const amount = objectExist.optional.gamesAmoutAudio;
               const result = sumScore / amount;
               const newObjectScore: Data = { [key]: result };
               const assign = { ...propExist, ...newObjectScore };

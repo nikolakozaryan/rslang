@@ -3,6 +3,7 @@ import classes from './Difficulty.module.scss';
 import IDifficulty from './DifficultyInterfase';
 
 const Difficulty: React.FC<IDifficulty> = (props: IDifficulty) => {
+  // const [difficultyCur, setDifficultyCur] = useState(0);
   const changeDif = (event: React.MouseEvent) => {
     const buttons = document.querySelectorAll('[data-button]');
     buttons.forEach((item) => (item.classList.contains(classes.active) ? item.classList.remove(classes.active) : 0));
@@ -16,7 +17,12 @@ const Difficulty: React.FC<IDifficulty> = (props: IDifficulty) => {
     }
     props.activeChange(true);
 
-    props.change(Number(props.id));
+    const level = Number(props.id);
+
+    const a = () => {
+      props.change(level);
+    };
+    a();
   };
   return (
     <a href="##" onClick={changeDif} data-button={'button'} className={classes.container} id={props.id.toString()}>

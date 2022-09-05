@@ -15,7 +15,7 @@ const CardInGame = (props: ICardInGame) => (
       <CardScorePoints done={props.done[0][0]} correct={props.correct[0][1]} />
       <CardScorePoints done={props.done[1][0]} correct={props.correct[1][1]} />
       <CardScorePoints done={props.done[2][0]} correct={props.correct[2][1]} />
-      <AudioButton audio={props.wordGuess.audio} word={props.wordGuess.word} nextQ={props.nextQ} />
+      <AudioButton audio={props.wordGuess.audio} word={props.wordGuess.word} nextQ={props.nextQ} type={true} />
     </div>
     <CardWordGuessPart OurGuess={props.ourGuess} GuessWord={props.wordGuess} />
     <div className={classes.controls}>

@@ -1,6 +1,15 @@
+@import '../../common/style/abstract/mixins';
+
 .container {
   display: flex;
-  max-width: 14.4rem;
+  justify-content: center;
+}
+
+.header {
+  @include font($family: 'Gilroy-SemiBold', $size: 3.2rem, $height: 3.9rem);
+  color: #082143;
+  text-align: center;
+  padding: 5rem 0;
 }
 
 .left {

@@ -8,23 +8,20 @@ import DictionaryAPI from '../../../../components/API/DictionaryAPI/DictionaryAP
 
 const StartingPageSprint = (props: { changeGameMode: (array: Word[]) => void }) => {
   const [difficulty, setDifficulty] = useState(0);
-  const [words, setWords] = useState<Word[]>([]);
 
   const [page, setPage] = useState(0);
-
-  async function downloadWords(pg: number, lvl: number) {
-    const resp = await DictionaryAPI.getWordsArray(pg, lvl);
-    setWords(resp);
-  }
 
   const changeDifficulty = (difficultyLevel: number) => {
     setDifficulty(difficultyLevel);
   };
 
   useEffect(() => {
-    setPage(Math.floor(Math.random() * 20));
-    downloadWords(page, difficulty + 1);
-    props.changeGameMode(words);
+    const changeDif = async () => {
+      setPage(Math.floor(Math.random() * 20));
+      const resp = await DictionaryAPI.getWordsArray(page, difficulty + 1);
+      props.changeGameMode(resp);
+    };
+    changeDif();
   }, [difficulty]);
 
   return (
