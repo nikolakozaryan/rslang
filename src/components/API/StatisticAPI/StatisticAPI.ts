@@ -82,15 +82,18 @@ const UserStatistic: IStatistic = {
             const scoreNew = scoreObject;
             const scoreOld = propExist[Object.keys(propNew)[0]];
             if (scoreOld === undefined) {
+              console.log('here');
               const sumScore = scoreNew;
               const newObjectScore = { [key]: sumScore };
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
             } else if (scoreNew === scoreOld) {
+              console.log('here2');
               const newObjectScore: Data = { [key]: scoreOld };
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
-            } else {
+            } else if (scoreNew !== scoreOld) {
+              console.log('here3');
               const amount = objectExist.optional.gamesAmoutSprint;
               const amountN = amount[Object.keys(amount)[0]];
               const oldScoreAll = scoreOld * (amountN - 1);
@@ -121,7 +124,7 @@ const UserStatistic: IStatistic = {
               const newObjectScore: Data = { [key]: scoreOld };
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
-            } else {
+            } else if (scoreNew !== scoreOld) {
               const sumScore = scoreOld + scoreNew;
               console.log(sumScore, scoreOld, scoreNew, 'gameau');
               const amount = objectExist.optional.gamesAmoutAudio;

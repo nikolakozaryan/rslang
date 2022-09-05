@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card/Card';
 import classes from './StatisticToday.module.scss';
 import GameStat from './GameStat/GameStat';
@@ -17,30 +17,37 @@ const StatisticToday = () => {
   const [correctAudio, setCorrectAudio] = useState(0);
   const [rowSprint, setRowSprint] = useState(0);
   const [rowAudio, setRowAudio] = useState(0);
+  const [sum, setSum] = useState(0);
 
-  if (userDate) {
-    const objectWords = async () => {
-      const result = await LearnedWordsAPI.getLearnedWords(userDate.id, userDate.token);
-      console.log(result, 'result');
-      if (result.optional.learnedWordsNumberAudio && result.optional.learnedWordsNumberSprint) {
-        setAmountSprint(
-          Number(result.optional.learnedWordsNumberSprint[Object.keys(result.optional.learnedWordsNumberSprint)[0]])
-        );
-        setAmountAudio(
-          Number(result.optional.learnedWordsNumberAudio[Object.keys(result.optional.learnedWordsNumberAudio)[0]])
-        );
-      }
-    };
-    const objectStat = async () => {
-      const result = await UserStatistic.getStatistic(userDate.id, userDate.token);
-      setRowAudio(Number(result.optional.audioPointsInARow[Object.keys(result.optional.audioPointsInARow)[0]]));
-      setRowSprint(Number(result.optional.sprintPointsInARow[Object.keys(result.optional.sprintPointsInARow)[0]]));
-      setCorrectAudio(Number(result.optional.gamesScoreAudio[Object.keys(result.optional.gamesScoreAudio)[0]]));
-      setCorrectSprint(Number(result.optional.gamesScoreSprint[Object.keys(result.optional.gamesScoreSprint)[0]]));
-    };
-    objectWords();
-    objectStat();
-  }
+  let a: number;
+  let b: number;
+
+  useEffect(() => {
+    if (userDate) {
+      const objectWords = async () => {
+        const result = await LearnedWordsAPI.getLearnedWords(userDate.id, userDate.token);
+        console.log(result, 'result');
+        if (result.optional.learnedWordsNumberAudio && result.optional.learnedWordsNumberSprint) {
+          setAmountSprint(
+            Number(result.optional.learnedWordsNumberSprint[Object.keys(result.optional.learnedWordsNumberSprint)[0]])
+          );
+          setAmountAudio(
+            Number(result.optional.learnedWordsNumberAudio[Object.keys(result.optional.learnedWordsNumberAudio)[0]])
+          );
+        }
+      };
+      const objectStat = async () => {
+        const result = await UserStatistic.getStatistic(userDate.id, userDate.token);
+        setRowAudio(Number(result.optional.audioPointsInARow[Object.keys(result.optional.audioPointsInARow)[0]]));
+        setRowSprint(Number(result.optional.sprintPointsInARow[Object.keys(result.optional.sprintPointsInARow)[0]]));
+        setCorrectAudio(Number(result.optional.gamesScoreAudio[Object.keys(result.optional.gamesScoreAudio)[0]]));
+        setCorrectSprint(Number(result.optional.gamesScoreSprint[Object.keys(result.optional.gamesScoreSprint)[0]]));
+        setSum(Number((((correctSprint + correctAudio) / 2) * 100).toFixed(2)));
+      };
+      objectWords();
+      objectStat();
+    }
+  }, [userDate]);
 
   return (
     <div className={classes.container}>
@@ -49,7 +56,7 @@ const StatisticToday = () => {
           <StatWords amount={amountSprint + amountAudio} />
         </Card>
         <Card type={'statisticMedium'}>
-          <ProgressBar progress={Number((((correctSprint + correctAudio) / 2) * 100).toFixed(2))} sprint={true} />
+          <ProgressBar progress={sum} sprint={true} />
         </Card>
       </div>
       <div className={classes.right}>
