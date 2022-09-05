@@ -10,10 +10,10 @@ const UserStatistic: IStatistic = {
     learnedWords: number,
     sprintPointsInARow: Data,
     audioPointsInARow: Data,
-    sprintCorrectAnswers: Data,
-    audioCorrectAnswers: Data,
-    learnedSprint: Data,
-    learnedAudio: Data,
+    // sprintCorrectAnswers: Data,
+    // audioCorrectAnswers: Data,
+    // learnedSprint: Data,
+    // learnedAudio: Data,
     gamesAmoutSprint: Data,
     gamesAmoutAudio: Data,
     gamesScoreSprint: Data,
@@ -29,10 +29,10 @@ const UserStatistic: IStatistic = {
       optional: {
         sprintPointsInARow,
         audioPointsInARow,
-        sprintCorrectAnswers,
-        audioCorrectAnswers,
-        learnedSprint,
-        learnedAudio,
+        // sprintCorrectAnswers,
+        // audioCorrectAnswers,
+        // learnedSprint,
+        // learnedAudio,
         gamesAmoutSprint,
         gamesAmoutAudio,
         gamesScoreSprint,
@@ -172,26 +172,26 @@ const UserStatistic: IStatistic = {
             break;
           }
 
-          case 'sprintCorrectAnswers':
-          case 'audioCorrectAnswers': {
-            const key: keyof Data = Object.keys(propNew)[0];
-            const scoreObject: Data = propNew[key as keyof typeof propNew];
-            const scoreNew = scoreObject;
-            const scoreOld = propExist[Object.keys(propNew)[0]];
-            if (scoreOld === undefined) {
-              const sumScore = scoreNew;
-              const newObjectScore = { [key]: sumScore };
-              const assign = { ...propExist, ...newObjectScore };
-              copy.body.optional[item] = assign;
-            } else {
-              const sumScore = scoreOld + scoreNew;
-              const newObjectScore: Data = { [key]: sumScore };
-              const assign = { ...propExist, ...newObjectScore };
-              copy.body.optional[item] = assign;
-            }
+          // case 'sprintCorrectAnswers':
+          // case 'audioCorrectAnswers': {
+          //   const key: keyof Data = Object.keys(propNew)[0];
+          //   const scoreObject: Data = propNew[key as keyof typeof propNew];
+          //   const scoreNew = scoreObject;
+          //   const scoreOld = propExist[Object.keys(propNew)[0]];
+          //   if (scoreOld === undefined) {
+          //     const sumScore = scoreNew;
+          //     const newObjectScore = { [key]: sumScore };
+          //     const assign = { ...propExist, ...newObjectScore };
+          //     copy.body.optional[item] = assign;
+          //   } else {
+          //     const sumScore = scoreOld + scoreNew;
+          //     const newObjectScore: Data = { [key]: sumScore };
+          //     const assign = { ...propExist, ...newObjectScore };
+          //     copy.body.optional[item] = assign;
+          //   }
 
-            break;
-          }
+          //   break;
+          // }
           default: {
             console.log('default');
             break;

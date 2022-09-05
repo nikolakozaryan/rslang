@@ -232,8 +232,10 @@ const SprintGame = (props: {
           let count = 0;
           const data = await LearnedWordsAPI.getLearnedWords(id, token);
           const server = data.optional.learnedWords.split(' ');
-          const servercount = data.optional.learnedWordsNumber as Data;
-          const countnew = servercount[Object.keys(servercount)[0]] as number;
+          const servercountsprint = data.optional.learnedWordsNumberSprint as Data;
+          const servercountaudio = data.optional.learnedWordsNumberAudio as Data;
+          const countnew = servercountsprint[Object.keys(servercountsprint)[0]] as number;
+          const countnewaudio = servercountaudio[Object.keys(servercountaudio)[0]] as number;
           learned.map((item) => {
             if (!server.includes(item.word)) {
               server.push(item.word);
@@ -244,9 +246,10 @@ const SprintGame = (props: {
           console.log(data, 'daataaaaaaaa');
           const date = new Date().setHours(0, 0, 0);
           const WN = { [date]: count + countnew };
+          const WNA = { [date]: countnewaudio };
           console.log(WN, 'WN');
           const newLearnWords = async () => {
-            const lw = LearnedWordsAPI.createWord(id, token, 1, server, WN);
+            const lw = LearnedWordsAPI.createWord(id, token, 1, server, WN, WNA);
             await LearnedWordsAPI.updateUserLearnedWords(lw);
           };
           newLearnWords();

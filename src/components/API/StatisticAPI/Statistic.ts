@@ -7,10 +7,10 @@ type Options = {
     testFieldBoolean?: boolean;
     sprintPointsInARow: Data;
     audioPointsInARow: Data;
-    sprintCorrectAnswers: Data;
-    audioCorrectAnswers: Data;
-    learnedSprint: Data;
-    learnedAudio: Data;
+    // sprintCorrectAnswers: Data;
+    // audioCorrectAnswers: Data;
+    // learnedSprint: Data;
+    // learnedAudio: Data;
     gamesScoreSprint: Data;
     gamesScoreAudio: Data;
     gamesAmoutSprint: Data;

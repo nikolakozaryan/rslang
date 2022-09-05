@@ -9,7 +9,8 @@ export default interface ILearnWords {
     token: string,
     wpd: number,
     words: string[],
-    wordsNumber?: Data
+    wordsNumberSprint?: Data,
+    wordsNumberAudio?: Data
   ) => {
     userId: string;
     token: string;
@@ -18,6 +19,7 @@ export default interface ILearnWords {
       optional: {
         learnedWords: string;
         learnedWordsNumber?: Data;
+        wordsNumberAudio?: Data;
       };
     };
   };

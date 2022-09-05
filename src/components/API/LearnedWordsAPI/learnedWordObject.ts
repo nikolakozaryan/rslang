@@ -5,6 +5,7 @@ export default interface ILearnedObject {
   wordsPerDay: number;
   optional: {
     learnedWords: string;
-    learnedWordsNumber?: Data;
+    learnedWordsNumberSprint?: Data;
+    learnedWordsNumberAudio?: Data;
   };
 }

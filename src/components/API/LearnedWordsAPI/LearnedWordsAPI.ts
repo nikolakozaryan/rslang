@@ -5,14 +5,22 @@ import ILearnWords from './LearnedWordsInterface';
 import Data from '../StatisticAPI/IData';
 
 const LearnedWordsAPI: ILearnWords = {
-  createWord: (userId: string, token: string, wpd: number, words: string[], wordsNumber?: Data) => ({
+  createWord: (
+    userId: string,
+    token: string,
+    wpd: number,
+    words: string[],
+    wordsNumberSprint?: Data,
+    wordsNumberAudio?: Data
+  ) => ({
     userId,
     token,
     body: {
       wordsPerDay: wpd,
       optional: {
         learnedWords: words.join(' '),
-        learnedWordsNumber: wordsNumber,
+        learnedWordsNumberSprint: wordsNumberSprint,
+        learnedWordsNumberAudio: wordsNumberAudio,
       },
     },
   }),
@@ -46,7 +54,7 @@ const LearnedWordsAPI: ILearnWords = {
       console.log(error);
       const date = new Date().setHours(0, 0, 0);
       const WN = { [date]: 0 };
-      const words = LearnedWordsAPI.createWord(id, token, 1, ['words'], WN);
+      const words = LearnedWordsAPI.createWord(id, token, 1, ['words'], WN, WN);
       LearnedWordsAPI.updateUserLearnedWords(words);
       const rawResponse = await fetch(`${SERVER}/users/${id}/settings`, {
         method: 'GET',

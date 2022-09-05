@@ -8,7 +8,8 @@ interface LearnedWord {
     wordsPerDay: number;
     optional: {
       learnedWords: string;
-      learnedWordsNumber?: Data;
+      learnedWordsNumberSprint?: Data;
+      learnedWordsNumberAudio?: Data;
     };
   };
 }
