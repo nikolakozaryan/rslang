@@ -30,7 +30,12 @@ body {
 
 :global(.variant) {
   transition: background 0.5s;
+
   &:hover {
     background: $button-color;
   }
+}
+
+:global(.variant_active) {
+  background: $button-color;
 }

@@ -10,29 +10,31 @@ const WordsSummary = ({ error, correct }: ISummary) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.test}>
       <div onClick={handler} className={classes.arrow} />
-      {error.length ? (
-        <>
-          <SectionHeader type={'error'} amount={error.length}></SectionHeader>
-          {error.map((word) => (
-            <SectionItem key={word.id} word={word} />
-          ))}
-          {!correct.length ? <div className={classes.divider}></div> : ''}
-        </>
-      ) : (
-        ''
-      )}
-      {correct.length ? (
-        <>
-          <SectionHeader type={'correct'} amount={correct.length}></SectionHeader>
-          {correct.map((word) => (
-            <SectionItem key={word.id} word={word} />
-          ))}
-        </>
-      ) : (
-        ''
-      )}
+      <div className={classes.container}>
+        {error.length ? (
+          <>
+            <SectionHeader type={'error'} amount={error.length}></SectionHeader>
+            {error.map((word) => (
+              <SectionItem key={word.id} word={word} />
+            ))}
+            {correct.length ? <div className={classes.divider}></div> : ''}
+          </>
+        ) : (
+          ''
+        )}
+        {correct.length ? (
+          <>
+            <SectionHeader type={'correct'} amount={correct.length}></SectionHeader>
+            {correct.map((word) => (
+              <SectionItem key={word.id} word={word} />
+            ))}
+          </>
+        ) : (
+          ''
+        )}
+      </div>
     </div>
   );
 };

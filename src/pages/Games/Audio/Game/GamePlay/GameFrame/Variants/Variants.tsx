@@ -73,10 +73,12 @@ const Variants = ({
 
   useEffect(() => {
     const elements = document.querySelectorAll('.variant');
-    elements.forEach((element, index) => {
-      const variantElement = element as HTMLDivElement;
-      variantElement.removeAttribute('style');
-      if (index === option) variantElement.style.background = '#ffcf0b';
+
+    elements.forEach((item, index) => {
+      (item as HTMLDivElement).classList.remove('variant_active');
+      if (index === option) {
+        (item as HTMLDivElement).classList.add('variant_active');
+      }
     });
   }, [option]);
 
@@ -117,7 +119,7 @@ const Variants = ({
       setCorrect([result?.word, ...correct]);
       curStreak = streak + 1;
     } else {
-      setError([result!.word, ...error]);
+      setError([(result as IResult).word, ...error]);
       curStreak = 0;
     }
     setStreak(curStreak);

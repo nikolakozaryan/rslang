@@ -4,8 +4,9 @@ import Word from '../../../../components/API/DictionaryAPI/Word';
 import Description from './Description/Description';
 import GamePlay from './GamePlay/GamePlay';
 import DictionaryAPI from '../../../../components/API/DictionaryAPI/DictionaryAPI';
+import IAudio from '../Interface';
 
-const Game = () => {
+const Game = ({ setPoints, setAmount, setCorrect }: IAudio) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSettled, setIsSettled] = useState(false);
   const [difficultyLevel, setDifficultyLevel] = useState(0);
@@ -27,7 +28,7 @@ const Game = () => {
   return !(isLoading && isSettled) ? (
     <Description setDifficultyLevel={setDifficultyLevel} setIsSettled={setIsSettled} />
   ) : (
-    <GamePlay words={words} />
+    <GamePlay words={words} setPoints={setPoints} setAmount={setAmount} setCorrect={setCorrect} />
   );
 };
 

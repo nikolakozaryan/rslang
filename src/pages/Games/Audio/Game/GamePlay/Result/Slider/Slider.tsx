@@ -13,7 +13,7 @@ const Slider = ({ error, correct, points }: ISlider) => {
     <div className={classes.slider__container}>
       <div className={`inner ${classes.inner}`}>
         <Statistics percentage={percentage} correctAmount={correctAmount} points={points} />
-        <WordsSummary error={error} correct={correct} />;
+        <WordsSummary error={error} correct={correct} />
       </div>
     </div>
   );

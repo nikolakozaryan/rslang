@@ -106,7 +106,16 @@ const App = (): JSX.Element => {
                 />
               }
             />
-            <Route path="/audio" element={<Audio />} />
+            <Route
+              path="/audio"
+              element={
+                <Audio
+                  setPoints={setAudioPointsInARow}
+                  setAmount={setGamesAmoutAudio}
+                  setCorrect={setGamesScoreAudio}
+                />
+              }
+            />
             <Route
               path="/"
               element={

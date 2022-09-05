@@ -28,14 +28,10 @@
   position: absolute;
   top: 60%;
   right: 0;
-  transform: translateY(-50);
+  transform: translateY(-50%);
   height: 3rem;
   width: 2rem;
   cursor: pointer;
   background: url('../../../../../../../../assets/icons/arrow-right.svg') no-repeat center / contain;
   transition: 0.5s;
-
-  &:active {
-    transform: scale(0.85);
-  }
 }
