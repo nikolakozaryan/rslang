@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classes from './Logo.module.scss';
 
 const Logo = () => (
-  <div className={classes.logo}>
+  <Link to="/" className={classes.logo}>
     <img src="../../assets/icons/logo.svg" alt="logo" />
     <h5>RSLang</h5>
-  </div>
+  </Link>
 );
 
 export default Logo;

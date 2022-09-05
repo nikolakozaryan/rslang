@@ -13,12 +13,28 @@ import UserStatistic from './components/API/StatisticAPI/StatisticAPI';
 import DictionaryAPI from './components/API/DictionaryAPI/DictionaryAPI';
 import LearnedWordsAPI from './components/API/LearnedWordsAPI/LearnedWordsAPI';
 import Main from './pages/Main/Main';
+import Entrance from './pages/Entrance/Entrance';
+import ApplicationAccessContext from './context/context';
+import Registration from './pages/Entrance/Registration/Registration';
+import Authorization from './pages/Entrance/Authorization/Authorization';
+import getUserData from './common/getUserData';
 // sprintCorrectAnswers: number,
 //     audioCorrectAnswers: number,
 //     learnedSprint: number,
 // learnedAudio: number,
 const App = (): JSX.Element => {
   const [sprintArray, setSprintArray] = useState<Word[]>([]);
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+
+  const userData = getUserData();
+  console.log(userData);
+
+  useEffect(() => {
+    const result = getUserData();
+    if (result) {
+      setIsSignedIn(true);
+    }
+  }, []);
 
   // learned words object - API  {id: word} x
   // stategame - false => learned.filter set???
@@ -38,27 +54,27 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const user = UserAPI.createUserObject('johns', 'qwertyu@mail.ru', 'qwertyu123');
-      // const userc = UserAPI.createUser(user);
-      const userS = await UserAPI.signInUser(user);
       const time = new Date().setHours(0, 0, 0, 0).toString();
-      const stat = UserStatistic.createStatistic(
-        userS.userId,
-        userS.token,
-        0,
-        { [time]: sprintPointsInARow },
-        { [time]: audioPointsInARow },
-        { [time]: sprintCorrectAnswers },
-        { [time]: audioCorrectAnswers },
-        { [time]: learnedSprint },
-        { [time]: learnedAudio },
-        { [time]: gamesAmoutSprint },
-        { [time]: gamesAmoutAudio },
-        { [time]: gamesScoreSprint },
-        { [time]: gamesScoreAudio }
-      );
-      const updstat = await UserStatistic.updateUserStatistic(stat);
-      console.log(updstat);
+      if (userData) {
+        const stat = UserStatistic.createStatistic(
+          userData.id,
+          userData.token,
+          0,
+          { [time]: sprintPointsInARow },
+          { [time]: audioPointsInARow },
+          { [time]: sprintCorrectAnswers },
+          { [time]: audioCorrectAnswers },
+          { [time]: learnedSprint },
+          { [time]: learnedAudio },
+          { [time]: gamesAmoutSprint },
+          { [time]: gamesAmoutAudio },
+          { [time]: gamesScoreSprint },
+          { [time]: gamesScoreAudio }
+        );
+
+        const updstat = await UserStatistic.updateUserStatistic(stat);
+        console.log(updstat);
+      }
     };
 
     fetchData().catch(console.error);
@@ -70,47 +86,65 @@ const App = (): JSX.Element => {
   };
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/vocabulary"
-            element={
-              <RouteComponent>
-                <Vocabulary />
-              </RouteComponent>
-            }
-          />
-          <Route
-            path="/statistic"
-            element={
-              <RouteComponent>
-                <Statistic />
-              </RouteComponent>
-            }
-          />
-          <Route path="/games" element={<StartingPageSprint changeGameMode={changeGameMode} />} />
-          <Route
-            path="/sprintGame"
-            element={
-              <SprintGame
-                array={sprintArray}
-                setPoints={setSprintPointsInARow}
-                setLearnedStat={setLearnedSprint}
-                setAmount={setGamesAmoutSprint}
-                setCorrect={setGamesScoreSprint}
-              />
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <RouteComponent>
-                <Main />
-              </RouteComponent>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+      <ApplicationAccessContext.Provider value={{ isSignedIn, setIsSignedIn }}>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/vocabulary"
+              element={
+                <RouteComponent>
+                  <Vocabulary />
+                </RouteComponent>
+              }
+            />
+            <Route
+              path="/statistic"
+              element={
+                <RouteComponent>
+                  <Statistic />
+                </RouteComponent>
+              }
+            />
+            <Route path="/games" element={<StartingPageSprint changeGameMode={changeGameMode} />} />
+            <Route
+              path="/sprintGame"
+              element={
+                <SprintGame
+                  array={sprintArray}
+                  setPoints={setSprintPointsInARow}
+                  setLearnedStat={setLearnedSprint}
+                  setAmount={setGamesAmoutSprint}
+                  setCorrect={setGamesScoreSprint}
+                />
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <RouteComponent>
+                  <Main />
+                </RouteComponent>
+              }
+            />
+            <Route
+              path="/registration"
+              element={
+                <Entrance>
+                  <Registration />
+                </Entrance>
+              }
+            />
+            <Route
+              path="/authorization"
+              element={
+                <Entrance>
+                  <Authorization />
+                </Entrance>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </ApplicationAccessContext.Provider>
     </>
   );
 };

@@ -9,6 +9,7 @@ import CounterGame from '../CounterGame/CounterGame';
 import LearnedWordsAPI from '../../../components/API/LearnedWordsAPI/LearnedWordsAPI';
 import UserAPI from '../../../components/API/UsersAPI/UsersAPI';
 import Data from '../../../components/API/StatisticAPI/IData';
+import getUserData from '../../../common/getUserData';
 
 const SprintGame = (props: {
   array: Word[];
@@ -219,13 +220,11 @@ const SprintGame = (props: {
   };
 
   useEffect(() => {
-    if (gameStage === false) {
-      const user = UserAPI.createUserObject('johns', 'qwertyu@mail.ru', 'qwertyu123');
-
+    const userData = getUserData();
+    if (gameStage === false && userData) {
       const sign = async () => {
-        const userS = await UserAPI.signInUser(user);
-        const id = userS.userId;
-        const { token } = userS;
+        const { id } = userData;
+        const { token } = userData;
         props.setPoints(pointInARowStat);
         props.setAmount(1);
         props.setCorrect(learned.length / 20);

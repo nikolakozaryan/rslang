@@ -1,13 +1,7 @@
 import SERVER from '../../../common/constants/serverConst';
-import User from './User';
-import IUser from './UserInterface';
+import IUser, { CreateUserPayload, SignInUserPayload, UpdateUserPayload } from './UserInterface';
 
 const UserAPI: IUser = {
-  createUserObject: (name: string, email: string, password: string) => ({
-    name,
-    email,
-    password,
-  }),
   deleteUser: async (id: string, token: string) => {
     const rawResponse = await fetch(`${SERVER}/users/${id}`, {
       method: 'DELETE',
@@ -21,7 +15,8 @@ const UserAPI: IUser = {
 
     return content;
   },
-  updateUser: async (id: string, token: string, user: User) => {
+
+  updateUser: async (id: string, token: string, user: UpdateUserPayload) => {
     const rawResponse = await fetch(`${SERVER}/users/${id}`, {
       method: 'PUT',
       headers: {
@@ -35,7 +30,8 @@ const UserAPI: IUser = {
 
     return content;
   },
-  createUser: async (user: User) => {
+
+  createUser: async (user: CreateUserPayload) => {
     const rawResponse = await fetch(`${SERVER}/users`, {
       method: 'POST',
       headers: {
@@ -44,10 +40,14 @@ const UserAPI: IUser = {
       },
       body: JSON.stringify(user),
     });
-    const content = await rawResponse.json();
 
-    return content;
+    if (rawResponse.ok) {
+      return rawResponse.json();
+    }
+
+    throw new Error('Не удалось создать пользователя!');
   },
+
   getUser: async (id: string, token: string) => {
     const rawResponse = await fetch(`${SERVER}/users/${id}`, {
       method: 'GET',
@@ -61,6 +61,7 @@ const UserAPI: IUser = {
 
     return content;
   },
+
   getNewUserToken: async (id: string, token: string) => {
     const rawResponse = await fetch(`${SERVER}/users/${id}/tokens`, {
       method: 'GET',
@@ -74,7 +75,8 @@ const UserAPI: IUser = {
 
     return content;
   },
-  signInUser: async (user: User) => {
+
+  signInUser: async (user: SignInUserPayload) => {
     const rawResponse = await fetch(`${SERVER}/signin`, {
       method: 'POST',
       headers: {
@@ -83,8 +85,12 @@ const UserAPI: IUser = {
       },
       body: JSON.stringify(user),
     });
-    const content = await rawResponse.json();
-    return content;
+
+    if (rawResponse.ok) {
+      return rawResponse.json();
+    }
+
+    throw new Error('Не удалось войти!');
   },
 };
 
