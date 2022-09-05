@@ -8,15 +8,10 @@ export default interface IStatistic {
     learnedWords: number,
     sprintPointsInARow: Data,
     audioPointsInARow: Data,
-    // sprintCorrectAnswers: Data,
-    // audioCorrectAnswers: Data,
-    // learnedSprint: Data,
-    // learnedAudio: Data,
     gamesAmoutSprint: Data,
     gamesAmoutAudio: Data,
     gamesScoreSprint: Data,
     gamesScoreAudio: Data,
-
     testFieldString?: string,
     testFieldBoolean?: boolean
   ) => Statistic;

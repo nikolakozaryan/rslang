@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Vocabulary from './pages/Vocabulary/Vocabulary';
 import RouteComponent from './components/RouteComponent/RouteComponent';
 import Statistic from './pages/Statistic/Statistic';
+import Audio from './pages/Games/Audio/Audio';
 import './common/style/index.scss';
 import StartingPageSprint from './pages/Games/SprintGame/StartingPageSprint/StartingPageSprint';
 import SprintGame from './pages/Games/SprintGame/SprintGame/SprintGame';
@@ -85,7 +86,14 @@ const App = (): JSX.Element => {
                 </RouteComponent>
               }
             />
-            <Route path="/games" element={<Games/>} />
+            <Route
+              path="/games"
+              element={
+                <RouteComponent>
+                  <Games />
+                </RouteComponent>
+              }
+            />
             <Route path="/Sprint" element={<StartingPageSprint changeGameMode={changeGameMode} />} />
             <Route
               path="/sprintGame"
@@ -95,6 +103,16 @@ const App = (): JSX.Element => {
                   setPoints={setSprintPointsInARow}
                   setAmount={setGamesAmoutSprint}
                   setCorrect={setGamesScoreSprint}
+                />
+              }
+            />
+            <Route
+              path="/audio"
+              element={
+                <Audio
+                  setPoints={setAudioPointsInARow}
+                  setAmount={setGamesAmoutAudio}
+                  setCorrect={setGamesScoreAudio}
                 />
               }
             />
