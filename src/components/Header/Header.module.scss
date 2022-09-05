@@ -1,12 +1,13 @@
 @import '../../common/style/abstract/_variables.scss';
 
 .header {
-  justify-content: center;
+  width: 100%;
 }
 
 .container {
+  padding: 4.5rem 0;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -19,7 +20,6 @@
   a {
     text-decoration: none;
     position: relative;
-    width: 6rem;
     font-size: 1.8rem;
     line-height: 2.2rem;
     color: #082143;

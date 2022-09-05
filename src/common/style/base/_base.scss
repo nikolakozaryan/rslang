@@ -21,11 +21,7 @@ body {
 
 :global(#root) {
   max-width: 100%;
-  margin: 0 auto;
   min-height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 4rem;
 }
 
 :global(.variant) {
