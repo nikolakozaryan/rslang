@@ -54,6 +54,7 @@ const App = (): JSX.Element => {
           { [time]: gamesScoreAudio }
         );
         const updstat = await UserStatistic.updateUserStatistic(stat);
+        console.log(updstat, 'upd');
       }
     };
 

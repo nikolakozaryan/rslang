@@ -10,10 +10,6 @@ const UserStatistic: IStatistic = {
     learnedWords: number,
     sprintPointsInARow: Data,
     audioPointsInARow: Data,
-    // sprintCorrectAnswers: Data,
-    // audioCorrectAnswers: Data,
-    // learnedSprint: Data,
-    // learnedAudio: Data,
     gamesAmoutSprint: Data,
     gamesAmoutAudio: Data,
     gamesScoreSprint: Data,
@@ -29,10 +25,6 @@ const UserStatistic: IStatistic = {
       optional: {
         sprintPointsInARow,
         audioPointsInARow,
-        // sprintCorrectAnswers,
-        // audioCorrectAnswers,
-        // learnedSprint,
-        // learnedAudio,
         gamesAmoutSprint,
         gamesAmoutAudio,
         gamesScoreSprint,
@@ -90,17 +82,29 @@ const UserStatistic: IStatistic = {
             const scoreNew = scoreObject;
             const scoreOld = propExist[Object.keys(propNew)[0]];
             if (scoreOld === undefined) {
+              console.log('here');
               const sumScore = scoreNew;
               const newObjectScore = { [key]: sumScore };
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
-            } else {
+            } else if (scoreNew === scoreOld) {
+              console.log('here2');
+              const newObjectScore: Data = { [key]: scoreOld };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            } else if (scoreNew !== scoreOld) {
+              console.log('here3');
               const amount = objectExist.optional.gamesAmoutSprint;
-              const amountN = amount[Object.keys(amount)[0]];
-              const oldScoreAll = scoreOld * (amountN + 1);
+              let amountN = amount[Object.keys(amount)[0]];
+              if (amountN - 1 <= 0) {
+                amountN += 1;
+              }
+              const oldScoreAll = scoreOld * (amountN - 1);
               const sumScore = oldScoreAll + scoreNew;
-              const result = Number((sumScore / (amountN + 1)).toFixed(2));
+              console.log(sumScore, scoreOld, scoreNew, 'gamesp');
+              const result = Number((sumScore / amountN).toFixed(2));
               const newObjectScore: Data = { [key]: result };
+              console.log(sumScore, scoreOld, scoreNew, 'gameau', amountN, result, newObjectScore, 'afetspr');
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
             }
@@ -109,26 +113,70 @@ const UserStatistic: IStatistic = {
           }
           case 'gamesScoreAudio': {
             const key: keyof Data = Object.keys(propNew)[0];
-            const scoreObject: Data = propNew[key as keyof typeof propNew];
+            const scoreObject = propNew[key as keyof typeof propNew];
             const scoreNew = scoreObject;
-
             const scoreOld = propExist[Object.keys(propNew)[0]];
-            if (!scoreOld) {
+            if (scoreOld === undefined) {
+              console.log('here');
               const sumScore = scoreNew;
               const newObjectScore = { [key]: sumScore };
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
-            } else {
-              const sumScore = scoreOld + scoreNew;
+            } else if (scoreNew === scoreOld) {
+              console.log('here2');
+              const newObjectScore: Data = { [key]: scoreOld };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            } else if (scoreNew !== scoreOld) {
+              console.log('here3');
               const amount = objectExist.optional.gamesAmoutAudio;
-              const result = sumScore / amount;
+              let amountN = amount[Object.keys(amount)[0]];
+              if (amountN - 1 <= 0) {
+                amountN += 1;
+              }
+              const oldScoreAll = scoreOld * (amountN - 1);
+              const sumScore = oldScoreAll + scoreNew;
+              console.log(sumScore, scoreOld, scoreNew, 'gamesp');
+              const result = Number((sumScore / amountN).toFixed(2));
               const newObjectScore: Data = { [key]: result };
+              console.log(sumScore, scoreOld, scoreNew, 'gameau', amountN, result, newObjectScore, 'afetspr');
               const assign = { ...propExist, ...newObjectScore };
               copy.body.optional[item] = assign;
             }
 
             break;
           }
+
+          // {
+          //   const key: keyof Data = Object.keys(propNew)[0];
+          //   const scoreObject: Data = propNew[key as keyof typeof propNew];
+          //   const scoreNew = scoreObject;
+
+          //   const scoreOld = propExist[Object.keys(propNew)[0]];
+          //   if (!scoreOld) {
+          //     const sumScore = scoreNew;
+          //     const newObjectScore = { [key]: sumScore };
+          //     const assign = { ...propExist, ...newObjectScore };
+          //     copy.body.optional[item] = assign;
+          //   } else if (scoreNew === scoreOld) {
+          //     const newObjectScore: Data = { [key]: scoreOld };
+          //     const assign = { ...propExist, ...newObjectScore };
+          //     copy.body.optional[item] = assign;
+          //   } else if (scoreNew !== scoreOld) {
+          //     const amount = objectExist.optional.gamesAmoutAudio;
+          //     const amountN = amount[Object.keys(amount)[0]];
+          //     const oldScoreAll = scoreOld * (amountN - 1);
+          //     const sumScore = oldScoreAll + scoreNew;
+          //     console.log(sumScore, scoreOld, scoreNew, 'gamesp');
+          //     const result = Number((sumScore / amountN).toFixed(2));
+          //     const newObjectScore: Data = { [key]: result };
+          //     console.log(sumScore, scoreOld, scoreNew, 'gameau', amountN, result, newObjectScore, 'afetspr');
+          //     const assign = { ...propExist, ...newObjectScore };
+          //     copy.body.optional[item] = assign;
+          //   }
+
+          //   break;
+          // }
           case 'gamesAmoutSprint':
           case 'gamesAmoutAudio': {
             const key: keyof Data = Object.keys(propNew)[0];
