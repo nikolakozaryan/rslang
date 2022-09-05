@@ -1,11 +1,10 @@
 @import '../../../../../../../common/style/abstract/_variables.scss';
 .header {
+  width: 110%;
   font: $h3-font;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-.headerH3 {
-  margin-right: 2rem;
 }
 .mistakesIndicatior,
 .learnedIndicator {

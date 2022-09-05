@@ -37,10 +37,11 @@ const LearnedWordsAPI: ILearnWords = {
     const content = await rawResponse.json();
     return content;
   },
-  getLearnedWords: async (id: string, token: string) => {
+  getLearnedWords: async (id: string, token: string, signal?: AbortSignal) => {
     try {
       const rawResponse = await fetch(`${SERVER}/users/${id}/settings`, {
         method: 'GET',
+        signal,
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -50,6 +51,12 @@ const LearnedWordsAPI: ILearnWords = {
       const content = await rawResponse.json();
       return content;
     } catch (error) {
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          throw error;
+        }
+      }
+
       const date = new Date().setHours(0, 0, 0);
       const WN = { [date]: 0 };
       const words = LearnedWordsAPI.createWord(id, token, 1, ['words'], WN, WN);

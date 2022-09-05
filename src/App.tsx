@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Vocabulary from './pages/Vocabulary/Vocabulary';
 import RouteComponent from './components/RouteComponent/RouteComponent';
 import Statistic from './pages/Statistic/Statistic';
+import Audio from './pages/Games/Audio/Audio';
 import './common/style/index.scss';
 import StartingPageSprint from './pages/Games/SprintGame/StartingPageSprint/StartingPageSprint';
 import SprintGame from './pages/Games/SprintGame/SprintGame/SprintGame';
@@ -36,7 +37,6 @@ const App = (): JSX.Element => {
   const [gamesAmoutAudio, setGamesAmoutAudio] = useState(0);
   const [gamesScoreSprint, setGamesScoreSprint] = useState(0);
   const [gamesScoreAudio, setGamesScoreAudio] = useState(0);
-  const [audioCorrectAnswers, setAudioCorrectAnswers] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -85,8 +85,15 @@ const App = (): JSX.Element => {
                 </RouteComponent>
               }
             />
-            <Route path="/gamess" element={<Games />} />
-            <Route path="/games" element={<StartingPageSprint changeGameMode={changeGameMode} />} />
+            <Route
+              path="/games"
+              element={
+                <RouteComponent>
+                  <Games />
+                </RouteComponent>
+              }
+            />
+            <Route path="/Sprint" element={<StartingPageSprint changeGameMode={changeGameMode} />} />
             <Route
               path="/sprintGame"
               element={
@@ -95,6 +102,16 @@ const App = (): JSX.Element => {
                   setPoints={setSprintPointsInARow}
                   setAmount={setGamesAmoutSprint}
                   setCorrect={setGamesScoreSprint}
+                />
+              }
+            />
+            <Route
+              path="/audio"
+              element={
+                <Audio
+                  setPoints={setAudioPointsInARow}
+                  setAmount={setGamesAmoutAudio}
+                  setCorrect={setGamesScoreAudio}
                 />
               }
             />
