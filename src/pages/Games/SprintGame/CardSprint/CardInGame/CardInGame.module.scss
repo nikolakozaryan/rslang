@@ -1,0 +1,29 @@
+.CardUpperPart {
+  gap: 2rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5rem;
+}
+.cotrolsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.arrows {
+  display: flex;
+  flex-direction: row;
+}
+.cotrolsContainer__arrow {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+.CardUpperPart {
+  display: flex;
+  justify-content: center;
+}
