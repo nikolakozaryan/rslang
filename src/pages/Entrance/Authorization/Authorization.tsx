@@ -86,8 +86,6 @@ const Authorization = () => {
 
       navigate('/');
       setIsSignedIn(true);
-
-      setLoading(false);
     } catch (error: unknown) {
       if (error instanceof Error) {
         setRegistrationError(error.message);
@@ -95,6 +93,8 @@ const Authorization = () => {
         setRegistrationError('Неизвестная ошибка');
         console.log(error);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
