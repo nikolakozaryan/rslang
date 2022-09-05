@@ -85,8 +85,8 @@ const App = (): JSX.Element => {
                 </RouteComponent>
               }
             />
-            <Route path="/games" element={<Games/>} />
-            <Route path="/Sprint" element={<StartingPageSprint changeGameMode={changeGameMode} />} />
+            <Route path="/gamess" element={<Games />} />
+            <Route path="/games" element={<StartingPageSprint changeGameMode={changeGameMode} />} />
             <Route
               path="/sprintGame"
               element={
