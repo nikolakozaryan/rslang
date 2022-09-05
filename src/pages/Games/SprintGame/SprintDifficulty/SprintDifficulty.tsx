@@ -11,8 +11,8 @@ const SprintDifficulty = (props: { change: (difficultyLevel: number) => void }) 
     <div className={classes.section}>
       <h3 className={classes.header}>Выберите уровень:</h3>
       <div className={classes.container}>
-        {DIFFICULTY.map((item) => (
-          <Difficulty difficulty={item.level} change={props.change} id={item.id} activeChange={setActive} />
+        {DIFFICULTY.map((item, index) => (
+          <Difficulty difficulty={item.level} change={props.change} id={item.id} activeChange={setActive} key={index} />
         ))}
       </div>
 
