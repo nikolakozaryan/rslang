@@ -217,7 +217,7 @@ const SprintGame = (props: {
         const { token } = userData;
         props.setPoints(pointInARowStat);
         props.setAmount(1);
-        props.setCorrect(learned.length / 20);
+        props.setCorrect(Number((learned.length / 20).toFixed(2)));
         const resp = async () => {
           let count = 0;
           const data = await LearnedWordsAPI.getLearnedWords(id, token);

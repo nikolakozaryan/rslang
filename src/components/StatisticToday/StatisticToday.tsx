@@ -8,8 +8,6 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 import StatWords from './StatWords/StatWords';
 import UserStatistic from '../API/StatisticAPI/StatisticAPI';
 
-const userDate = getUserData();
-
 const StatisticToday = () => {
   const [amountSprint, setAmountSprint] = useState(0);
   const [amountAudio, setAmountAudio] = useState(0);
@@ -17,7 +15,7 @@ const StatisticToday = () => {
   const [correctAudio, setCorrectAudio] = useState(0);
   const [rowSprint, setRowSprint] = useState(0);
   const [rowAudio, setRowAudio] = useState(0);
-
+  const userDate = getUserData();
   if (userDate) {
     const objectWords = async () => {
       const result = await LearnedWordsAPI.getLearnedWords(userDate.id, userDate.token);
@@ -50,15 +48,15 @@ const StatisticToday = () => {
             <StatWords amount={amountSprint + amountAudio} />
           </Card>
           <Card type={'statisticMedium'}>
-            <ProgressBar progress={((correctSprint + correctAudio) / 2) * 100} sprint={true} />
+            <ProgressBar progress={Math.ceil(((correctSprint + correctAudio) / 2) * 100)} sprint={true} />
           </Card>
         </div>
         <div className={classes.right}>
           <Card type={'statisticLarge'}>
-            <GameStat learned={amountSprint} correct={correctSprint * 100} row={rowSprint} type="sprint" />
+            <GameStat learned={amountSprint} correct={Math.floor(correctSprint * 100)} row={rowSprint} type="sprint" />
           </Card>
           <Card type={'statisticLarge'}>
-            <GameStat learned={amountAudio} correct={correctAudio * 100} row={rowAudio} type="audio" />
+            <GameStat learned={amountAudio} correct={Math.floor(correctAudio * 100)} row={rowAudio} type="audio" />
           </Card>
         </div>
       </div>
