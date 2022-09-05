@@ -17,7 +17,6 @@ const Result = ({ correct, error, points, streak, setAmount, setCorrect, setPoin
       setPoints(streak);
       setAmount(1);
       setCorrect(correct.length / 20);
-      console.log(correct.length, 'correct');
       const resp = async () => {
         let count = 0;
         const data = await LearnedWordsAPI.getLearnedWords(id, token);
@@ -37,7 +36,6 @@ const Result = ({ correct, error, points, streak, setAmount, setCorrect, setPoin
         const date = new Date().setHours(0, 0, 0);
         const WordNumberSprint = { [date]: countnew };
         const WordNumberAudio = { [date]: count + countnewaudio };
-        console.log(countnew, countnewaudio, count);
         const newLearnWords = async () => {
           const lw = LearnedWordsAPI.createWord(id, token, 1, server, WordNumberSprint, WordNumberAudio);
           await LearnedWordsAPI.updateUserLearnedWords(lw);

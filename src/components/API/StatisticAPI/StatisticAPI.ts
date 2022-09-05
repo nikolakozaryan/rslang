@@ -113,7 +113,6 @@ const UserStatistic: IStatistic = {
             const scoreNew = scoreObject;
 
             const scoreOld = propExist[Object.keys(propNew)[0]];
-            console.log(scoreNew, scoreOld, key, item, 'score');
             if (!scoreOld) {
               const sumScore = scoreNew;
               const newObjectScore = { [key]: sumScore };

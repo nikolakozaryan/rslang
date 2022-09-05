@@ -53,7 +53,6 @@ const App = (): JSX.Element => {
           { [time]: gamesScoreSprint },
           { [time]: gamesScoreAudio }
         );
-        console.log(stat, gamesScoreAudio, 'stat');
         const updstat = await UserStatistic.updateUserStatistic(stat);
       }
     };
