@@ -6,8 +6,17 @@ import Word from '../../../components/API/DictionaryAPI/Word';
 // import array from './array';
 import DictionaryAPI from '../../../components/API/DictionaryAPI/DictionaryAPI';
 import CounterGame from '../CounterGame/CounterGame';
+import LearnedWordsAPI from '../../../components/API/LearnedWordsAPI/LearnedWordsAPI';
+import UserAPI from '../../../components/API/UsersAPI/UsersAPI';
+import Data from '../../../components/API/StatisticAPI/IData';
 
-const SprintGame = (props: { array: Word[]; setPoints: Dispatch<SetStateAction<number>> }) => {
+const SprintGame = (props: {
+  array: Word[];
+  setPoints: Dispatch<SetStateAction<number>>;
+  setLearnedStat: React.Dispatch<React.SetStateAction<number>>;
+  setAmount: React.Dispatch<React.SetStateAction<number>>;
+  setCorrect: React.Dispatch<React.SetStateAction<number>>;
+}) => {
   const emptyState = [
     [false, false],
     [false, false],
@@ -17,6 +26,10 @@ const SprintGame = (props: { array: Word[]; setPoints: Dispatch<SetStateAction<n
   const [gameStage, setGameStage] = useState(true);
 
   const [nextQ, setNextQ] = useState(0);
+
+  const [learnedWordsServer, setLearnedWordsServer] = useState<string[]>([]);
+
+  const [learnedCount, setLearnedCount] = useState(0);
 
   const backToGame = () => {
     setGameStage(!gameStage);
@@ -28,7 +41,7 @@ const SprintGame = (props: { array: Word[]; setPoints: Dispatch<SetStateAction<n
   const [mistakes, setMistakes]: [Word[], Dispatch<SetStateAction<Word[]>>] = useState<Word[]>([]);
   const [learned, setLearned]: [Word[], Dispatch<SetStateAction<Word[]>>] = useState<Word[]>([]);
 
-  const [timeleft, setTimeLeft] = useState(2 * 60);
+  const [timeleft, setTimeLeft] = useState(2 * 3);
 
   const [isCounting, setIsCounting] = useState(timeleft);
 
@@ -149,7 +162,6 @@ const SprintGame = (props: { array: Word[]; setPoints: Dispatch<SetStateAction<n
   };
 
   useEffect(() => {
-    console.log(ourAnswer, answer);
     getourGuess();
     if (nextQ !== 0) {
       if (pointNumber < 2) {
@@ -192,30 +204,7 @@ const SprintGame = (props: { array: Word[]; setPoints: Dispatch<SetStateAction<n
   }, [timeleft]);
 
   const refresh = (buttonAnswer: boolean) => {
-    // setourAnswer(buttonAnswer);
     setNextQ(nextQ + 1);
-    // if (pointNumber < 2) {
-    //   const newCount = pointNumber + 1;
-    //   setPointNumber(newCount);
-    //   if (answer === buttonAnswer) {
-    //     correctAnswer();
-    //   } else {
-    //     wrongAnswer();
-    //     const newArray = ArrayGame.slice();
-    //     const wrongWordIndex = ArrayGame.indexOf(wordGuess);
-    //     if (!mistakes.includes(wordGuess)) {
-    //       setMistakes([...mistakes, wordGuess]);
-    //     }
-    //   }
-    // } else {
-    //   setPointNumber(0);
-    //   if (answer === buttonAnswer) {
-    //     correctAnswer();
-    //     setScore(score + 10 * xScore);
-    //   } else {
-    //     wrongAnswer();
-    //   }
-    // }
   };
 
   document.onkeydown = (event) => {
@@ -229,11 +218,77 @@ const SprintGame = (props: { array: Word[]; setPoints: Dispatch<SetStateAction<n
     }
   };
 
-  // useEffect(() => {
-  //   if (learned.length + mistakes.length === props.array.length) {
-  //     console.log('end');
-  //   }
-  // }, [ArrayGame]);
+  useEffect(() => {
+    if (gameStage === false) {
+      const user = UserAPI.createUserObject('johns', 'qwertyu@mail.ru', 'qwertyu123');
+
+      const sign = async () => {
+        const userS = await UserAPI.signInUser(user);
+        const id = userS.userId;
+        const { token } = userS;
+        props.setPoints(pointInARowStat);
+        props.setAmount(1);
+        props.setCorrect(learned.length / 20);
+        const resp = async () => {
+          let count = 0;
+          const data = await LearnedWordsAPI.getLearnedWords(id, token);
+          const server = data.optional.learnedWords.split(' ');
+          const servercount = data.optional.learnedWordsNumber as Data;
+          const countnew = servercount[Object.keys(servercount)[0]] as number;
+          learned.map((item) => {
+            if (!server.includes(item.word)) {
+              server.push(item.word);
+              count += 1;
+            }
+            return item;
+          });
+          console.log(data, 'daataaaaaaaa');
+          const date = new Date().setHours(0, 0, 0);
+          const WN = { [date]: count + countnew };
+          console.log(WN, 'WN');
+          const newLearnWords = async () => {
+            const lw = LearnedWordsAPI.createWord(id, token, 1, server, WN);
+            await LearnedWordsAPI.updateUserLearnedWords(lw);
+          };
+          newLearnWords();
+        };
+        resp();
+        // } catch (error) {
+        //   const learnedFirst = learned.map((item) => item.word);
+        //   const lw = LearnedWordsAPI.createWord(id, token, 1, learnedFirst, 0);
+        //   console.log(lw, 'lw');
+        //   const newLearnWords = async () => {
+        //     await LearnedWordsAPI.updateUserLearnedWords(lw);
+        //   };
+        //   newLearnWords();
+        // } finally {
+        //   const data = await LearnedWordsAPI.getLearnedWords(id, token);
+        //   update(5);
+        // console.log(server.length - data.optional.learnedWords.split(' ').length, 'length');
+      };
+      // const datasSs = await LearnedWordsAPI.getLearnedWords(id, token);
+      // const server = datasSs.optional.learnedWords.split(' ');
+      // setLearnedWordsServer(server);
+      // learned.map((item) => {
+      //   if (!server.includes(item.word)) {
+      //     server.push(item.word);
+      //     count += 1;
+      //   }
+      //   return item;
+      // });
+      // const newLearnWords = async () => {
+      //   const lw = LearnedWordsAPI.createWord(id, token, 1, server);
+      //   await LearnedWordsAPI.updateUserLearnedWords(lw);
+      // };
+      // newLearnWords();
+
+      // setLearnedCount(count);
+      // console.log(count, learnedCount, 'cods');
+      // props.setLearnedStat(count);
+
+      sign();
+    }
+  }, [gameStage]);
 
   useEffect(() => {
     if (pointInARow === 3) {

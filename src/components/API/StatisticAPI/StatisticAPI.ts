@@ -14,6 +14,11 @@ const UserStatistic: IStatistic = {
     audioCorrectAnswers: Data,
     learnedSprint: Data,
     learnedAudio: Data,
+    gamesAmoutSprint: Data,
+    gamesAmoutAudio: Data,
+    gamesScoreSprint: Data,
+    gamesScoreAudio: Data,
+
     testFieldString?: string,
     testFieldBoolean?: boolean
   ) => ({
@@ -28,6 +33,11 @@ const UserStatistic: IStatistic = {
         audioCorrectAnswers,
         learnedSprint,
         learnedAudio,
+        gamesAmoutSprint,
+        gamesAmoutAudio,
+        gamesScoreSprint,
+        gamesScoreAudio,
+
         testFieldString,
         testFieldBoolean,
       },
@@ -48,31 +58,170 @@ const UserStatistic: IStatistic = {
     return content;
   },
   updateUserStatistic: async (object: Statistic) => {
-    const resp = await UserStatistic.getStatistic(object.userId, object.token);
-    const objectExist = Object.assign(resp);
-    const copy = Object.assign(object);
-    Object.keys(objectExist.optional).forEach((item: string) => {
-      const propExist = objectExist.optional[item];
-      const propNew = object.body.optional[item as keyof typeof object.body.optional] as object;
-      const assign = { ...propExist, ...propNew};
-      copy.body.optional[item] = assign;
-      // console.log(propExist, propNew, 'here', copy[item], copy[item as keyof typeof object.body.optional]);
-      // objectExist.optional[item] = Object.assign(propExist, propNew);
-      // console.log(objectExist.optional[item], 'whaawetawetawet');
-      // console.log(objectExist);
-    });
+    try {
+      const resp = await UserStatistic.getStatistic(object.userId, object.token);
+      const objectExist = Object.assign(resp);
+      const copy = Object.assign(object);
+      Object.keys(objectExist.optional).forEach((item: string) => {
+        const propExist = objectExist.optional[item];
+        const propNew = object.body.optional[item as keyof typeof object.body.optional] as object;
+        switch (item) {
+          case 'sprintPointsInARow':
+          case 'audioPointsInARow': {
+            const key: keyof Data = Object.keys(propNew)[0];
+            const scoreObject: Data = propNew[key as keyof typeof propNew];
+            const scoreOld = propExist[key];
+            if (scoreOld === undefined) {
+              const assign = { ...propExist, ...propNew };
+              copy.body.optional[item] = assign;
+            } else if (scoreObject >= scoreOld) {
+              const assign = { ...propExist, ...propNew };
+              copy.body.optional[item] = assign;
+            } else {
+              const assign = { ...propExist };
+              copy.body.optional[item] = assign;
+            }
 
-    const rawResponse = await fetch(`${SERVER}/users/${object.userId}/statistics`, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${object.token}`,
-      },
-      body: JSON.stringify(copy.body),
-    });
-    const content = await rawResponse.json();
-    return content;
+            break;
+          }
+          case 'gamesScoreSprint': {
+            const key: keyof Data = Object.keys(propNew)[0];
+            const scoreObject = propNew[key as keyof typeof propNew];
+            const scoreNew = scoreObject;
+            const scoreOld = propExist[Object.keys(propNew)[0]];
+            if (scoreOld === undefined) {
+              const sumScore = scoreNew;
+              const newObjectScore = { [key]: sumScore };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            } else {
+              const amount = objectExist.optional.gamesAmoutSprint;
+              const amountN = amount[Object.keys(amount)[0]];
+              const oldScoreAll = scoreOld * (amountN + 1);
+              const sumScore = oldScoreAll + scoreNew;
+              const result = Number((sumScore / (amountN + 1)).toFixed(2));
+              const newObjectScore: Data = { [key]: result };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            }
+
+            break;
+          }
+          case 'gamesScoreAudio': {
+            const key: keyof Data = Object.keys(propNew)[0];
+            const scoreObject: Data = propNew[key as keyof typeof propNew];
+            const scoreNew = scoreObject;
+
+            const scoreOld = propExist[Object.keys(propNew)[0]];
+            if (!scoreOld) {
+              const sumScore = scoreNew;
+              const newObjectScore = { [key]: sumScore };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            } else {
+              const sumScore = scoreOld + scoreNew;
+              const amount = objectExist.optional.gamesAmoutSprint;
+              const result = sumScore / amount;
+              const newObjectScore: Data = { [key]: result };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            }
+
+            break;
+          }
+          case 'gamesAmoutSprint':
+          case 'gamesAmoutAudio': {
+            const key: keyof Data = Object.keys(propNew)[0];
+            const scoreObject: Data = propNew[key as keyof typeof propNew];
+            const scoreNew = scoreObject;
+            const scoreOld = propExist[Object.keys(propNew)[0]];
+
+            if (scoreOld === undefined) {
+              const sumScore = scoreNew;
+              const newObjectScore = { [key]: sumScore };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            } else {
+              const sumScore = scoreOld + scoreNew;
+              const newObjectScore: Data = { [key]: sumScore };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            }
+
+            break;
+          }
+          case 'learnedSprint':
+          case 'learnedAudio': {
+            const key: keyof Data = Object.keys(propNew)[0];
+            const scoreObject: Data = propNew[key as keyof typeof propNew];
+            const scoreNew = scoreObject;
+            const scoreOld = propExist[Object.keys(propNew)[0]];
+            console.log(scoreNew, scoreOld, 'learned');
+            if (scoreOld === undefined) {
+              const sumScore = scoreNew;
+              const newObjectScore = { [key]: sumScore };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            } else {
+              const sumScore = scoreOld + scoreNew;
+              const newObjectScore: Data = { [key]: sumScore };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            }
+
+            break;
+          }
+
+          case 'sprintCorrectAnswers':
+          case 'audioCorrectAnswers': {
+            const key: keyof Data = Object.keys(propNew)[0];
+            const scoreObject: Data = propNew[key as keyof typeof propNew];
+            const scoreNew = scoreObject;
+            const scoreOld = propExist[Object.keys(propNew)[0]];
+            if (scoreOld === undefined) {
+              const sumScore = scoreNew;
+              const newObjectScore = { [key]: sumScore };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            } else {
+              const sumScore = scoreOld + scoreNew;
+              const newObjectScore: Data = { [key]: sumScore };
+              const assign = { ...propExist, ...newObjectScore };
+              copy.body.optional[item] = assign;
+            }
+
+            break;
+          }
+          default: {
+            console.log('default');
+            break;
+          }
+        }
+      });
+      const rawResponse = await fetch(`${SERVER}/users/${object.userId}/statistics`, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${object.token}`,
+        },
+        body: JSON.stringify(copy.body),
+      });
+      const content = await rawResponse.json();
+      return content;
+    } catch (error) {
+      const rawResponse = await fetch(`${SERVER}/users/${object.userId}/statistics`, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${object.token}`,
+        },
+        body: JSON.stringify(object.body),
+      });
+      const content = await rawResponse.json();
+      return content;
+    }
   },
 };
 

@@ -11,6 +11,10 @@ type Options = {
     audioCorrectAnswers: Data;
     learnedSprint: Data;
     learnedAudio: Data;
+    gamesScoreSprint: Data;
+    gamesScoreAudio: Data;
+    gamesAmoutSprint: Data;
+    gamesAmoutAudio: Data;
   };
 };
 type Statistic = {
