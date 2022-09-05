@@ -29,10 +29,10 @@ const Pagination = ({ setPage, page, accentColor }: IPagination) => {
       <li className={`${classes.pagination__item} ${page === 0 ? classes.disabled : ''}`} onClick={onPrevious}>
         <div className={`${classes.arrow} ${classes.left}`} />
       </li>
-      {paginationRange.map((pageNumber) => {
+      {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {
           return (
-            <li key={pageNumber} className={`${classes.pagination__item} ${classes.dots}`}>
+            <li key={index} className={`${classes.pagination__item} ${classes.dots}`}>
               &#8230;
             </li>
           );
@@ -40,6 +40,7 @@ const Pagination = ({ setPage, page, accentColor }: IPagination) => {
 
         return (
           <li
+            key={index}
             className={`${classes.pagination__item} ${pageNumber === page + 1 ? classes.selected : ''}  ${
               classes[`A${accentColor.slice(1)}`]
             }`}
