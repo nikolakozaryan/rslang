@@ -14,11 +14,23 @@ const Card: React.FC<ICard> = (props) => {
       className = `${classes.card} ${classes.cardOpportunity}`;
       break;
     }
+    case 'statisticSmall': {
+      className = `${classes.card} ${classes.cardStatisticSmall}`;
+      break;
+    }
+    case 'statisticMedium': {
+      className = `${classes.card} ${classes.cardStatisticMedium}`;
+      break;
+    }
+    case 'statisticLarge': {
+      className = `${classes.card} ${classes.cardStatisticLarge}`;
+      break;
+    }
     default: {
       className = `${classes.card} ${classes.cardGames}`;
       break;
     }
   }
-  return <div className={`${className} ${props.className}`}>{props.children}</div>;
+  return <div className={className}>{props.children}</div>;
 };
 export default Card;
