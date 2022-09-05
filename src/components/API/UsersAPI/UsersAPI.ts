@@ -44,6 +44,9 @@ const UserAPI: IUser = {
     if (rawResponse.ok) {
       return rawResponse.json();
     }
+    if (rawResponse.status === 417) {
+      throw new Error('Такой пользователь существует!');
+    }
 
     throw new Error('Не удалось создать пользователя!');
   },
@@ -88,6 +91,13 @@ const UserAPI: IUser = {
 
     if (rawResponse.ok) {
       return rawResponse.json();
+    }
+    if (rawResponse.status === 403) {
+      throw new Error('Неверный пароль!');
+    }
+
+    if (rawResponse.status === 404) {
+      throw new Error('Не удалось найти пользователя!');
     }
 
     throw new Error('Не удалось войти!');
