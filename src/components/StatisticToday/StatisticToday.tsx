@@ -42,24 +42,27 @@ const StatisticToday = () => {
   }
 
   return (
-    <div className={classes.container}>
-      <div className={classes.left}>
-        <Card type={'statisticSmall'}>
-          <StatWords amount={amountSprint + amountAudio} />
-        </Card>
-        <Card type={'statisticMedium'}>
-          <ProgressBar progress={((correctSprint + correctAudio) / 2) * 100} sprint={true} />
-        </Card>
+    <>
+      <h5 className={classes.header}>Статистика за сегодня</h5>
+      <div className={classes.container}>
+        <div className={classes.left}>
+          <Card type={'statisticSmall'}>
+            <StatWords amount={amountSprint + amountAudio} />
+          </Card>
+          <Card type={'statisticMedium'}>
+            <ProgressBar progress={((correctSprint + correctAudio) / 2) * 100} sprint={true} />
+          </Card>
+        </div>
+        <div className={classes.right}>
+          <Card type={'statisticLarge'}>
+            <GameStat learned={amountSprint} correct={correctSprint * 100} row={rowSprint} type="sprint" />
+          </Card>
+          <Card type={'statisticLarge'}>
+            <GameStat learned={amountAudio} correct={correctAudio * 100} row={rowAudio} type="audio" />
+          </Card>
+        </div>
       </div>
-      <div className={classes.right}>
-        <Card type={'statisticLarge'}>
-          <GameStat learned={amountSprint} correct={correctSprint * 100} row={rowSprint} type="sprint" />
-        </Card>
-        <Card type={'statisticLarge'}>
-          <GameStat learned={amountAudio} correct={correctAudio * 100} row={rowAudio} type="audio" />
-        </Card>
-      </div>
-    </div>
+    </>
   );
 };
 

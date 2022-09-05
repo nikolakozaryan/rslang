@@ -5,8 +5,6 @@ import classes from './StatisticsForAllTime.module.scss';
 import ILearnedObject from '../API/LearnedWordsAPI/learnedWordObject';
 
 const StatisticsForAllTime = () => {
-  //   const controller = new AbortController();
-
   const [newWordActive, setNewWordActive] = useState(true);
   const [userStatisticsPerDay, setUserStatisticsPerDay] = useState<IChartProps['wordCount']>([]);
 
@@ -59,7 +57,6 @@ const StatisticsForAllTime = () => {
           <button
             className={newWordActive ? classes.buttonActive : classes.button}
             onClick={() => {
-              //   controller.abort();
               setNewWordActive(true);
             }}
           >
@@ -70,7 +67,6 @@ const StatisticsForAllTime = () => {
           <button
             className={newWordActive ? classes.button : classes.buttonActive}
             onClick={() => {
-              //   controller.abort();
               setNewWordActive(false);
             }}
           >
