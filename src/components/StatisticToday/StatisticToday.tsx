@@ -33,7 +33,7 @@ const StatisticToday = () => {
     const objectStat = async () => {
       const result = await UserStatistic.getStatistic(userDate.id, userDate.token);
       setRowAudio(Number(result.optional.audioPointsInARow[Object.keys(result.optional.audioPointsInARow)[0]]));
-      setRowSprint(Number(result.optional.audioPointsInARow[Object.keys(result.optional.audioPointsInARow)[0]]));
+      setRowSprint(Number(result.optional.sprintPointsInARow[Object.keys(result.optional.sprintPointsInARow)[0]]));
       setCorrectAudio(Number(result.optional.gamesScoreAudio[Object.keys(result.optional.gamesScoreAudio)[0]]));
       setCorrectSprint(Number(result.optional.gamesScoreSprint[Object.keys(result.optional.gamesScoreSprint)[0]]));
     };
