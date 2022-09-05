@@ -37,7 +37,6 @@ const App = (): JSX.Element => {
   const [gamesAmoutAudio, setGamesAmoutAudio] = useState(0);
   const [gamesScoreSprint, setGamesScoreSprint] = useState(0);
   const [gamesScoreAudio, setGamesScoreAudio] = useState(0);
-  const [audioCorrectAnswers, setAudioCorrectAnswers] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
