@@ -1,8 +1,20 @@
+import Data from './IData';
+
 type Options = {
-  learnedWords: string;
+  learnedWords: number;
   optional: {
     testFieldString?: string;
     testFieldBoolean?: boolean;
+    sprintPointsInARow: Data;
+    audioPointsInARow: Data;
+    // sprintCorrectAnswers: Data;
+    // audioCorrectAnswers: Data;
+    // learnedSprint: Data;
+    // learnedAudio: Data;
+    gamesScoreSprint: Data;
+    gamesScoreAudio: Data;
+    gamesAmoutSprint: Data;
+    gamesAmoutAudio: Data;
   };
 };
 type Statistic = {
