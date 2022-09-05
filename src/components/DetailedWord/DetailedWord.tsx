@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Word from '../API/DictionaryAPI/Word';
 import classes from './DetailedWord.module.scss';
 import SERVER from '../../common/constants/serverConst';
+import useApplicationAccessContext from '../../hooks/useApplicationAccessContext';
 
 interface IWord {
   word: string;
@@ -10,6 +11,8 @@ interface IWord {
 const DetailedWord = ({ word }: IWord) => {
   const [translate, setTranslate] = useState(true);
   const wordObject: Word = JSON.parse(word);
+
+  const { isSignedIn } = useApplicationAccessContext();
 
   const playAudio = (type: string) => {
     const audio = document.querySelector(`.audio__${type}`) as HTMLAudioElement;
@@ -35,7 +38,7 @@ const DetailedWord = ({ word }: IWord) => {
 
       <div className={classes.word__container}>
         <div className={classes.word__word}>{wordObject.word}</div>
-        <div className={classes.play} onClick={() => playAudio('word')}></div>
+        <div className={classes.play} onClick={() => playAudio('word')} />
       </div>
 
       {translate ? <div className={classes.word__translate}>{wordObject.wordTranslate}</div> : ''}
@@ -44,12 +47,12 @@ const DetailedWord = ({ word }: IWord) => {
       <div className={classes.phrases}>
         <div className={classes.meaning}>
           <h5 className={classes.header}>Значение</h5>
-          <div onClick={() => playAudio('meaning')} className={`meaning ${classes.playable}`}></div>
+          <div onClick={() => playAudio('meaning')} className={`meaning ${classes.playable}`} />
           {translate ? <div>{wordObject.textMeaningTranslate}.</div> : ''}
         </div>
         <div className={classes.example}>
           <h5 className={classes.header}>Пример</h5>
-          <div onClick={() => playAudio('example')} className={`example ${classes.playable}`}></div>
+          <div onClick={() => playAudio('example')} className={`example ${classes.playable}`} />
           {translate ? <div>{wordObject.textExampleTranslate}.</div> : ''}
         </div>
       </div>
@@ -58,12 +61,12 @@ const DetailedWord = ({ word }: IWord) => {
         className={`${classes.icon} ${classes.translate}`}
         onClick={showTranslation}
         title="Показать/скрыть перевод"
-      ></div>
-      <div
-        className={`${classes.icon} ${classes.add}`}
-        onClick={addToDifficult}
-        title='Добавить в "Сложные слова"'
-      ></div>
+      />
+      {isSignedIn ? (
+        <div className={`${classes.icon} ${classes.add}`} onClick={addToDifficult} title='Добавить в "Сложные слова"' />
+      ) : (
+        ''
+      )}
       <audio className={`audio audio__word ${classes.audio}`} src={`${SERVER}/${wordObject.audio}`} />
       <audio className={`audio audio__meaning ${classes.audio}`} src={`${SERVER}/${wordObject.audioMeaning}`} />
       <audio className={`audio audio__example ${classes.audio}`} src={`${SERVER}/${wordObject.audioExample}`} />

@@ -15,8 +15,20 @@
   box-shadow: 0 0.4rem 1rem #e4d8cb80;
 
   .playable {
-    cursor: help;
+    position: relative;
+    cursor: pointer;
     margin-bottom: 1rem;
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 1.8rem;
+      left: -0.5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: url('../../assets/icons/sound.svg') no-repeat center / cover;
+      transform: translate(-100%, -100%);
+    }
   }
 
   .word {

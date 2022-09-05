@@ -6,9 +6,7 @@ import ToGames from './ToGames/ToGames';
 
 const Header = () => (
   <div className={classes.header}>
-    <Link className={classes.link} to={'/'}>
-      <Logo />
-    </Link>
+    <Logo />
     <Link to={'/games'}>
       <ToGames />
     </Link>
