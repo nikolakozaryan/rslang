@@ -60,7 +60,7 @@ const StatisticsForAllTime = () => {
               setNewWordActive(true);
             }}
           >
-            Количество новых слов
+            Игровой режим "Спринт"
           </button>
         </li>
         <li className={classes.item}>
@@ -70,7 +70,7 @@ const StatisticsForAllTime = () => {
               setNewWordActive(false);
             }}
           >
-            Количество изученных слов
+            Игровой режим "Аудиовызов"
           </button>
         </li>
       </ul>
