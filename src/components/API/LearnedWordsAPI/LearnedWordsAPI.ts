@@ -50,8 +50,6 @@ const LearnedWordsAPI: ILearnWords = {
       const content = await rawResponse.json();
       return content;
     } catch (error) {
-      console.log('we are here');
-      console.log(error);
       const date = new Date().setHours(0, 0, 0);
       const WN = { [date]: 0 };
       const words = LearnedWordsAPI.createWord(id, token, 1, ['words'], WN, WN);

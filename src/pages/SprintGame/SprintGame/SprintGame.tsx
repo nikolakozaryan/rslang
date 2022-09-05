@@ -245,11 +245,10 @@ const SprintGame = (props: {
           });
           console.log(data, 'daataaaaaaaa');
           const date = new Date().setHours(0, 0, 0);
-          const WN = { [date]: count + countnew };
-          const WNA = { [date]: countnewaudio };
-          console.log(WN, 'WN');
+          const WordNumberSprint = { [date]: count + countnew };
+          const WordNumberAudio = { [date]: countnewaudio };
           const newLearnWords = async () => {
-            const lw = LearnedWordsAPI.createWord(id, token, 1, server, WN, WNA);
+            const lw = LearnedWordsAPI.createWord(id, token, 1, server, WordNumberSprint, WordNumberAudio);
             await LearnedWordsAPI.updateUserLearnedWords(lw);
           };
           newLearnWords();
