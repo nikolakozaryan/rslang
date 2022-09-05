@@ -26,12 +26,12 @@ const GamePlay = ({ setPoints, setAmount, setCorrect, words }: IWords) => {
       currentWords={shuffleArray(words)}
       streak={streak}
       points={points}
-      correct={corrects}
+      corrects={corrects}
       error={error}
       setPoints={setPoint}
       setStreak={setStreak}
       setFinished={setFinished}
-      setCorrect={setCorrects}
+      setCorrects={setCorrects}
       setError={setError}
     />
   ) : (

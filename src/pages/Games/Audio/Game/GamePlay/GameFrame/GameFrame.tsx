@@ -9,12 +9,12 @@ import DetailedAudioWord from './DetailedAudioWord/DetailedAudioWord';
 
 const GameFrame = ({
   currentWords,
-  correct,
+  corrects,
   error,
   streak,
   points,
   setPoints,
-  setCorrect,
+  setCorrects,
   setError,
   setStreak,
   setFinished,
@@ -46,11 +46,11 @@ const GameFrame = ({
         remainingWords={remainingWords}
         setRemainingWords={setRemainingWords}
         points={points}
-        correct={correct}
+        corrects={corrects}
         error={error}
         streak={streak}
         setPoints={setPoints}
-        setCorrect={setCorrect}
+        setCorrects={setCorrects}
         setError={setError}
         setStreak={setStreak}
         variants={variants}

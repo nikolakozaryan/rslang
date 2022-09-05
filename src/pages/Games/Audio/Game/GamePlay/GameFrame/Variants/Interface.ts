@@ -1,7 +1,7 @@
 import Word from '../../../../../../../components/API/DictionaryAPI/Word';
 
 export default interface IVariants {
-  correct: Word[];
+  corrects: Word[];
   error: Word[];
   streak: number;
   variants: Word[];
@@ -12,6 +12,6 @@ export default interface IVariants {
   setPoints: React.Dispatch<React.SetStateAction<number>>;
   setIsSettled: React.Dispatch<React.SetStateAction<boolean>>;
   setStreak: React.Dispatch<React.SetStateAction<number>>;
-  setCorrect: React.Dispatch<React.SetStateAction<Word[]>>;
+  setCorrects: React.Dispatch<React.SetStateAction<Word[]>>;
   setError: React.Dispatch<React.SetStateAction<Word[]>>;
 }
