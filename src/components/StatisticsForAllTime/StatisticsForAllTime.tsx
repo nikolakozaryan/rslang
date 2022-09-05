@@ -35,10 +35,6 @@ const StatisticsForAllTime = () => {
   }
 
   useEffect(() => {
-    getLearnedWords('learnedWordsNumberSprint');
-  }, []);
-
-  useEffect(() => {
     if (newWordActive) {
       getLearnedWords('learnedWordsNumberSprint');
     } else {
