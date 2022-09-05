@@ -156,7 +156,7 @@ const UserStatistic: IStatistic = {
             const scoreObject: Data = propNew[key as keyof typeof propNew];
             const scoreNew = scoreObject;
             const scoreOld = propExist[Object.keys(propNew)[0]];
-            console.log(scoreNew, scoreOld, 'learned');
+
             if (scoreOld === undefined) {
               const sumScore = scoreNew;
               const newObjectScore = { [key]: sumScore };

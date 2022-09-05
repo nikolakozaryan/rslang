@@ -8,12 +8,6 @@ const AudioButton = (props: { audio: string; word: string; nextQ?: number }) => 
     audio.play();
   };
 
-  // useEffect(() => {
-  //   const track = document.querySelector(`.audio__${props.word}`) as HTMLAudioElement;
-  //   console.log('pay', track);
-  //   track.play();
-  // }, [props.nextQ]);
-
   return (
     <div className={classes.volume} onClick={() => playAudio(props.word)}>
       <img src="../../../assets/icons/volume.svg" alt="" />

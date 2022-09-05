@@ -18,7 +18,6 @@ const StartingPageSprint = (props: { changeGameMode: (array: Word[]) => void }) 
   }
 
   const changeDifficulty = (difficultyLevel: number) => {
-    console.log(difficultyLevel, 'level');
     setDifficulty(difficultyLevel);
   };
 

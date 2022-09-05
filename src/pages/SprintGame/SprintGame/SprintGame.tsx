@@ -3,18 +3,14 @@ import classes from './SprintGame.module.scss';
 import CardSpirnt from '../CardSprint/CardSpirnt';
 import GameHeader from '../GameHeader/GameHeader';
 import Word from '../../../components/API/DictionaryAPI/Word';
-// import array from './array';
-import DictionaryAPI from '../../../components/API/DictionaryAPI/DictionaryAPI';
 import CounterGame from '../CounterGame/CounterGame';
 import LearnedWordsAPI from '../../../components/API/LearnedWordsAPI/LearnedWordsAPI';
-import UserAPI from '../../../components/API/UsersAPI/UsersAPI';
 import Data from '../../../components/API/StatisticAPI/IData';
 import getUserData from '../../../common/getUserData';
 
 const SprintGame = (props: {
   array: Word[];
   setPoints: Dispatch<SetStateAction<number>>;
-  setLearnedStat: React.Dispatch<React.SetStateAction<number>>;
   setAmount: React.Dispatch<React.SetStateAction<number>>;
   setCorrect: React.Dispatch<React.SetStateAction<number>>;
 }) => {
@@ -27,10 +23,6 @@ const SprintGame = (props: {
   const [gameStage, setGameStage] = useState(true);
 
   const [nextQ, setNextQ] = useState(0);
-
-  const [learnedWordsServer, setLearnedWordsServer] = useState<string[]>([]);
-
-  const [learnedCount, setLearnedCount] = useState(0);
 
   const backToGame = () => {
     setGameStage(!gameStage);
@@ -172,8 +164,6 @@ const SprintGame = (props: {
           correctAnswer();
         } else {
           wrongAnswer();
-          // const newArray = ArrayGame.slice();
-          // const wrongWordIndex = ArrayGame.indexOf(wordGuess);
           if (!mistakes.includes(wordGuess)) {
             setMistakes([...mistakes, wordGuess]);
           }
@@ -243,7 +233,6 @@ const SprintGame = (props: {
             }
             return item;
           });
-          console.log(data, 'daataaaaaaaa');
           const date = new Date().setHours(0, 0, 0);
           const WordNumberSprint = { [date]: count + countnew };
           const WordNumberAudio = { [date]: countnewaudio };
@@ -254,39 +243,7 @@ const SprintGame = (props: {
           newLearnWords();
         };
         resp();
-        // } catch (error) {
-        //   const learnedFirst = learned.map((item) => item.word);
-        //   const lw = LearnedWordsAPI.createWord(id, token, 1, learnedFirst, 0);
-        //   console.log(lw, 'lw');
-        //   const newLearnWords = async () => {
-        //     await LearnedWordsAPI.updateUserLearnedWords(lw);
-        //   };
-        //   newLearnWords();
-        // } finally {
-        //   const data = await LearnedWordsAPI.getLearnedWords(id, token);
-        //   update(5);
-        // console.log(server.length - data.optional.learnedWords.split(' ').length, 'length');
       };
-      // const datasSs = await LearnedWordsAPI.getLearnedWords(id, token);
-      // const server = datasSs.optional.learnedWords.split(' ');
-      // setLearnedWordsServer(server);
-      // learned.map((item) => {
-      //   if (!server.includes(item.word)) {
-      //     server.push(item.word);
-      //     count += 1;
-      //   }
-      //   return item;
-      // });
-      // const newLearnWords = async () => {
-      //   const lw = LearnedWordsAPI.createWord(id, token, 1, server);
-      //   await LearnedWordsAPI.updateUserLearnedWords(lw);
-      // };
-      // newLearnWords();
-
-      // setLearnedCount(count);
-      // console.log(count, learnedCount, 'cods');
-      // props.setLearnedStat(count);
-
       sign();
     }
   }, [gameStage]);
