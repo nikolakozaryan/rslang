@@ -48,15 +48,15 @@ const StatisticToday = () => {
           <StatWords amount={amountSprint + amountAudio} />
         </Card>
         <Card type={'statisticMedium'}>
-          <ProgressBar progress={(correctSprint + correctAudio) / 2} />
+          <ProgressBar progress={((correctSprint + correctAudio) / 2) * 100} sprint={true} />
         </Card>
       </div>
       <div className={classes.right}>
         <Card type={'statisticLarge'}>
-          <GameStat learned={amountSprint} correct={correctSprint} row={rowSprint} type="sprint" />
+          <GameStat learned={amountSprint} correct={correctSprint * 100} row={rowSprint} type="sprint" />
         </Card>
         <Card type={'statisticLarge'}>
-          <GameStat learned={amountAudio} correct={correctAudio} row={rowAudio} type="audio" />
+          <GameStat learned={amountAudio} correct={correctAudio * 100} row={rowAudio} type="audio" />
         </Card>
       </div>
     </div>
