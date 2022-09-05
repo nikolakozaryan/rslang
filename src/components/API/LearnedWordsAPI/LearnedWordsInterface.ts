@@ -24,5 +24,5 @@ export default interface ILearnWords {
     };
   };
   updateUserLearnedWords: (object: LearnedWord) => Promise<ILearnedObject>;
-  getLearnedWords: (id: string, token: string) => Promise<ILearnedObject>;
+  getLearnedWords: (id: string, token: string, signal?: AbortSignal) => Promise<ILearnedObject>;
 }
