@@ -1,3 +1,3 @@
-const SERVER = 'https://rslang-database-n-y-k.herokuapp.com';
+const SERVER = 'https://rs-lang-be-rucb.onrender.com';
 
 export default SERVER;

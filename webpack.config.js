@@ -58,6 +58,10 @@ module.exports = {
           from: path.resolve(__dirname, 'src', 'assets', 'images'),
           to: path.resolve(__dirname, 'dist', 'assets', 'images'),
         },
+        {
+          from: path.resolve(__dirname, 'src', '_redirects'),
+          to: path.resolve(__dirname, 'dist'),
+        },
       ],
     }),
   ],
