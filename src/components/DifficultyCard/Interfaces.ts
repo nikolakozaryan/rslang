@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export interface ICard {
   id: number;
   color: string;
   curLevel: number;
   children: ReactNode;
-  setLevel: React.Dispatch<React.SetStateAction<number>>;
-  setAccentColor: React.Dispatch<React.SetStateAction<string>>;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
+  setLevel: Dispatch<SetStateAction<number>>;
+  setAccentColor: Dispatch<SetStateAction<string>>;
+  setPage: Dispatch<SetStateAction<number>>;
 }

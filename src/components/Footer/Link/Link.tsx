@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import classes from './Link.module.scss';
 
 type Developer = {
@@ -6,7 +6,7 @@ type Developer = {
   gitHub: string;
 };
 
-const Link: React.FC<Developer> = ({ name, gitHub }) => (
+const Link: FC<Developer> = ({ name, gitHub }) => (
   <a href={gitHub} target="_blank" className={classes.linkToDeveloper}>
     {name}
   </a>

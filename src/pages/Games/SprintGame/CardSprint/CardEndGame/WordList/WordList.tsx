@@ -1,10 +1,10 @@
-import React, { PropsWithChildren } from 'react';
+import { FC } from 'react';
 import classes from './WordList.module.scss';
 import WordListHeader from './WordListHeader/WordListHeader';
 import IWordList from './wordListInterface';
 import AudioButton from '../../../AudioButton/AudioButton';
 
-const WordList: React.FC<IWordList> = (props: IWordList) => {
+const WordList: FC<IWordList> = (props: IWordList) => {
   const mistakesFiltered = props.mistakes.filter((item) => item !== undefined);
   const learnedFiltered = props.learned.filter((item) => item !== undefined);
 

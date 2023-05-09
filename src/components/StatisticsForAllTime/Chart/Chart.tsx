@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, FC } from 'react';
 import { Chart as ChartJS, ChartOptions, ChartData, ChartArea, Color } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -82,7 +82,7 @@ function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
   return gradient;
 }
 
-const Chart: React.FC<IChartProps> = ({ wordCount }) => {
+const Chart: FC<IChartProps> = ({ wordCount }) => {
   const chartRef = useRef<ChartJS<'line', IChartProps['wordCount']>>(null);
   const [gradient, setGradient] = useState<Color>('rgba(255, 207, 11, 0)');
 

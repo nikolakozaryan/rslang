@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { ChangeEventHandler, FC, FocusEventHandler, useState } from 'react';
 import Button from '../../../components/Button/Button';
 import WarningMessage from '../WarningMessage/WarningMessage';
 import classes from './FormInput.module.scss';
@@ -6,8 +6,8 @@ import classes from './FormInput.module.scss';
 interface IPropsFormInput {
   label: string;
   value: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  onBlur: React.FocusEventHandler<HTMLInputElement>;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  onBlur: FocusEventHandler<HTMLInputElement>;
   name: string;
   type: string;
   placeholder: string;
@@ -15,17 +15,7 @@ interface IPropsFormInput {
   error: string;
 }
 
-const FormInput: React.FC<IPropsFormInput> = ({
-  label,
-  value,
-  onChange,
-  onBlur,
-  name,
-  type,
-  placeholder,
-  dirty,
-  error,
-}) => {
+const FormInput: FC<IPropsFormInput> = ({ label, value, onChange, onBlur, name, type, placeholder, dirty, error }) => {
   const [inputHide, setInputShow] = useState<boolean>(false);
 
   return (

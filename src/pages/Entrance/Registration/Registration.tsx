@@ -108,7 +108,6 @@ const Registration = () => {
         setRegistrationError(error.message);
       } else {
         setRegistrationError('Неизвестная ошибка');
-        console.log(error);
       }
     } finally {
       setLoading(false);

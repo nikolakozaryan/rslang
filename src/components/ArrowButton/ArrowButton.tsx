@@ -1,4 +1,4 @@
-import React from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import classes from './ArrowButton.module.scss';
 
 type Direction = 'left' | 'right';
@@ -6,7 +6,7 @@ type Direction = 'left' | 'right';
 interface IDirection {
   direction: Direction;
   frame: number;
-  setFrame: React.Dispatch<React.SetStateAction<number>>;
+  setFrame: Dispatch<SetStateAction<number>>;
 }
 
 const arrowListener = ({ direction, frame, setFrame }: IDirection) => {

@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
 import classes from './CardTeam.module.scss';
 import CardTeamInterface from './CardTeamInterface';
 
-const CardTeam: React.FC<CardTeamInterface> = (props: CardTeamInterface) => (
+const CardTeam: FC<CardTeamInterface> = (props: CardTeamInterface) => (
   <>
     <div className={classes.cardTeam}>
       <div className={classes.header}>

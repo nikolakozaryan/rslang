@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import classes from './SprintGame.module.scss';
 import CardSpirnt from '../CardSprint/CardSpirnt';
 import GameHeader from '../GameHeader/GameHeader';
@@ -11,8 +11,8 @@ import getUserData from '../../../../common/getUserData';
 const SprintGame = (props: {
   array: Word[];
   setPoints: Dispatch<SetStateAction<number>>;
-  setAmount: React.Dispatch<React.SetStateAction<number>>;
-  setCorrect: React.Dispatch<React.SetStateAction<number>>;
+  setAmount: Dispatch<SetStateAction<number>>;
+  setCorrect: Dispatch<SetStateAction<number>>;
 }) => {
   const emptyState = [
     [false, false],
@@ -194,18 +194,18 @@ const SprintGame = (props: {
     };
   }, [timeleft]);
 
-  const refresh = (buttonAnswer: boolean) => {
+  const refresh = () => {
     setNextQ(nextQ + 1);
   };
 
   document.onkeydown = (event) => {
-    const { key, keyCode } = event;
-    if (keyCode === 37) {
+    const { key } = event;
+    if (key === 'ArrowLeft') {
       refreshOurAnswer(true);
-      refresh(true);
-    } else if (keyCode === 39) {
+      refresh();
+    } else if (key === 'ArrowRight') {
       refreshOurAnswer(false);
-      refresh(false);
+      refresh();
     }
   };
 

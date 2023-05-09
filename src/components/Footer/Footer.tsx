@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import classes from './Footer.module.scss';
 import DEVELOPERS from '../../common/constants/developersConst';
 import Link from './Link/Link';
@@ -7,7 +7,7 @@ type FooterProps = PropsWithChildren<{
   className: string;
 }>;
 
-const Footer: React.FC<FooterProps> = ({ className }) => (
+const Footer: FC<FooterProps> = ({ className }) => (
   <div className={`${classes.footer} ${className}`}>
     <div className={classes.wrapper}>
       <div className={classes.linksContainer}>

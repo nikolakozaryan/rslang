@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import useApplicationAccessContext from '../../../../hooks/useApplicationAccessContext';
 import LinkProps from './NavLinkInterface';
 import classes from './NavLink.module.scss';
 
-const NavLink: React.FC<LinkProps> = (prop: LinkProps) => {
+const NavLink: FC<LinkProps> = (prop: LinkProps) => {
   const { isSignedIn } = useApplicationAccessContext();
 
   let linkStyle = classes.link;

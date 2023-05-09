@@ -1,9 +1,9 @@
-import React from 'react';
+import { FC } from 'react';
 import NavLink from './NavLink/NavLink';
 import NAVIGATION_ITEMS from '../../../common/constants/navConst';
 import classes from './Navigation.module.scss';
 
-const Navbar: React.FC = () => (
+const Navbar: FC = () => (
   <nav>
     <ul className={classes.navList}>
       {NAVIGATION_ITEMS.map((item) => (

@@ -1,11 +1,11 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { FC } from 'react';
 import Card from '../Card/Card';
 import IAdvantageCard from './IAdvantageCard';
 import classes from './AdvantageCard.module.scss';
 import useApplicationAccessContext from '../../hooks/useApplicationAccessContext';
 
-const AdvantageCard: React.FC<IAdvantageCard> = ({ imgURL, title, body, path }) => {
+const AdvantageCard: FC<IAdvantageCard> = ({ imgURL, title, body, path }) => {
   const { isSignedIn } = useApplicationAccessContext();
 
   let linkStyle = '';

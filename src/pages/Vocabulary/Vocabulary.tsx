@@ -15,14 +15,11 @@ const Vocabulary = () => {
   const [wordId, setWordId] = useState('');
   const [curWord, setCurWord] = useState<Word>({} as Word);
   const [page, setPage] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
 
   async function downloadWords(pg: number, lvl: number) {
-    setIsLoading(true);
     const resp = await DictionaryAPI.getWordsArray(pg, lvl);
     setWords(resp);
     setWordId(resp[0].id);
-    setIsLoading(false);
   }
 
   async function downloadWord(wordID: string) {

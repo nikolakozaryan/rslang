@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren, FC } from 'react';
 import classes from './WordsComponent.module.scss';
 
-const WordsComponent: React.FC<PropsWithChildren> = ({ children }) => <div className={classes.words}>{children}</div>;
+const WordsComponent: FC<PropsWithChildren> = ({ children }) => <div className={classes.words}>{children}</div>;
 
 export default WordsComponent;

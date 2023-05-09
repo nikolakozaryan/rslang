@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 import classes from './Card.module.scss';
 import ICard from './CardInterface';
 
 let className;
 
-const Card: React.FC<ICard> = (props) => {
+const Card: FC<ICard> = (props) => {
   switch (props.type) {
     case 'team': {
       className = `${classes.card} ${classes.cardTeam}`;

@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 import Section from '../../../components/Section/Section';
 import CardTeam from '../../../components/CardTeam/CardTeam';
 import Card from '../../../components/Card/Card';
 import DEVELOPERS from '../../../common/constants/developersConst';
 
-const TeamSection: React.FC = () => {
+const TeamSection: FC = () => {
   const header = 'О команде ';
   return (
     <Section header={header}>

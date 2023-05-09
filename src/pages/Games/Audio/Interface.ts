@@ -1,5 +1,7 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export default interface IAudio {
-  setPoints: React.Dispatch<React.SetStateAction<number>>;
-  setAmount: React.Dispatch<React.SetStateAction<number>>;
-  setCorrect: React.Dispatch<React.SetStateAction<number>>;
+  setPoints: Dispatch<SetStateAction<number>>;
+  setAmount: Dispatch<SetStateAction<number>>;
+  setCorrect: Dispatch<SetStateAction<number>>;
 }

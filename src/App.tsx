@@ -53,8 +53,8 @@ const App = (): JSX.Element => {
           { [time]: gamesScoreSprint },
           { [time]: gamesScoreAudio }
         );
-        const updstat = await UserStatistic.updateUserStatistic(stat);
-        console.log(updstat, 'upd');
+
+        await UserStatistic.updateUserStatistic(stat);
       }
     };
 
@@ -64,6 +64,7 @@ const App = (): JSX.Element => {
   const changeGameMode = (array: Word[]) => {
     setSprintArray(array);
   };
+
   return (
     <>
       <ApplicationAccessContext.Provider value={{ isSignedIn, setIsSignedIn }}>

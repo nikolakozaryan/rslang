@@ -1,11 +1,11 @@
-import React from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import classes from './Description.module.scss';
 import Difficulty from './Difficulty/Difficulty';
 import Button from '../../../../../components/Button/Button';
 
 interface IDescriptionProps {
-  setDifficultyLevel: React.Dispatch<React.SetStateAction<number>>;
-  setIsSettled: React.Dispatch<React.SetStateAction<boolean>>;
+  setDifficultyLevel: Dispatch<SetStateAction<number>>;
+  setIsSettled: Dispatch<SetStateAction<boolean>>;
 }
 
 const Description = ({ setDifficultyLevel, setIsSettled }: IDescriptionProps) => (

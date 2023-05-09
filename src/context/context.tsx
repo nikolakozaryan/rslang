@@ -1,8 +1,8 @@
-import React, { createContext } from 'react';
+import { Dispatch, SetStateAction, createContext } from 'react';
 
 const ApplicationAccessContext = createContext<{
   isSignedIn: boolean;
-  setIsSignedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsSignedIn: Dispatch<SetStateAction<boolean>>;
 } | null>(null);
 
 export default ApplicationAccessContext;

@@ -29,7 +29,7 @@ const Advantages = () => {
 
   return (
     <Section advantages header={header}>
-      {data.map((card, index) => (
+      {data.map((card) => (
         <AdvantageCard path={card.path} key={card.path} imgURL={card.imgURL} title={card.title} body={card.body} />
       ))}
     </Section>

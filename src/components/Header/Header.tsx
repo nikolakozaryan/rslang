@@ -1,11 +1,11 @@
-import React from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import useApplicationAccessContext from '../../hooks/useApplicationAccessContext';
 import classes from './Header.module.scss';
 import Logo from './Logo/Logo';
 import Navbar from './Navigation/Navigation';
 
-const Header: React.FC<{ navigationHide?: boolean }> = ({ navigationHide }) => {
+const Header: FC<{ navigationHide?: boolean }> = ({ navigationHide }) => {
   const { isSignedIn, setIsSignedIn } = useApplicationAccessContext();
 
   const clickHandler = () => {

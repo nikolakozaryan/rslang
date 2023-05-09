@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GameHeader from '../GameHeader/GameHeader';
 import SprintDescription from '../SprintDescription/SprintDescription';
 import SprintDifficulty from '../SprintDifficulty/SprintDifficulty';

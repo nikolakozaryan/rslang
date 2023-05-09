@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './AudioButton.module.scss';
 import SERVER from '../../../../common/constants/serverConst';
 

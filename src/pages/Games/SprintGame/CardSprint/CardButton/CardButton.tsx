@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
+import { FC } from 'react';
 import classes from './CardButton.module.scss';
 import ICardButton from './CardButtonInterface';
 
-const CardButton: React.FC<ICardButton> = (props: ICardButton) => {
+const CardButton: FC<ICardButton> = (props: ICardButton) => {
   const change = () => {
     if (props.correct === true) {
       props.refreshAnswer(true);

@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 import Word from '../../../../../../../components/API/DictionaryAPI/Word';
 
 export default interface IVariants {
@@ -8,10 +9,10 @@ export default interface IVariants {
   remainingWords: Word[];
   currentWord: Word;
   points: number;
-  setRemainingWords: React.Dispatch<React.SetStateAction<Word[]>>;
-  setPoints: React.Dispatch<React.SetStateAction<number>>;
-  setIsSettled: React.Dispatch<React.SetStateAction<boolean>>;
-  setStreak: React.Dispatch<React.SetStateAction<number>>;
-  setCorrects: React.Dispatch<React.SetStateAction<Word[]>>;
-  setError: React.Dispatch<React.SetStateAction<Word[]>>;
+  setRemainingWords: Dispatch<SetStateAction<Word[]>>;
+  setPoints: Dispatch<SetStateAction<number>>;
+  setIsSettled: Dispatch<SetStateAction<boolean>>;
+  setStreak: Dispatch<SetStateAction<number>>;
+  setCorrects: Dispatch<SetStateAction<Word[]>>;
+  setError: Dispatch<SetStateAction<Word[]>>;
 }

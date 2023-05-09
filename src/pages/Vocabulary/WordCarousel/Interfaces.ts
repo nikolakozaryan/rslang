@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 import Word from '../../../components/API/DictionaryAPI/Word';
 
 export default interface IProps {
@@ -5,5 +6,5 @@ export default interface IProps {
   difficultyLevel: number;
   words: Word[];
   page: number;
-  setWord: React.Dispatch<React.SetStateAction<string>>;
+  setWord: Dispatch<SetStateAction<string>>;
 }

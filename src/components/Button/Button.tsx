@@ -1,11 +1,11 @@
-import React from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
 import classes from './Button.module.scss';
 
-type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+type ButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
   loading?: boolean;
 };
 
-const Button: React.FC<ButtonProps> = ({ loading, ...props }) => (
+const Button: FC<ButtonProps> = ({ loading, ...props }) => (
   <button {...props} className={`${classes.button} ${props.className}`}>
     {loading ? (
       <div className={classes.loaderContainer}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, MouseEvent } from 'react';
 import IVariants from './Interface';
 import classes from './Variants.module.scss';
 import Variant from './Variant/Variant';
@@ -102,7 +102,7 @@ const Variants = ({
   };
 
   // click event handlers
-  const clickHandler = (event: React.MouseEvent) => {
+  const clickHandler = (event: MouseEvent) => {
     const target = event.target as HTMLDivElement;
     if (target.classList.contains('variant')) {
       setIsChosen(true);
@@ -130,13 +130,13 @@ const Variants = ({
 
   return (
     <>
-      <div onClick={(e: React.MouseEvent) => clickHandler(e)} className={classes.variants__container}>
+      <div onClick={(e: MouseEvent) => clickHandler(e)} className={classes.variants__container}>
         {variants.map((variant) => (
           <Variant key={variant.id} variantData={variant} />
         ))}
       </div>
       {!isChosen ? (
-        <div onClick={(e: React.MouseEvent) => clickHandler(e)} id="unknown" className={`variant ${classes.variant}`}>
+        <div onClick={(e: MouseEvent) => clickHandler(e)} id="unknown" className={`variant ${classes.variant}`}>
           He знаю
         </div>
       ) : (

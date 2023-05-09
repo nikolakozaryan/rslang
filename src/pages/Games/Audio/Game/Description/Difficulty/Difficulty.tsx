@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import classes from './Difficulty.module.scss';
 import DifficultyCard from './DifficultyCard/DifficultyCard';
 import { DIFFICULTY } from '../../../../../../common/constants/difficultyLevels';
 
 interface IDifficultyProps {
-  setDifficultyLevel: React.Dispatch<React.SetStateAction<number>>;
+  setDifficultyLevel: Dispatch<SetStateAction<number>>;
 }
 
 const Difficulty = ({ setDifficultyLevel }: IDifficultyProps) => {
